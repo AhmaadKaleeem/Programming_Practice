@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Car {
+private:
+    const string name;
+    const string registrationNumber;
+    const string manufactureName;
+    const int manufactureYear;
+
+public:
+ 
+    Car(string n, string regNum, string manuName, int year)
+        : name(n), registrationNumber(regNum), manufactureName(manuName), manufactureYear(year) {}
+
+    string getName() const { return name; }
+    string getRegistrationNumber() const { return registrationNumber; }
+    string getManufactureName() const { return manufactureName; }
+    int getManufactureYear() const { return manufactureYear; }
+
+    
+    void displayCarDetails() const {
+        cout << "Name: " << name << endl;
+        cout << "Registration Number: " << registrationNumber << endl;
+        cout << "Manufacture Name: " << manufactureName << endl;
+        cout << "Manufacture Year: " << manufactureYear << endl;
+    }
+};
+
+int main() {
+    // Creating constant Car objects
+    const Car car1("Toyota Corolla", "ABC-123", "Toyota", 2020);
+    const Car car2("Honda Civic", "XYZ-789", "Honda", 2022);
+
+    // Storing cars in a collection
+    vector<const Car> cars = {car1, car2};
+
+    // Displaying details of all cars
+    for (const auto &car : cars) {
+        car.displayCarDetails();
+        cout << "----------------------" << endl;
+    }
+
+    return 0;
+}
