@@ -12,4 +12,5 @@ namespace Utility {
     void loadplayers_fromile(vector<Player*>& players);  
     void savematch_tofile(const Match& m);       
     void loadmatches_fromfile(vector<Match*>& matches); 
+    bool isValidSport(const string& sport);
 }

@@ -15,5 +15,9 @@ public:
     Team(string name = "", string sport = "");
     void addPlayer(Player* newplayer);
     void displayteam() const;
+    vector<Player*>& getPlayers();
     string getname() const;
+    void addPlayer(const Player& p);
+
+
 };
