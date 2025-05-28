@@ -1,0 +1,11 @@
+| S.NO | POSITION  | TEAM                         | MATCHES | WON | LOST | NET_RR | PTS | FORM      |
+-----------------------------------------------------------------------------------------------------
+|   1  |    W      | MUMBAI INDIANS               | 14      |  9  | 5    | +1.107 | 18  | L W W L W |
+|   2  |    Q      | DELHI CAPITALS               | 14      |  8  | 6    | -0.109 | 16  | W L L L L |
+|   3  |    Q      | SUNRISERS HYDERABAD          | 14      |  7  | 7    | +0.608 | 14  | W W W L W |
+|   4  |    Q      | ROYAL CHALLENGERS BANGALORE  | 14      |  7  | 7    | -0.172 | 14  | L L L L W |
+|   5  |    5      | KOLKATA KNIGHT RIDERS        | 14      |  7  | 7    | -0.214 | 14  | W L L W L |
+|   6  |    6      | PUNJAB KINGS                 | 14      |  6  | 8    | -0.162 | 12  | L L W W W |
+|   7  |    7      | CHENNAI SUPER_KINGS          | 14      |  6  | 8    | -0.455 | 12  | W W W L L |
+|   8  |    8      | RAJASTHAN ROYALS             | 14      |  6  | 8    | -0.569 | 12  | L W W L W |
+-----------------------------------------------------------------------------------------------------

@@ -4,6 +4,7 @@
 #include <vector>
 #include "Player.h"
 #include "match.h"
+#include "team.h"
 using namespace std;
 
 namespace Utility {
@@ -13,4 +14,8 @@ namespace Utility {
     void savematch_tofile(const Match& m);       
     void loadmatches_fromfile(vector<Match*>& matches); 
     bool isValidSport(const string& sport);
+    static bool save_team_to_file(const Team& team, const string& filename);
+    static bool load_team_from_file(Team& team, const string& filename);
 }
+
+

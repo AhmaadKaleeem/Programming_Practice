@@ -1,0 +1,11 @@
+GROUP A:                                GROUP B:                                GROUP C: 
+    -> ITALY                                -> BELGIUM                              -> AUSTRIA
+    -> SWITZERLAND                          -> DENMARK                              -> NETHERLANDS 
+    -> TURKEY                               -> FINLAND                              -> NORTH MACEDONIA
+    -> WALES                                -> RUSSIA                               -> UKRAINE
+                                        
+GROUP D:                                GROUP E:                                GROUP F:
+    -> CROATIA                              -> POLAND                               -> GERMANY
+    -> CZECH REPUBLIC                       -> SLOVAKIA                             -> HUNGARY
+    -> ENGLAND                              -> SPAIN                                -> FRANCE
+    -> SCOTLAND                             -> SWEDEN                               -> PORTUGAL

@@ -13,6 +13,6 @@ public:
     Player();
     Player(string name = "", int age = 0, string position = "", string sport = "", string team = "");
     void display() const override;
-    string getName() const { return name; }
+    string get_name() const { return name; }
     void updatestats(int value);
 };
