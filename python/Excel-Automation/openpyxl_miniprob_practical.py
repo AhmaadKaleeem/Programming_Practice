@@ -12,8 +12,8 @@ wb = Workbook()
 # Creating three worksheets
 
 sheet1 = wb.active
-sheet2 = wb.create_sheet(title ="Subjects")
-sheet3 = wb.create_sheet(title ="Teachers")
+sheet2 = wb.create_sheet(title ="Teachers")
+sheet3 = wb.create_sheet(title ="Subjects")
 
 sheet1.title = "Students"
 
