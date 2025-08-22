@@ -1,1 +1,0 @@
-  total_paid <= 50:
