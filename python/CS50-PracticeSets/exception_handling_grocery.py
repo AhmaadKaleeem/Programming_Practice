@@ -12,6 +12,5 @@ while True:
         break
     except KeyError:   
         pass
-sorted(list)
-for i in list.keys():
+for i in sorted(list.keys()):
     print(f"{list[i]} {i}")
