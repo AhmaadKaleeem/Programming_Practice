@@ -1,0 +1,5 @@
+--------------------- Frequency Of Words ---------------------
+Ali : 64
+Ahmad : 96
+Azeem : 32
+Most Common Word : Ahmad, Occured 96 Times
