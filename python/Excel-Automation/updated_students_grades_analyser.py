@@ -23,17 +23,17 @@ lowest = df.loc[df['Average Marks'].idxmin()]
 print(lowest)
 
 # Student of Maths Having Similar Marks Then Showing Student ID , Name , Math Marks and Overall Grades
-maths_students_having_similar_marks = df[df['Math'] == df['Math'].median(axis=0)]
+maths_students_having_similar_marks = df[df['Math'] == df['Math'].mode(axis=0)]
 print("Students With Similar Marks in Maths")
 print(maths_students_having_similar_marks[['StudentID','Name','Math','OverallGrade']])
 
 # Student of Science Having Similar Marks Then Showing Student ID , Name , Science Marks and Overall Grades
-science_students_having_similar_marks = df[df['Science'] == df['Science'].median(axis=0)]
+science_students_having_similar_marks = df[df['Science'] == df['Science'].mode(axis=0)]
 print("Students With Similar Marks in Science")
 print(science_students_having_similar_marks[['StudentID','Name','Science','OverallGrade']])
 
 # Student of English Having Similar Marks Then Showing Student ID , Name , Math Marks and Overall Grades
-english_students_having_similar_marks = df[df['English'] == df['English'].median(axis=0)]
+english_students_having_similar_marks = df[df['English'] == df['English'].mode(axis=0)]
 print("Students With Similar Marks in Science")
 print(english_students_having_similar_marks[['StudentID','Name','English','OverallGrade']])
 
