@@ -1,0 +1,51 @@
+OrderID,CustomerName,Product,Category,Quantity,UnitPrice,TotalPrice,OrderDate,PaymentMethod,Shipped
+1001,Customer_7,Camera,Electronics,4,798,3192,2024-01-01,Cash,True
+1002,Customer_15,Camera,Electronics,4,1728,6912,2024-01-08,Cash,True
+1003,Customer_11,Camera,Electronics,2,1244,2488,2024-01-15,Bank Transfer,True
+1004,Customer_8,Phone,Electronics,1,590,590,2024-01-22,Bank Transfer,False
+1005,Customer_7,Tablet,Electronics,4,1109,4436,2024-01-29,PayPal,False
+1006,Customer_19,Camera,Electronics,3,574,1722,2024-02-05,Cash,True
+1007,Customer_11,Charger,Accessories,3,1233,3699,2024-02-12,Cash,False
+1008,Customer_11,Phone,Electronics,2,1912,3824,2024-02-19,Cash,False
+1009,Customer_4,Phone,Electronics,4,1772,7088,2024-02-26,Credit Card,False
+1010,Customer_8,Tablet,Electronics,1,1316,1316,2024-03-04,Cash,False
+1011,Customer_3,Phone,Electronics,3,1159,3477,2024-03-11,Credit Card,True
+1012,Customer_2,Phone,Electronics,4,1869,7476,2024-03-18,PayPal,True
+1013,Customer_12,Camera,Electronics,4,627,2508,2024-03-25,Credit Card,False
+1014,Customer_6,Tablet,Electronics,2,731,1462,2024-04-01,PayPal,False
+1015,Customer_2,Camera,Electronics,3,606,1818,2024-04-08,Cash,True
+1016,Customer_1,Camera,Electronics,3,1647,4941,2024-04-15,Cash,True
+1017,Customer_12,Tablet,Electronics,1,1062,1062,2024-04-22,PayPal,False
+1018,Customer_12,Laptop,Electronics,3,695,2085,2024-04-29,Bank Transfer,True
+1019,Customer_17,Camera,Electronics,1,845,845,2024-05-06,PayPal,False
+1020,Customer_10,Charger,Accessories,3,1101,3303,2024-05-13,Bank Transfer,False
+1021,Customer_16,Charger,Accessories,2,1693,3386,2024-05-20,Credit Card,True
+1022,Customer_15,Phone,Electronics,3,1629,4887,2024-05-27,Credit Card,True
+1023,Customer_15,Charger,Accessories,1,1413,1413,2024-06-03,Credit Card,False
+1024,Customer_19,Phone,Electronics,1,1871,1871,2024-06-10,Cash,False
+1025,Customer_12,Laptop,Electronics,2,1404,2808,2024-06-17,Credit Card,True
+1026,Customer_3,Tablet,Electronics,3,1713,5139,2024-06-24,Bank Transfer,False
+1027,Customer_5,Tablet,Electronics,3,1579,4737,2024-07-01,Credit Card,True
+1028,Customer_19,Tablet,Electronics,2,1421,2842,2024-07-08,PayPal,False
+1029,Customer_7,Charger,Accessories,3,1546,4638,2024-07-15,PayPal,True
+1030,Customer_9,Laptop,Electronics,3,1304,3912,2024-07-22,Cash,True
+1031,Customer_7,Charger,Accessories,1,239,239,2024-07-29,PayPal,True
+1032,Customer_18,Charger,Accessories,3,1298,3894,2024-08-05,Bank Transfer,False
+1033,Customer_4,Laptop,Electronics,3,1458,4374,2024-08-12,Credit Card,False
+1034,Customer_14,Laptop,Electronics,2,1450,2900,2024-08-19,Cash,True
+1035,Customer_18,Laptop,Electronics,2,1356,2712,2024-08-26,Credit Card,False
+1036,Customer_9,Laptop,Electronics,4,682,2728,2024-09-02,Credit Card,True
+1037,Customer_2,Tablet,Electronics,1,677,677,2024-09-09,Bank Transfer,True
+1038,Customer_15,Headphones,Accessories,3,1022,3066,2024-09-16,PayPal,False
+1039,Customer_7,Headphones,Accessories,3,1818,5454,2024-09-23,PayPal,False
+1040,Customer_12,Laptop,Electronics,4,1332,5328,2024-09-30,Credit Card,True
+1041,Customer_8,Headphones,Accessories,3,1432,4296,2024-10-07,Cash,False
+1042,Customer_15,Headphones,Accessories,1,759,759,2024-10-14,PayPal,False
+1043,Customer_3,Laptop,Electronics,4,1529,6116,2024-10-21,Cash,True
+1044,Customer_14,Headphones,Accessories,1,1484,1484,2024-10-28,PayPal,True
+1045,Customer_17,Charger,Accessories,4,698,2792,2024-11-04,Cash,False
+1046,Customer_4,Phone,Electronics,4,367,1468,2024-11-11,Bank Transfer,True
+1047,Customer_18,Phone,Electronics,2,1750,3500,2024-11-18,Cash,True
+1048,Customer_8,Laptop,Electronics,1,1298,1298,2024-11-25,Bank Transfer,False
+1049,Customer_4,Tablet,Electronics,3,1892,5676,2024-12-02,Bank Transfer,True
+1050,Customer_2,Laptop,Electronics,3,1307,3921,2024-12-09,Cash,True
