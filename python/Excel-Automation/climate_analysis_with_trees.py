@@ -38,17 +38,15 @@ first_eight_years = climate_chnage[(climate_chnage["Year"] >=2001) & (climate_ch
 first_eight_years = first_eight_years.sort_values(by='umd_tree_cover_loss__ha', ascending=False)
 print(first_eight_years)
 
-# Last 5 Data Sorted From Maximum To Minimum Trees Loss (Decrase so temp remained good)
+# Last 8 Year Data Sorted From Maximum To Minimum Trees Loss 
 print("\n2008-2015 Tree Loss Trend")
 last_eight_years = climate_chnage[(climate_chnage["Year"] >=2008) & (climate_chnage["Year"] <=2015) ]
 last_eight_years = last_eight_years.sort_values(by='umd_tree_cover_loss__ha', ascending=False)
 print(last_eight_years)
 
-#2006 - 2003 Trend and temperature comparision 
-# 2003 - 2006  Temp Comparision Month Wise
+# 2003 - 2006 Trend and temperature comparision  Month Wise
 three_year_temp =  climate_chnage[(climate_chnage["Year"] >=2003) & (climate_chnage["Year"] <=2006) ]
 three_year_temp = three_year_temp.sort_values(by='Temperature - (Celsius)', ascending=False)
-
 for month in ['January','February','June','July','November','December']:
  selected = three_year_temp[three_year_temp["Month"] == month]
  print(f"\n{month} Climate From 2003-2006")
