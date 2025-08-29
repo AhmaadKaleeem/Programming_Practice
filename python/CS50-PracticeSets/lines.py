@@ -12,7 +12,8 @@ def main():
     try:
       with open(filename,'r') as file:
           for line in file:
-              if not line.startswith("#") and not line.isspace():
+              line = line.strip()
+              if line!= "" and not line.startswith("#"):
                   count += 1
               
     except FileNotFoundError:
