@@ -1,0 +1,113 @@
+<!-- Make a web page by applying different HTML tags, HTML styles, HTML formatting,
+Html images, HTML list Html table, HTML div, HTML block and inline, HTML 
+forms(complete), Html Audio, Video. Save the file “HTML LabTask.html” and upload on GCR. --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player </title>
+    <style>
+      body {
+        background-color:  rgb(0, 0, 0);
+        padding: 0;
+        margin: 0;
+        border: 0;
+        color: rgb(130, 148, 11);
+      }
+
+      .interface h1 {
+      text-align: center;
+      background-color: white;
+      }
+
+      .interface img {
+        width: 100%;
+        height: 100px;
+      }
+
+      .songs-list h2 {
+        background-color: w;
+      }
+
+      .songs-list h2 {
+         text-align: center;
+      }
+
+      #song1 figcaption {
+     text-align: center;
+      }
+
+      #song2  {
+     text-align: center;
+      }
+
+      .form-for-songs .ask-songs{
+      text-align: left;
+      }
+    </style>
+   
+</head>
+
+<body>
+  
+  <div class="interface">
+     <h1 > Welcome To Online Music Player </h1>
+     <img src="video-player/bg.png" alt="Music Player Poster">
+
+     <!-- Songs List -->
+  <div class="songs-list">
+    <h2>  Music List   </h2> 
+    <ol>
+      <li> Iraaday By Abdul Hannan and Rovalio </li>
+      <li> You Matter By Young Stunners </li>
+    </ol>
+  </div>    
+  
+      <!-- Songs -->
+  <div id="song1">
+    <hr>
+      <figcaption>Song: Iraaday By Abdul Hannan and Rovalio</figcaption>
+      <video src="video-player/video/song1.mp4" height="350" width="600" controls preload="auto" aria-label="Iraaday By Abdul Hannan and Rovalio" ></video>  
+   </div>   
+  <div id="song2">
+    <hr>
+      <figcaption>Song: You Matter By Young Stunners</figcaption>
+      <br>
+      <audio src="video-player/audio/Song1.mp3" controls preload="auto" > </video>  
+        </div>   
+      </div>
+  <!-- Forms For More Songs -->
+<div class="form-for-songs"> 
+  <form action="submit" method="post" class="ask-songs">
+    <br>
+      <h2> Do you want song of your choice? Fill the form to get it.</h2>
+
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br><br>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+
+      <label for="genre">Song Genre:</label>
+      <input type="text" id="genre" name="genre" >
+      <br><br>
+
+      <label for="song-name">Song Name:</label>
+      <input type="text" id="aong-name" name="song-name" required>
+      <br><br>
+
+      <label for="singer">Singer Name:</label>
+      <input type="text" id="singer" name="singer" required>
+      <br><br>
+      <input type="submit" value="Submit Song">
+
+   </form>
+  </div>
+
+    
+</body>
+</html>
