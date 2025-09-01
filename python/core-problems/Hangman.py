@@ -1,5 +1,5 @@
 # Word Selection
-# Randomly pick a word from a list (or later load from a file).
+# Randomly pick a word loaded  from a file).
 # Word should be hidden as underscores (_) at the start.
 # Gameplay Loop
 # Player guesses one letter at a time.
@@ -11,12 +11,6 @@
 # End Conditions
 # Win: player reveals all letters.
 # Lose: attempts reach 0 → show the full word.
-# Input Handling
-# Accept only single alphabet letters.
-# Reject numbers, symbols, multiple letters.
-# Clean Code
-# Follow PEP8.
-# Use functions (e.g., get_guess(), update_word(), check_win()).
 # Replay Option
 # After game ends → ask if player wants to play again.
 # Load words from a text file (words.txt).
@@ -88,7 +82,7 @@ def start_menu(name_user):
  print("-- Easy \n-- Medium \n-- Hard")
  
 # Game Logic
-def game_logic(attempts,word_selected,guessed):
+def game_logic(attempts,word_selected,guessed,name_user):
     words_guessed = ''
     while attempts != 0 or guessed == len(word_selected):
        print('\nWord: '+ words_guessed +' _ ' * (len(word_selected) - len(words_guessed)))
@@ -98,22 +92,38 @@ def game_logic(attempts,word_selected,guessed):
           continue
        if user_guess == word_selected[guessed]:
           words_guessed += user_guess
-          attempts -= 1
-          guessed += 0
+          guessed += 1
           print("----- Right Guess -----")
        else:
           attempts -=1
           print("----- Wrong Guess -----")
        print(f"Attemps Left: {attempts}")
+       get_winner(attempts,word_selected,guessed,name_user)
+
 
 # Selecting Winner
 def get_winner(attempts,word_selected,guessed,user_name):
+   print('---------------------------------------- Final Results ----------------------------------------')
    if attempts == 0:
       print(f"\nHard Luck, {user_name}! Better Luck Next Time")
+      print(f"{user_name}, The Word Was {word_selected}")
    elif guessed == len(word_selected):
        print(f"\nCongratulations, {user_name}! Played Well. See You Next Time ")
        
-                 
+def replay_game():
+       while True:
+         replay_game = input("\nDo You Want To Play Game Again(Y/N): ")
+         replay_game= replay_game.lower()
+         if replay_game == 'y':
+             main()
+         elif replay_game == 'n':
+             print("Exiting The Game ....")
+             break
+         else :
+             print("Error! Please Enter Valid Input (Y/N)")
+             continue
+ 
+             
 # Running Game
 def run_game():
  guessed = 0
@@ -122,9 +132,8 @@ def run_game():
  name_user = get_username()
  start_menu(name_user)
  attempts = get_difficulty_level()
- game_logic(attempts,word_selected,guessed)
- get_winner(attempts,word_selected,guessed,name_user)
- 
+ game_logic(attempts,word_selected,guessed,name_user)
+ replay_game()
  
  
 
