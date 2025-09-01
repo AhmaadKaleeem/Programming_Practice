@@ -134,7 +134,6 @@ def replay_game():
 def run_game():
  correct_guessed = set()
  word_selected = word_selection()
- print(word_selected)
  name_user = get_username()
  start_menu(name_user)
  attempts = get_difficulty_level()
