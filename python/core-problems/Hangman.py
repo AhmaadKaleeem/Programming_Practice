@@ -82,32 +82,38 @@ def start_menu(name_user):
  print("-- Easy \n-- Medium \n-- Hard")
  
 # Game Logic
-def game_logic(attempts,word_selected,guessed,name_user):
-    words_guessed = ''
-    while attempts != 0 or guessed == len(word_selected):
-       print('\nWord: '+ words_guessed +' _ ' * (len(word_selected) - len(words_guessed)))
+def game_logic(attempts,word_selected,correct_guessed,name_user):
+    letter_guessed = set()
+    while attempts != 0 and (set(word_selected) != correct_guessed):
+       display_word = " ".join([letter if letter in letter_guessed else "_" for letter in word_selected])
+       print("\nWord:", display_word)
        user_guess = input("Guess a Letter: ").lower().strip()
        if not user_guess.isalpha() or len(user_guess) != 1:
           print ("Error! Enter a Single Alphabetic Letter")
           continue
-       if user_guess == word_selected[guessed]:
-          words_guessed += user_guess
-          guessed += 1
+       if user_guess in letter_guessed:
+            print("You already guessed that letter.")
+            continue
+       letter_guessed.add(user_guess)
+       if user_guess in word_selected :
+          correct_guessed.add(user_guess)
           print("----- Right Guess -----")
        else:
           attempts -=1
           print("----- Wrong Guess -----")
        print(f"Attemps Left: {attempts}")
-       get_winner(attempts,word_selected,guessed,name_user)
+      
+    get_winner(attempts,word_selected,correct_guessed,name_user)
 
 
 # Selecting Winner
 def get_winner(attempts,word_selected,guessed,user_name):
    print('---------------------------------------- Final Results ----------------------------------------')
    if attempts == 0:
-      print(f"\nHard Luck, {user_name}! Better Luck Next Time")
       print(f"{user_name}, The Word Was {word_selected}")
-   elif guessed == len(word_selected):
+      print(f"\nHard Luck, {user_name}! Better Luck Next Time")
+   elif guessed == set(word_selected):
+       print(f"{user_name}, The Word Was {word_selected}")
        print(f"\nCongratulations, {user_name}! Played Well. See You Next Time ")
        
 def replay_game():
@@ -126,13 +132,12 @@ def replay_game():
              
 # Running Game
 def run_game():
- guessed = 0
+ correct_guessed = set()
  word_selected = word_selection()
- print(word_selected)
  name_user = get_username()
  start_menu(name_user)
  attempts = get_difficulty_level()
- game_logic(attempts,word_selected,guessed,name_user)
+ game_logic(attempts,word_selected,correct_guessed,name_user)
  replay_game()
  
  
