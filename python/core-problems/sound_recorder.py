@@ -2,13 +2,15 @@ import sounddevice as sd
 import soundfile as sf
 import numpy as np
 
-# Creating a sample wave
+# Recording Fixed 3 sec wave
 fs = 44100
-time = 1
-t = np.linspace(0,time,int(fs*time),endpoint=False)
-audio_wave = 0.5 * np.sin(2 * np.pi * 440 * t)
-
-print("Playing Tone ........")
-sd.play(audio_wave,fs)
+time = 3
+chanel = 1
+print(f"Recording For {time} Seconds")
+record_data = sd.rec(int(fs*time),samplerate=fs,channels=chanel , dtype='float32')
 sd.wait()
-print('Done')
+print("Recorded For {time} Seconds")
+print("Playing Recording ........")
+sd.play(record_data,fs)
+sd.wait()
+print('Playback Done')
