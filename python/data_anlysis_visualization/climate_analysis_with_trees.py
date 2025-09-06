@@ -1,7 +1,7 @@
 import pandas as pd
 
-temperature_data = pd.read_csv("python/Excel-Automation/tempreture_1901_2016_pakistan.csv")
-trees_data = pd.read_csv("python/Excel-Automation/treecover_loss__ha.csv")
+temperature_data = pd.read_csv("python/data_anlysis_visualization/tempreture_1901_2016_pakistan.csv")
+trees_data = pd.read_csv("python/data_anlysis_visualization/treecover_loss__ha.csv")
 
 # Data Inspection
 print("origional Data")
