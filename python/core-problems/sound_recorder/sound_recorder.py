@@ -36,7 +36,7 @@ def normalize_recoding():
     print(f"\nNormalizing {sound_file}")
     file_data = normailze(file_data)
     print(f"{sound_file} Normalized Successfully, Saving Normalizied File...... ")
-    sound_file = f"normalized_{sound_file}"
+    sound_file = f"normalized{sound_file}"
     sf.write(sound_file,file_data,file_fs)
     
 def trim_recording_silence():
@@ -45,7 +45,7 @@ def trim_recording_silence():
     print(f"\nTrimming Silence -- {sound_file}")
     file_data = trim_silence(file_data,threshold = 0.02)
     print(f"{sound_file} Trimmed Silence Successfully, Saving Trimmed File...... ")
-    sound_file = f"modified_{sound_file}"
+    sound_file = f"modified{sound_file}"
     sf.write(sound_file,file_data,file_fs)
 def save_with_file_name():
  while True:
