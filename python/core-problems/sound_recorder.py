@@ -33,10 +33,19 @@ def playback():
 def normalize_recoding():
     sound_file = select_recoding_file()
     file_data,file_fs = sf.read(sound_file)
-    print(f"Normalizing {sound_file}")
+    print(f"\nNormalizing {sound_file}")
     file_data = normailze(file_data)
     print(f"{sound_file} Normalized Successfully, Saving Normalizied File...... ")
-    sound_file = f"{sound_file}+_normalized"
+    sound_file = f"normalized_{sound_file}"
+    sf.write(sound_file,file_data,file_fs)
+    
+def trim_recording_silence():
+    sound_file = select_recoding_file()
+    file_data,file_fs = sf.read(sound_file)
+    print(f"\nTrimming Silence -- {sound_file}")
+    file_data = trim_silence(file_data,threshold = 0.02)
+    print(f"{sound_file} Trimmed Silence Successfully, Saving Trimmed File...... ")
+    sound_file = f"modified_{sound_file}"
     sf.write(sound_file,file_data,file_fs)
 def save_with_file_name():
  while True:
@@ -75,15 +84,21 @@ def run_recoder():
     while True:
         print("-------------------------------------- Sound Recorder --------------------------------------")
         print("< For Recording Audio, Mic is Required > Ensure To Have a Mic Connected Before Proceeding ..... ")
-        print("1. Record Audio \n2. Playback Audio \n0. Exit ")
+        print("1. Record Audio \n2. Playback Audio \n3. Normalize Recording \n4. Trim Silence \n0. Exit ")
         option = int(input("Select The Purpose: "))
-        if  0 < option > 2:
+        if  0 < option > 4:
             print("Error! Please Enter Digits Within Valid Range\n")
             continue
         if option == 1:
             recording()
         elif option == 2:
             playback()
+        elif option == 3:
+            normalize_recoding()
+            continue
+        elif option == 4:
+            trim_recording_silence()
+            continue
         elif option == 0:
             sys.exit("Exiting The Sound Recorder..........")
             

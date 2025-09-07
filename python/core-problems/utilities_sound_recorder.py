@@ -12,7 +12,7 @@ def trim_silence(audio: np.ndarray , threshold = 0.01):
     else:
         mono = np.abs(audio)
     indexes = np.where(mono > threshold)[0]
-    if indexes == 0:
-        return audio[0:0]
+    if indexes.size == 0:
+        return audio[:0]
     start,end = indexes[0],indexes[-1] + 1
     return audio[start:end]
