@@ -1,6 +1,6 @@
 import numpy as np
 # Normalize the sound
-def normailze(audio: np.ndarray):
+def normalize(audio: np.ndarray):
     max_vol = np.max(np.abs(audio))
     if max_vol <= 0:
         return audio.astype("float32")

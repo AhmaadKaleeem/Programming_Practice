@@ -2,7 +2,7 @@ import sounddevice as sd
 import soundfile as sf
 import os
 import sys
-from utilities_sound_recorder import trim_silence,normailze
+from utilities_sound_recorder import trim_silence,normalize
 import re
 import numpy as np
 
@@ -16,11 +16,19 @@ def recording():
   print(f"Recording For {time} Seconds")
   record_data = sd.rec(int(fs*time),samplerate=fs,channels=chanel , dtype='float32')
   sd.wait() 
-  record_data = normailze(record_data)
+  record_data = normalize(record_data)
   print(f"Recorded For {time} Seconds")
   sound_file = save_with_file_name() 
   sf.write(sound_file,record_data,fs)
   print(f"Saved Recording as {sound_file}\n")
+  option = int(input("Do You Want To Playback? \n1. Yes \n2.No \nPlease Select: " ))
+  if option == 1:
+   print(f"Playing Recording {sound_file}")
+   sd.play(record_data,fs)
+   sd.wait()
+   print('Playback Done\n')
+  elif option == 2:
+   sys.exit("Exiting The Program.......")
 
 def playback():
    sound_file  = select_recoding_file()
@@ -32,21 +40,26 @@ def playback():
 
 def normalize_recoding():
     sound_file = select_recoding_file()
+    if not sound_file:
+          return
     file_data,file_fs = sf.read(sound_file)
     print(f"\nNormalizing {sound_file}")
-    file_data = normailze(file_data)
+    file_data = normalize(file_data)
     print(f"{sound_file} Normalized Successfully, Saving Normalizied File...... ")
     sound_file = f"normalized{sound_file}"
     sf.write(sound_file,file_data,file_fs)
     
 def trim_recording_silence():
     sound_file = select_recoding_file()
+    if not sound_file:
+          return
     file_data,file_fs = sf.read(sound_file)
     print(f"\nTrimming Silence -- {sound_file}")
     file_data = trim_silence(file_data,threshold = 0.02)
     print(f"{sound_file} Trimmed Silence Successfully, Saving Trimmed File...... ")
     sound_file = f"modified{sound_file}"
     sf.write(sound_file,file_data,file_fs)
+    
 def save_with_file_name():
  while True:
     file_name = input("Save Recording As: ").strip()
@@ -71,22 +84,42 @@ def select_recoding_file():
   while True:
     files = [f for f in os.listdir(".") if f.endswith(".wav")]
     print("\nRecordings Available")
+    if len(files) == 0:
+        print("No Files Availble")
+        break
     for s_no,f in enumerate(files):
      print(s_no+1,f)
     user_playback = int(input("Enter Recording No. To Select: "))
-    if 1 < user_playback > len(files):
+    if 1 < user_playback or user_playback > len(files):
         print("Please, Enter Valid Recording No. ") 
         continue
     file_name = files[user_playback-1]
     return file_name
-   
+
+def delete_recording():
+    while True:
+       file_name = select_recoding_file()
+       if not file_name:
+           break 
+       option = int(input(f"\nAre You Sure to Delete {file_name}? \nEnter 1 To Delete or 0 to Cancel: "))
+       if  0 < option > 1:
+            print("Error! Please Enter Digits Within Valid Range\n")
+            continue
+       elif option == 0:
+           break
+       elif option == 1:
+           print(f"\nDeleting {file_name} ....")
+           os.remove(file_name)
+           print("File Deleted Succesfully")
+           break
+           
 def run_recoder():
     while True:
         print("-------------------------------------- Sound Recorder --------------------------------------")
         print("< For Recording Audio, Mic is Required > Ensure To Have a Mic Connected Before Proceeding ..... ")
-        print("1. Record Audio \n2. Playback Audio \n3. Normalize Recording \n4. Trim Silence \n0. Exit ")
+        print("1. Record Audio \n2. Playback Audio \n3. Normalize Recording \n4. Trim Silence \n5. Delete Recording \n0. Exit ")
         option = int(input("Select The Purpose: "))
-        if  0 < option > 4:
+        if  0 < option > 5:
             print("Error! Please Enter Digits Within Valid Range\n")
             continue
         if option == 1:
@@ -98,6 +131,9 @@ def run_recoder():
             continue
         elif option == 4:
             trim_recording_silence()
+            continue
+        elif option == 5:
+            delete_recording()
             continue
         elif option == 0:
             sys.exit("Exiting The Sound Recorder..........")
