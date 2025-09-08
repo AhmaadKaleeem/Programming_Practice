@@ -4,6 +4,7 @@ import os
 import sys
 from utilities_sound_recorder import trim_silence,normalize
 import re
+import queue
 import numpy as np
 
 def main():
@@ -12,7 +13,7 @@ def main():
 def recording():
   fs = 44100
   time = int(input("\nEnter the Time You Want To Record: "))
-  chanel = 1
+  chanel = channel_selection()
   print(f"Recording For {time} Seconds")
   record_data = sd.rec(int(fs*time),samplerate=fs,channels=chanel , dtype='float32')
   sd.wait() 
@@ -30,6 +31,44 @@ def recording():
   elif option == 2:
    sys.exit("Exiting The Program.......")
 
+def dynamic_recording():
+    fs = 44100
+    channels = channel_selection()
+    q = queue.Queue()
+    chuncks = []
+    def callback(indata,frames_count,time_info,status):
+        if status:
+            print(status)
+        q.put(indata.copy())
+    print()
+    
+    print("Recording in Progress.... Press Enter/Ctrl+C/Ctrl+Z To Stop.")
+    data = sd.InputStream(samplerate=fs, channels=channels , callback=callback , dtype="float32")
+    with data:
+        try:
+            input()
+        except KeyboardInterrupt:
+            print("Recording Stopped")
+            pass
+        except EOFError:
+            print("Recording Stopped")
+            pass
+    while not q.empty():
+     chuncks.append(q.get())
+    audio = np.concatenate(chuncks, axis=0)
+    audio = normalize(audio)
+    sound_file = save_with_file_name()
+    sf.write(sound_file, audio, fs)
+    print(f"Saved Recording as {sound_file}")
+    option = int(input("Do You Want To Playback? \n1. Yes \n2.No \nPlease Select: " ))
+    if option == 1:
+     print(f"Playing Recording {sound_file}")
+     sd.play(audio,fs)
+     sd.wait()
+     print('Playback Done\n')
+    elif option == 2:
+     sys.exit("Exiting The Program.......")
+        
 def playback():
    sound_file  = select_recoding_file()
    print(f"Playing Recording {sound_file}")
@@ -112,7 +151,16 @@ def delete_recording():
            os.remove(file_name)
            print("File Deleted Succesfully")
            break
-           
+
+def channel_selection():
+       option = int(input(f"\nChannel Selection\n1. Mono \n2. Stero \nEnter the Channel: "))
+       if  0 < option > 1:
+            print("Error! Please Enter Digits Within Valid Range\n")
+            return
+       elif option == 1:
+           return 1
+       elif option == 2:
+           return 2
 def run_recoder():
     while True:
         print("-------------------------------------- Sound Recorder --------------------------------------")
@@ -123,7 +171,14 @@ def run_recoder():
             print("Error! Please Enter Digits Within Valid Range\n")
             continue
         if option == 1:
-            recording()
+            recording_type = int(input("\n1. Dynamic Recording \n2. Fixed Time Recording \nEnter Your Choice: " ))
+            if  1< recording_type > 2: 
+              print("Enter Valid Digits Choice \n")
+              return
+            elif recording_type == 2:
+                recording()
+            elif recording_type == 1:
+                dynamic_recording()
         elif option == 2:
             playback()
         elif option == 3:
