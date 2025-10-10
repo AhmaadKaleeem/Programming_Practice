@@ -29,7 +29,6 @@ class Node{
 template <typename t>
 class LinkedList{
 private:
- static const int max_size = 10;
 
  Node<t>* current;
  Node<t>* head;
@@ -51,7 +50,7 @@ public:
   
  }
  void insert_at_end(t user_value){
- if (size < max_size){
+
     Node<t>* new_node = new Node<t> (user_value);  
   if(head==nullptr){
 
@@ -67,14 +66,41 @@ public:
   cout << "Successfully inserted " << user_value << " at end of list. \n";
 
  }
- else
- {
-  cout << "List can have maximum " << max_size << " elements and list is full. \n" ;
- }
- }
 
+
+ void insert(t user_value, int index){
+   if (index > size  || index < 0){
+    cout << "Please insert at valid index number \n";
+    return; 
+  }
+  else{
+   
+    if (index == 0) {
+        insert_at_start(user_value);
+        return;
+    }
+    else if (index == size) {
+        insert_at_end(user_value);
+        return;
+    }
+    else {
+    Node<t>* new_node = new Node<t>(user_value);
+    Node<t>* temp = head;
+    Node<t>* prev = nullptr;
+    for(int i = 0 ; i<index;i++){
+      prev = temp;
+      temp = temp->get_next_node();
+    }
+    new_node -> set_next_node(temp);
+    prev-> set_next_node(new_node);
+    size++;
+    cout << "Successfully inserted " << user_value << " at " << index <<"th index of list. \n"
+    }
+   
+  }
+
+ }
  void insert_at_start(t user_value){
- if (size < max_size){
     Node<t>* new_node = new Node<t> (user_value);  
   if(head==nullptr){
     current = head = new_node;
@@ -89,13 +115,8 @@ public:
   cout << "Successfully inserted " << user_value << " at start of list. \n";
 
  }
- else
- {
-  cout << "List can have maximum " << max_size << " elements and list is full. \n" ;
- }
- }
-
- int get_lenght(){
+ 
+ int get_length(){
   return size;
 }
 
@@ -174,16 +195,16 @@ public:
     cout << "Successfully removed value " << user_value << " from the list.\n";
  }
 
- void remove_value_at(int index){
+ void remove_at(int index){
   if (size == 0) {
         cout << "List is empty. Cannot remove.\n";
         return;
     }
- else if (index < 0 || index >= size){
+   else if (index < 0 || index >= size){
     cout << "No " << index << "th value in the list \n";
        return;
   }
-  else if (index == 1){
+  else if (index == 0){
   remove_at_start();
      return;
  }
@@ -207,14 +228,14 @@ public:
 }
  
 void display(){
-  Node<t>* temp = new Node<t>;
-  temp = head;
+  Node<t>* temp = head;
   cout << "-- List Values -- \n";
   while(temp != nullptr){
     cout << "| "<< temp->get_node_value() << " |"<< setw(10) ;
     temp = temp->get_next_node();
   }
-  cout << "\n";
+  cout << "\n"
+
 }
 
 
@@ -229,7 +250,7 @@ int main(){
     L1.insert_at_start(2000);                            
     L2.insert_at_end("500");
     L2.insert_at_end("Ahmad");
-    cout << L1.get_lenght() << endl;
+    cout << L1.get_length() << endl;
     L1.display();
     L1.remove_at_start();
     L1.remove_at_end();
@@ -242,7 +263,7 @@ int main(){
      L1.insert_at_start(2525);
       L1.insert_at_start(2525);
     L1.display();
-     L1.remove_value_at(4);
+     L1.remove_at(4);
  
     L1.display();
     
