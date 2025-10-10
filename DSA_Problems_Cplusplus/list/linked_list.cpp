@@ -1,5 +1,6 @@
 // Linked List Dynamically
 #include  <iostream>
+#include <iomanip>
 using namespace std;
 template <typename t>
 class Node{
@@ -7,6 +8,7 @@ class Node{
     t data;
     Node<t>* next ;
    public:
+    Node() : data(t()) , next (nullptr){}
     Node(t value ) : data(value) , next (nullptr){}
   t get_node_value(){
     return data;
@@ -38,19 +40,31 @@ public:
     head = current = nullptr; 
     size = 0;
  }
+ ~ LinkedList(){
+  Node<t>* current_node = head;
+   Node<t>* next_node = nullptr;
+   while(current_node != nullptr){
+    next_node = current_node->get_next_node();
+    delete current_node;
+    current_node = next_node;
+   }
+  
+ }
  void insert_at_end(t user_value){
  if (size < max_size){
     Node<t>* new_node = new Node<t> (user_value);  
   if(head==nullptr){
 
     current = head = new_node;
-    size++;
+   
   }
   else {
     current -> set_next_node(new_node);
     current = new_node;
-    size++;
+
   }
+   size++;
+  cout << "Successfully inserted " << user_value << " at end of list. \n";
 
  }
  else
@@ -59,7 +73,88 @@ public:
  }
  }
 
+ void insert_at_start(t user_value){
+ if (size < max_size){
+    Node<t>* new_node = new Node<t> (user_value);  
+  if(head==nullptr){
+    current = head = new_node;
+    
+  }
+  else {
+    new_node ->set_next_node (head);
+     head = new_node;
+  
+  }
+    size++;
+  cout << "Successfully inserted " << user_value << " at start of list. \n";
 
+ }
+ else
+ {
+  cout << "List can have maximum " << max_size << " elements and list is full. \n" ;
+ }
+ }
+
+ int get_lenght(){
+  return size;
+}
+
+ void remove_at_start(){
+  if(head == nullptr){
+    cout << "List empty! Cannot remove from list \n";
+  }
+   else if(head->get_next_node() == nullptr){
+    delete head;
+    head = nullptr;
+    current = nullptr;
+    size--;
+   cout << "Successfully, Removed value from start of list. \n";
+  }
+  else{
+  Node<t>* temp = head ;
+  head = head->get_next_node();
+  delete temp;
+  size--;
+  cout << "Successfully, Removed value from start of list. \n";
+}
+}
+ void remove_at_end(){
+  if(head == nullptr){
+    cout << "List empty! Cannot remove from list \n";
+  }
+  else if(head->get_next_node() == nullptr){
+    delete head;
+    head = nullptr;
+    current = nullptr;
+    size--;
+  cout << "Successfully, Removed value from end of list. \n";
+
+  }
+  else{
+  Node<t>* temp = head ;
+   Node<t>* prev = nullptr ;
+  while(temp->get_next_node() != nullptr){
+    prev = temp;
+  temp = temp->get_next_node();
+ }
+ prev->set_next_node(nullptr);
+ current = prev;
+ delete temp;
+ size --;
+   cout << "Successfully, Removed value from end of list. \n";
+
+}
+}
+ void display(){
+  Node<t>* temp = new Node<t>;
+  temp = head;
+  cout << "-- List Values -- \n";
+  while(temp != nullptr){
+    cout << "| "<< temp->get_node_value() << " |"<< setw(10) ;
+    temp = temp->get_next_node();
+  }
+  cout << "\n";
+}
 
 
 };
@@ -69,8 +164,16 @@ int main(){
     LinkedList<string> L2;
     L1.insert_at_end(50);
     L1.insert_at_end(20);
+    L1.insert_at_start(5000);
+    L1.insert_at_start(2000);                            
     L2.insert_at_end("500");
     L2.insert_at_end("Ahmad");
+    cout << L1.get_lenght() << endl;
+    L1.display();
+    L1.remove_at_start();
+    L1.remove_at_end();
+    L1.insert_at_end(5644);
+    L1.display();
    
     
 }
