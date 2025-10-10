@@ -42,13 +42,7 @@ public:
  }
  
  ~ LinkedList(){
-  Node<t>* current_node = head;
-   Node<t>* next_node = nullptr;
-   while(current_node != nullptr){
-    next_node = current_node->get_next_node();
-    delete current_node;
-    current_node = next_node;
-   }
+  clear_list();
   
  }
  
@@ -121,7 +115,7 @@ public:
  }
  
  
- int get_length(){
+ int get_lenght(){
   return size;
 }
 
@@ -265,7 +259,29 @@ cout << "\n";
 
 }
 
+ void clear_list(){
+  Node<t>* current_node = head;
+   Node<t>* next_node = nullptr;
+   while(current_node != nullptr){
+    next_node = current_node->get_next_node();
+    delete current_node;
+    current_node = next_node;
+   }
+   current = head = nullptr; size=0;
+  cout << "Successfully Cleared List.\n";
+ }
 
+ void get_element_at(int index){
+  if (index >= size || index < 0 ){
+    cout <<  index << " is not a valid index in list.\n";
+    return;
+  }
+ Node<t>* temp = head;
+ for(int i=0;i < index;i++){
+  temp= temp->get_next_node();
+ }
+ cout << "Value at index " << index << " is : " << temp->get_node_value() <<endl;
+ }
 };
 
 int main(){
@@ -277,7 +293,7 @@ int main(){
     L1.insert_at_start(2000);                            
     L2.insert_at_end("500");
     L2.insert_at_end("Ahmad");
-    cout << L1.get_length() << endl;
+    cout << L1.get_lenght() << endl;
     L1.display();
     L1.remove_at_start();
     L1.remove_at_end();
@@ -290,10 +306,12 @@ int main(){
      L1.insert_at_start(2525);
      L1.insert(25,3);
       L1.insert_at_start(2525);
+       L2.clear_list();
     L1.display();
      L1.remove_at(1);
      L1.find(1);
   L1.find(25);
     L1.display();
+   
     
 }
