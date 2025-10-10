@@ -149,7 +149,7 @@ this->insert_at_end(temp->get_node_value());
  }
  
  
- int get_length(){
+ int get_lenght(){
   return size;
 }
 
@@ -304,6 +304,7 @@ cout << "\n";
    current = head = nullptr; size=0;
   cout << "Successfully Cleared List.\n";
  }
+<<<<<<< HEAD
 
  void get_element_at(int index){
   if (index >= size || index < 0 ){
@@ -331,7 +332,20 @@ cout << "\n";
  cout << "Updated Value " << prev_value << "at index " << index << " with  " << temp->get_node_value() <<endl;
  }
  
+=======
+>>>>>>> 4f79ef857d1955931b60ad7bd2a98fe631717f47
 
+ void get_element_at(int index){
+  if (index >= size || index < 0 ){
+    cout <<  index << " is not a valid index in list.\n";
+    return;
+  }
+ Node<t>* temp = head;
+ for(int i=0;i < index;i++){
+  temp= temp->get_next_node();
+ }
+ cout << "Value at index " << index << " is : " << temp->get_node_value() <<endl;
+ }
 };
 
 
@@ -560,6 +574,7 @@ void operations_on_string_list() {
 }
 
 int main(){
+<<<<<<< HEAD
     LinkedList<int> list;
     LinkedList<string> list_string;
     LinkedList<double> list_double;
@@ -590,4 +605,35 @@ int main(){
 
   
 
+=======
+    LinkedList<int> L1;
+    LinkedList<string> L2;
+    L1.insert_at_end(50);
+    L1.insert_at_end(20);
+    L1.insert_at_start(5000);
+    L1.insert_at_start(2000);                            
+    L2.insert_at_end("500");
+    L2.insert_at_end("Ahmad");
+    cout << L1.get_lenght() << endl;
+    L1.display();
+    L1.remove_at_start();
+    L1.remove_at_end();
+    L1.insert_at_end(5644);
+    L1.display();
+    L1.remove_value(25);
+     L1.insert_at_start(25);
+    L1.insert_at_start(2525);
+    L1.remove_value(5644);
+     L1.insert_at_start(2525);
+     L1.insert(25,3);
+      L1.insert_at_start(2525);
+       L2.clear_list();
+    L1.display();
+     L1.remove_at(1);
+     L1.find(1);
+  L1.find(25);
+    L1.display();
+   
+    
+>>>>>>> 4f79ef857d1955931b60ad7bd2a98fe631717f47
 }
