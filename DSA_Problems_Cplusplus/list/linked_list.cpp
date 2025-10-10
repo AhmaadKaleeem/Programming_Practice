@@ -145,7 +145,68 @@ public:
 
 }
 }
- void display(){
+
+ void remove_value(t user_value){
+  Node<t>* temp = head;
+  Node<t>* prev = nullptr;
+  while(temp!= nullptr  &&  temp->get_node_value()!= user_value){
+     prev = temp;
+    temp = temp->get_next_node();
+  }
+  
+  if(temp == nullptr){
+    cout << "Value " << user_value <<" not found ! Cannot remove from list \n";
+    return;
+  }
+  else if(temp == head){
+    head = head->get_next_node();
+  }
+  else{
+    prev->set_next_node(temp->get_next_node());
+  }
+
+  if (temp == current) {
+        current = prev;
+    }
+  
+    delete temp;
+    size--;
+    cout << "Successfully removed value " << user_value << " from the list.\n";
+ }
+
+ void remove_value_at(int index){
+  if (size == 0) {
+        cout << "List is empty. Cannot remove.\n";
+        return;
+    }
+ else if (index < 0 || index >= size){
+    cout << "No " << index << "th value in the list \n";
+       return;
+  }
+  else if (index == 1){
+  remove_at_start();
+     return;
+ }
+ else {
+   Node<t>* temp = head;
+  Node<t>* prev = nullptr;
+  for(int i = 0;i < index; i++){
+     prev = temp;
+    temp = temp->get_next_node();
+  }
+
+    prev->set_next_node(temp->get_next_node());
+     if (temp == current) {
+        current = prev;
+    }
+    delete temp;
+    size--;
+    cout << "Successfully removed value at index  " << index << " from the list.\n";
+ 
+ }
+}
+ 
+void display(){
   Node<t>* temp = new Node<t>;
   temp = head;
   cout << "-- List Values -- \n";
@@ -174,6 +235,15 @@ int main(){
     L1.remove_at_end();
     L1.insert_at_end(5644);
     L1.display();
-   
+    L1.remove_value(25);
+     L1.insert_at_start(25);
+    L1.insert_at_start(2525);
+    L1.remove_value(5644);
+     L1.insert_at_start(2525);
+      L1.insert_at_start(2525);
+    L1.display();
+     L1.remove_value_at(4);
+ 
+    L1.display();
     
 }
