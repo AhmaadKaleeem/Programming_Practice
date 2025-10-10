@@ -1,6 +1,7 @@
 // Linked List Dynamically
 #include  <iostream>
 #include <iomanip>
+#include <vector>
 using namespace std;
 template <typename t>
 class Node{
@@ -39,6 +40,7 @@ public:
     head = current = nullptr; 
     size = 0;
  }
+ 
  ~ LinkedList(){
   Node<t>* current_node = head;
    Node<t>* next_node = nullptr;
@@ -49,6 +51,7 @@ public:
    }
   
  }
+ 
  void insert_at_end(t user_value){
 
     Node<t>* new_node = new Node<t> (user_value);  
@@ -67,7 +70,23 @@ public:
 
  }
 
+ void insert_at_start(t user_value){
+    Node<t>* new_node = new Node<t> (user_value);  
+  if(head==nullptr){
+    current = head = new_node;
+    
+  }
+  else {
+    new_node ->set_next_node (head);
+     head = new_node;
+  
+  }
+    size++;
+  cout << "Successfully inserted " << user_value << " at start of list. \n";
 
+ }
+ 
+ 
  void insert(t user_value, int index){
    if (index > size  || index < 0){
     cout << "Please insert at valid index number \n";
@@ -94,27 +113,13 @@ public:
     new_node -> set_next_node(temp);
     prev-> set_next_node(new_node);
     size++;
-    cout << "Successfully inserted " << user_value << " at " << index <<"th index of list. \n"
+    cout << "Successfully inserted " << user_value << " at " << index <<"th index of list. \n";
     }
    
   }
 
  }
- void insert_at_start(t user_value){
-    Node<t>* new_node = new Node<t> (user_value);  
-  if(head==nullptr){
-    current = head = new_node;
-    
-  }
-  else {
-    new_node ->set_next_node (head);
-     head = new_node;
-  
-  }
-    size++;
-  cout << "Successfully inserted " << user_value << " at start of list. \n";
-
- }
+ 
  
  int get_length(){
   return size;
@@ -139,7 +144,8 @@ public:
   cout << "Successfully, Removed value from start of list. \n";
 }
 }
- void remove_at_end(){
+ 
+void remove_at_end(){
   if(head == nullptr){
     cout << "List empty! Cannot remove from list \n";
   }
@@ -226,15 +232,36 @@ public:
  
  }
 }
- 
-void display(){
+
+ void find(t user_value){
+ vector<int> indexes ;
+ Node<t>* temp = head;
+ for(int i=0;i < size;i++){
+  if(temp->get_node_value() == user_value)
+   { indexes.push_back(i);
+  }
+  temp= temp->get_next_node();
+ }
+ if(indexes.empty()) {cout << "Cannot find " << user_value << " in list.\n";}
+ else{
+  int size = indexes.size();
+  cout << "Element " << user_value << " found at index : ";
+ while(size != 0){
+  cout << indexes[size-1] << setw(2);
+ size--; 
+}
+cout << "\n";
+ }
+ }
+
+ void display(){
   Node<t>* temp = head;
   cout << "-- List Values -- \n";
   while(temp != nullptr){
     cout << "| "<< temp->get_node_value() << " |"<< setw(10) ;
     temp = temp->get_next_node();
   }
-  cout << "\n"
+  cout << "\n";
 
 }
 
@@ -261,10 +288,12 @@ int main(){
     L1.insert_at_start(2525);
     L1.remove_value(5644);
      L1.insert_at_start(2525);
+     L1.insert(25,3);
       L1.insert_at_start(2525);
     L1.display();
-     L1.remove_at(4);
- 
+     L1.remove_at(1);
+     L1.find(1);
+  L1.find(25);
     L1.display();
     
 }
