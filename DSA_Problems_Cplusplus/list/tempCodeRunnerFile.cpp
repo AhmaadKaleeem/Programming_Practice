@@ -1,1 +1,1 @@
-node_array
+get_length

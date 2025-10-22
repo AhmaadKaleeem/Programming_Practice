@@ -10,10 +10,10 @@ class Node
 private:
   t data;
   Node *next;
-
+ Node* prev;
 public:
-  Node() : data(t()), next(nullptr) {}
-  Node(t value) : data(value), next(nullptr) {}
+  Node() : data(t()),prev(nullptr) ,next(nullptr) {}
+  Node(t value) : data(value), next(nullptr),prev(nullptr)  {}
   t get_node_value()
   {
     return data;
@@ -21,6 +21,10 @@ public:
   Node<t> *get_next_node()
   {
     return next;
+  }
+   Node<t> *get_prev_node()
+  {
+    return prev;
   }
   void set_node_value(t value)
   {
@@ -30,10 +34,13 @@ public:
   {
     this->next = node;
   }
+  void set_prev_node(Node* node){
+    this->prev = node;
+  }
 };
 
 template <typename t>
-class LinkedList
+class DoubleLinkedList
 {
 private:
   Node<t> *current;
@@ -41,18 +48,18 @@ private:
   int size;
 
 public:
-  LinkedList()
+  DoubleLinkedList()
   {
     head = current = nullptr;
     size = 0;
   }
 
-  ~LinkedList()
+  ~DoubleLinkedList()
   {
     clear_list();
   }
 
-  LinkedList<t>(const LinkedList<t> &other)
+  DoubleLinkedList<t>(const DoubleLinkedList<t> &other)
   {
     head = current = nullptr;
     size = 0;
@@ -67,7 +74,7 @@ public:
     }
   }
 
-  LinkedList<t> &operator=(const LinkedList<t> &other)
+  DoubleLinkedList<t> &operator=(const DoubleLinkedList<t> &other)
   {
     if (this == &other)
     {
@@ -405,7 +412,7 @@ public:
 
 void main_menu()
 {
-  cout << "\n===== LinkedList Menu =====\n";
+  cout << "\n===== DoubleLinkedList Menu =====\n";
   cout << "1.  Insert at End\n";
   cout << "2.  Insert at Start\n";
   cout << "3.  Insert at Index\n";
@@ -428,7 +435,7 @@ void main_menu()
 template <typename T>
 void operations_on_list()
 {
-  LinkedList<T> list;
+  DoubleLinkedList<T> list;
   int choice;
   T value;
   int index;
@@ -534,7 +541,7 @@ void operations_on_list()
 
 void operations_on_string_list()
 {
-  LinkedList<string> list;
+  DoubleLinkedList<string> list;
   int choice;
   string value;
   int index;
@@ -649,7 +656,7 @@ int main()
 {
   int choice;
 
-  cout << "Select the type of LinkedList you want to work with:\n";
+  cout << "Select the type of DoubleLinkedList you want to work with:\n";
   cout << "1. Integer \n";
   cout << "2. Double\n";
   cout << "3. String \n";
