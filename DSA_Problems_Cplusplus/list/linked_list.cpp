@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <vector>
 #include <limits>
+#include <fstream> 
+ 
 using namespace std;
 template <typename t>
 class Node
@@ -18,7 +20,7 @@ public:
   {
     return data;
   }
-  Node<t> *get_next_node()
+  Node *get_next_node()
   {
     return next;
   }
@@ -30,6 +32,8 @@ public:
   {
     this->next = node;
   }
+  
+  
 };
 
 template <typename t>
@@ -41,6 +45,7 @@ private:
   int size;
 
 public:
+  
   LinkedList()
   {
     head = current = nullptr;
@@ -401,6 +406,43 @@ public:
 
 
   }
+
+  void save_to_file(string type_name){
+    string filename = type_name + "_List.txt";
+   ofstream datafile(filename);
+   if(!datafile.is_open()){
+    cout << "Error! Opening File '" << filename << "' For Saving...\n";
+   }
+   else{
+    Node<t>* temp = head;
+    
+    while(temp!=nullptr){
+        datafile << temp->get_node_value() << endl;
+        temp = temp -> get_next_node();
+    }
+    cout << "List Data Saved Successfully ......";
+    datafile.close();
+   }
+  }
+  void load_from_file(string type_name){
+      filename = type_name + "_List.txt";
+        ifstream loading_data_file(filename);
+        if (loading_data_file.is_open()) {
+           
+            t input_data;
+            while(loading_data_file >> input_data ){
+              insert_at_end(input_data);
+            }
+            loading_data_file.close();
+             cout << "\nFile  Data loaded successfully!" << endl;
+        }
+         else {
+            cerr << "Error: Could not open the file." << endl;
+        }
+    }
+  
+  
+
 };
 
 void main_menu()
@@ -426,24 +468,19 @@ void main_menu()
 }
 
 template <typename T>
-void operations_on_list()
-{
+void operations_on_list(string typeName)
+{ 
   LinkedList<T> list;
   int choice;
   T value;
-  int index;
-
+  int index; 
   do
   {
+    
     main_menu();
     cin >> choice;
 
-    if (cin.fail())
-    {
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      choice = -1;
-    }
+   
 
     switch (choice)
     {
@@ -524,6 +561,8 @@ void operations_on_list()
       list.display();
       break;
     case 0:
+        list.save_to_file(typeName); 
+
       cout << "Exiting to main menu.\n";
       break;
     default:
@@ -538,9 +577,10 @@ void operations_on_string_list()
   int choice;
   string value;
   int index;
+  list.load_from_file("string");  
 
   do
-  {
+  { 
     main_menu();
     cin >> choice;
 
@@ -637,7 +677,10 @@ void operations_on_string_list()
       list.display();
       break;
     case 0:
+    list.save_to_file("string"); 
+
       cout << "Exiting to main menu.\n";
+   
       break;
     default:
       cout << "Invalid choice. Please try again.\n";
@@ -646,8 +689,9 @@ void operations_on_string_list()
 }
 
 int main()
-{
-  int choice;
+{  
+ 
+  int choice,choice_2;
 
   cout << "Select the type of LinkedList you want to work with:\n";
   cout << "1. Integer \n";
@@ -659,10 +703,24 @@ int main()
   switch (choice)
   {
   case 1:
-    operations_on_list<int>();
+    cout << "1. Load Prevoius List From File \n2. Create New List\n";
+      cout << "Enter your choice: ";
+      cin >> choice_2;
+      switch (choice_2)
+      {
+      case  1:
+         
+         operations_on_list<int>("int");
+        break;
+         operations_on_list<int>("int");
+      default:
+        cout << "Invalid type choice. Exiting program.\n";
+        break;
+      }
+   
     break;
   case 2:
-    operations_on_list<double>();
+    operations_on_list<double>("double");
     break;
   case 3:
     operations_on_string_list();
@@ -670,5 +728,7 @@ int main()
   default:
     cout << "Invalid type choice. Exiting program.\n";
     break;
+
+
   }
 }
