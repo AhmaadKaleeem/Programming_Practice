@@ -1,6 +1,24 @@
 #include "voter_management.h"
-
+#include <libraries.h>
+using namespace std;
 VoterManager::VoterManager(): head(nullptr){}
+
+bool VoterManager::check_cnic(const string & id){
+if (id.length()!= 13){
+        cout << "Error! CNIC Must Consist Of 13 Digits\n";
+       return false;
+    }
+    else {
+        for (char c : id){
+            if(!isdigit(c)){
+                cout << "Error! CNIC Must Consist of 13 Digits\n";
+                return false;
+            }
+        }
+    return true;
+    }
+
+}     
 
 void VoterManager::add_voter(){
 // Creating a New Voter
@@ -28,7 +46,7 @@ cout << "======================================= All Registered Voters =========
 }
 
 void VoterManager::search_voter(string cnic){
-
+if(!check_cnic(cnic)) return;
 if(voter_mapping.find(cnic) == voter_mapping.end()){
      cout << "Error! Voter not found!\n";
      return;
@@ -36,4 +54,34 @@ if(voter_mapping.find(cnic) == voter_mapping.end()){
 cout << "Voter Founded Successfully\n";
 voter_mapping[cnic]->display_voter();
 
+}
+
+ bool VoterManager::check_voter(const string& cnic ){
+    if(!check_cnic(cnic)) return;
+if(voter_mapping.find(cnic) == voter_mapping.end()){
+     return false;
+}
+return true;
+ }
+
+bool VoterManager::authenticate_voter(const string& id , const string& password){
+   if(!check_cnic(id)) return false;
+   if(voter_mapping.find(id) == voter_mapping.end()){
+     cout << "Error! Voter not found!\n";
+     return false;
+}
+  if(voter_mapping[id]->voter_password == password){
+   return true;
+  }
+  else {
+   return false;
+  }
+
+}
+
+Voter* VoterManager::get_voter(const string &cnic) {
+    if (!check_cnic(cnic)) return nullptr;
+    auto it = voter_mapping.find(cnic);
+    if (it == voter_mapping.end()) return nullptr;
+    return it->second; // pointer to Voter
 }

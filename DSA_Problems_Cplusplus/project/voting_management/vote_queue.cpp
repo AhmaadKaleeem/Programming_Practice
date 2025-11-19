@@ -1,7 +1,8 @@
 #include "vote_queue.h"
-
+#include <libraries.h>
+using namespace std;
 VoteNode::VoteNode(): cnic("Null"),c_name("Null"),next(nullptr){}
-VoteNode::VoteNode(const string& u_cnic, const string& canidate ): cnic(u_cnic),c_name(canidate),next(nullptr){}
+VoteNode::VoteNode(const string& user_cnic, const string& canidate,const string& c_type ): cnic(user_cnic),c_name(canidate),type(c_type),next(nullptr){}
 VoteQueue::VoteQueue(){
     front = rear = nullptr;
 }
@@ -14,8 +15,8 @@ bool VoteQueue::is_empty() const{
     return true;
 }
 
-void VoteQueue::enqueue(const string& cnic_nbr,const string& canidate){
- VoteNode* new_vote = new VoteNode(cnic_nbr,canidate);
+void VoteQueue::enqueue(const string& cnic_nbr,const string& canidate,const string& c_type){
+ VoteNode* new_vote = new VoteNode(cnic_nbr,canidate,c_type);
  if(front == nullptr){
     front = rear = new_vote;
  }
