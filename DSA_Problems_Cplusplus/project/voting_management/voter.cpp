@@ -1098,4 +1098,5 @@ unordered_map<int, string> Voter::pb_area_names = {
     {48, "Pishin-II"},
     {49, "Pishin-III"},
     {50, "Killa Abdullah"},
-    {51, "Chaman"}};
+    {51, "Chaman"}
+  };

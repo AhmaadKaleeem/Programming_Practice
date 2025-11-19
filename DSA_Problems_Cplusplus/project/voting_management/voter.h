@@ -1,5 +1,6 @@
 #pragma once
 #include <libraries.h>
+#include <admin_panel.h>
 using namespace std;
 // using enum for constant names
 enum Province { PUNJAB, SINDH, KPK, BALOCHISTAN };
@@ -33,5 +34,5 @@ public:
   void display_voter();   
   bool validate_provincial_seat(Province p ,int seat);
   bool validate_national_assembly_seat(int seat);
-  
+
 };
