@@ -1,6 +1,8 @@
+#pragma once
 #include "libraries.h"
 # include "election.h"
 using namespace std;
+class Election; 
 class Admin{
 private:
  unordered_map<string,string> login_admin;

@@ -1,8 +1,8 @@
 #pragma once
-#include <unordered_map>
-#include "voter.h"
-using namespace std;
+#include"libraries.h"
 
+using namespace std;
+class Voter;
 class VoterManager {
 private:
     Voter* head;   
@@ -17,4 +17,6 @@ public:
     void display_all_voters();        
     bool check_cnic(const string & id);    
     bool check_voter(const string& cnic ); 
+    Voter* get_voter(const string &cnic);
+
 };

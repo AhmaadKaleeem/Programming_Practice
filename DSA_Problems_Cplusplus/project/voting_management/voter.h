@@ -1,9 +1,9 @@
 #pragma once
-#include <libraries.h>
-#include <admin_panel.h>
+#include "libraries.h"
+#include "admin_panel.h"
+#include "provinces.h"
 using namespace std;
-// using enum for constant names
-enum Province { PUNJAB, SINDH, KPK, BALOCHISTAN };
+
 class Voter
 {
 public:

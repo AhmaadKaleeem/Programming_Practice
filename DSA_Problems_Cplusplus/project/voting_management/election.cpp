@@ -1,5 +1,5 @@
 #include "election.h"
-#include <libraries.h>
+#include"libraries.h"
 using namespace std;
 // constuctor
 Election::Election(VoterManager *vm) : manage_votes(vm)
@@ -98,8 +98,9 @@ void Election::add_mna_candidate(const string &name, const string &symbol, const
       return;
     }
   }
-
-  mna_candidates.push_back(Candidate(name, symbol, cnic, na, -1));
+  string temp = "";
+  char temp_c = '0';
+  mna_candidates.push_back(Candidate(name, symbol, cnic, na, Voter::na_area_names[na], -1, temp, temp, temp_c));
   cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " << Voter::na_area_names[na] << "\n";
   mna_votes[cnic] = 0;
 }
@@ -109,8 +110,9 @@ void Election::add_mpa_candidate(const string &name, const string &symbol, const
   int p;
   if (!validate_candidate_cnic(cnic))
     return;
-  select_candidate_province();
-  cout << "Enter P" << province_name << " Seat Number: ";
+  Candidate c_temp;
+  select_candidate_province(c_temp);
+  cout << "Enter P" << c_temp.province_name << " Seat Number: ";
   cin >> p;
   if (!validate_provincial_seat(province, p))
   {
@@ -127,8 +129,9 @@ void Election::add_mpa_candidate(const string &name, const string &symbol, const
     }
   }
 
-  mpa_candidates.push_back(Candidate(name, symbol, cnic, -1, p));
-  cout << "Candidate Registered For P" << province_name << " -> " << p << setw(10) << "Area -> " << (*candidate_selected_area)[p] << "\n";
+  mpa_candidates.push_back(Candidate(name, symbol, cnic, -1, "", p, (*candidate_selected_area)[p],
+                                     c_temp.candidate_province, c_temp.province_name));
+  cout << "Candidate Registered For P" << c_temp.candidate_province << " -> " << p << setw(10) << "Area -> " << (*candidate_selected_area)[p] << "\n";
   mpa_votes[cnic] = 0;
 }
 
@@ -140,7 +143,8 @@ void Election::display_mna() const
   {
     cout << index++ << ". " << c.name
          << " | " << setw(10) << c.symbol
-         << " | NA-" << c.constituency_na << "\n";
+         << " | NA-" << c.constituency_na
+         << " | Area: " << c.na_area << "\n";
   }
 }
 void Election::display_mpa() const
@@ -151,7 +155,8 @@ void Election::display_mpa() const
   {
     cout << index++ << ". " << c.name
          << " | " << setw(10) << c.symbol
-         << " | " << province_name << "P-" << c.provisional_pp << "\n";
+         << " | " << " P" << c.province_name << "-" << c.provisional_pp
+         << " | Area: " << c.p_area << "\n";
   }
 }
 
@@ -219,7 +224,7 @@ void Election::cast_mpa_vote(const string &cnic)
   int voter_pp = voter->provisional_p;
   if (!validate_provincial_seat(voter->province, voter_pp))
   {
-    cout << "Your registered provincial seat is invalid: P" << province_name << "-" << voter_pp << "\n";
+    cout << "Your registered provincial seat is invalid.\n";
     return;
   }
 
@@ -490,7 +495,7 @@ void Election::winner_mpa() const
   }
 }
 
-void Election::select_candidate_province()
+void Election::select_candidate_province(Candidate &c)
 {
   bool flag = true;
   while (flag)
@@ -510,25 +515,29 @@ void Election::select_candidate_province()
     {
     case 1:
       province = PUNJAB;
-      province_name = 'P';
+      c.candidate_province = to_string(province);
+      c.province_name = 'P';
       this->candidate_selected_area = &Voter::pp_area_names;
       flag = false;
       break;
     case 2:
       province = SINDH;
-      province_name = 'S';
+      c.candidate_province = to_string(province);
+      c.province_name = 'S';
       this->candidate_selected_area = &Voter::ps_area_names;
       flag = false;
       break;
     case 3:
       province = KPK;
-      province_name = 'K';
+      c.candidate_province = to_string(province);
+      c.province_name = 'K';
       this->candidate_selected_area = &Voter::pk_area_names;
       flag = false;
       break;
     case 4:
       province = BALOCHISTAN;
-      province_name = 'B';
+      c.candidate_province = to_string(province);
+      c.province_name = 'B';
       this->candidate_selected_area = &Voter::pb_area_names;
       flag = false;
       break;
@@ -544,50 +553,183 @@ void Election::add_mna_admin()
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   string name, cnic, symbol;
   cout << "Enter Candidate Name: ";
-  getline(cin,name);
+  getline(cin, name);
   bool flag = false;
-  while(!flag){
-  cout << "Enter Candidate CNIC: ";
-  getline(cin,cnic);
-  if(!validate_candidate_cnic(cnic)){
-    flag = false;
+  while (!flag)
+  {
+    cout << "Enter Candidate CNIC: ";
+    getline(cin, cnic);
+    if (!validate_candidate_cnic(cnic))
+    {
+      flag = false;
+    }
+    else
+    {
+      flag = true;
+    }
   }
-  else{
-  flag = true;
-}
-
-}
   cout << "Enter Candidate Symbol : ";
-  getline(cin,symbol);
-  add_mna_candidate(name,symbol,cnic);
+  getline(cin, symbol);
+  add_mna_candidate(name, symbol, cnic);
 }
-void Election::add_mpa_admin(){
+void Election::add_mpa_admin()
+{
   string name, cnic, symbol;
   cout << "Enter Candidate Name: ";
-  cin.clear();          
-  cin.ignore(1000, '\n'); 
-  getline(cin,name);
+  cin.clear();
+  cin.ignore(1000, '\n');
+  getline(cin, name);
   bool flag = false;
-  while(!flag){
-  cout << "Enter Candidate CNIC: ";
-  getline(cin,cnic);
-  if(!validate_candidate_cnic(cnic)){
-    flag = false;
+  while (!flag)
+  {
+    cout << "Enter Candidate CNIC: ";
+    getline(cin, cnic);
+    if (!validate_candidate_cnic(cnic))
+    {
+      flag = false;
+    }
+    else
+    {
+      flag = true;
+    }
   }
-  else{
-  flag = true;
-}
-
-}
   cout << "Enter Candidate Symbol : ";
-   cin.clear();          
-  cin.ignore(1000, '\n'); 
-  getline(cin,symbol);
-  add_mpa_candidate(name,symbol,cnic);
+  cin.clear();
+  cin.ignore(1000, '\n');
+  getline(cin, symbol);
+  add_mpa_candidate(name, symbol, cnic);
 }
-void Election::verify_ledger_admin(){
+void Election::verify_ledger_admin()
+{
   ledger.verify_ledger();
 }
-void Election::display_ledger(){
+void Election::display_ledger()
+{
   ledger.display_ledger();
+}
+
+void Election::display_all_votes()
+{
+  cout << "==================== ALL MNA VOTES ====================\n";
+  for (const Candidate &c : mna_candidates)
+  {
+    int votes = get_mna_candidate_votes(c.cnic, c.name);
+    cout << "NA-" << c.constituency_na << " | " << c.name
+         << " | " << setw(10) << c.symbol
+         << " | Area: " << c.na_area
+         << " | Votes: " << votes << "\n";
+  }
+
+  cout << "\n==================== ALL MPA VOTES ====================\n";
+  for (const Candidate &c : mpa_candidates)
+  {
+    int votes = get_mpa_candidate_votes(c.cnic, c.name);
+    cout << "P" << c.province_name << "-" << c.provisional_pp << " | " << c.name
+         << " | " << setw(10) << c.symbol
+         << " | Area: " << c.p_area << " | " << c.candidate_province << " | Votes: " << votes << "\n";
+  }
+}
+void Election::display_winners_till_now()
+{
+  cout << "==================== CURRENT MNA WINNERS ====================\n";
+
+  for (const Candidate &c : mna_candidates)
+  {
+    int votes = get_mna_candidate_votes(c.cnic, c.name);
+
+    bool is_winner = true;
+    for (const Candidate &other : mna_candidates)
+    {
+      if (other.constituency_na == c.constituency_na)
+      {
+        int other_votes = get_mna_candidate_votes(other.cnic, other.name);
+        if (other_votes > votes)
+        {
+          is_winner = false;
+          break;
+        }
+      }
+    }
+
+    if (is_winner)
+    {
+      cout << "NA-" << c.constituency_na
+           << " | " << c.name
+           << " | " << setw(10) << c.symbol
+           << " | Area: " << c.na_area
+           << " | Votes: " << votes << "\n";
+    }
+  }
+
+  cout << "\n==================== CURRENT MPA WINNERS ====================\n";
+
+  for (const Candidate &c : mpa_candidates)
+  {
+    int votes = get_mpa_candidate_votes(c.cnic, c.name);
+
+    bool is_winner = true;
+    for (const Candidate &other : mpa_candidates)
+    {
+      if (other.provisional_pp == c.provisional_pp)
+      {
+        int other_votes = get_mpa_candidate_votes(other.cnic, other.name);
+        if (other_votes > votes)
+        {
+          is_winner = false;
+          break;
+        }
+      }
+    }
+
+    if (is_winner)
+    {
+      cout << "P" << c.province_name << "-" << c.provisional_pp << " | " << c.name
+           << " | " << setw(10) << c.symbol << " | Area: " << c.p_area << " | " << c.candidate_province 
+           << " | Votes: " << votes << "\n";
+    }
+  }
+}
+
+
+void Election::voter_menu(const string &cnic) {
+    int choice;
+    do {
+        cout << "\n==== Voter Menu ====\n";
+        cout << "1. View My Profile\n";
+        cout << "2. View My Constituency (NA / PP)\n";
+        cout << "3. Cast Vote for MNA\n";
+        cout << "4. Cast Vote for MPA\n";
+        cout << "5. Logout\n";
+        cin >> choice;
+
+        switch(choice) {
+            case 1: {
+                Voter *v = manage_votes->get_voter(cnic);
+                if(v) {
+                  v->display_voter();
+                }
+                break;
+            }
+            case 2: {
+                Voter *v = manage_votes->get_voter(cnic);
+                if(v) {
+                    cout << "National Assembly Seat: NA-" << v->na << "\n";
+                    char prov_char = (v->province == PUNJAB ? 'P' : (v->province == SINDH ? 'S' : (v->province == KPK ? 'K' : 'B')));
+                    cout << "YProvincial Assembly Seat: P" << prov_char << "-" << v->provisional_p << "\n";
+                }
+                break;
+            }
+            case 3:
+                cast_mna_vote(cnic);
+                break;
+            case 4:
+                cast_mpa_vote(cnic);
+                break;
+            case 5:
+                cout << "Logging out...\n";
+                break;
+            default:
+                cout << "Invalid Choice\n";
+        }
+    } while(choice != 5);
 }

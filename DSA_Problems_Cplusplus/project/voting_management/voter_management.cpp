@@ -1,5 +1,6 @@
 #include "voter_management.h"
-#include <libraries.h>
+#include"libraries.h"
+#include "voter.h"
 using namespace std;
 VoterManager::VoterManager(): head(nullptr){}
 
@@ -57,7 +58,7 @@ voter_mapping[cnic]->display_voter();
 }
 
  bool VoterManager::check_voter(const string& cnic ){
-    if(!check_cnic(cnic)) return;
+    if(!check_cnic(cnic)) return false;
 if(voter_mapping.find(cnic) == voter_mapping.end()){
      return false;
 }
@@ -83,5 +84,5 @@ Voter* VoterManager::get_voter(const string &cnic) {
     if (!check_cnic(cnic)) return nullptr;
     auto it = voter_mapping.find(cnic);
     if (it == voter_mapping.end()) return nullptr;
-    return it->second; // pointer to Voter
+    return it->second; 
 }

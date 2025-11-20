@@ -1,0 +1,3 @@
+D:/Github/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/elections.dir
+D:/Github/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/edit_cache.dir
+D:/Github/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/rebuild_cache.dir

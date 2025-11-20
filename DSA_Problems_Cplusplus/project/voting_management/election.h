@@ -2,13 +2,15 @@
 #include "voter_management.h"
 #include "vote_queue.h"
 #include "ledger.h"
-#include <voter.h>
-#include <libraries.h>
+#include "voter.h"
+#include "libraries.h"
+#include "provinces.h"
 using namespace std;
+class VoterManager;
 class Election
 {
 public:
-    Election(VoterManager *vm);
+    Election(VoterManager* vm);
     void add_mpa_candidate(const string &name, const string &symbol, const string &cnic);
     void add_mna_candidate(const string &name, const string &symbol, const string &cnic);
     void display_mpa() const;
@@ -26,6 +28,9 @@ public:
     void verify_ledger_admin();
     void display_ledger();
     void winner_mna() const;
+    void display_all_votes();
+    void display_winners_till_now();
+    void voter_menu(const string& cnic);
 
 private:
     string mna_winner_cnic;
@@ -35,7 +40,6 @@ private:
     void record_mna_vote(const string &candidate_name);
     void record_mpa_vote(const string &candidate_name);
     bool validate_candidate_cnic(const string &cnic);
-    
 
     struct Candidate
     {
@@ -43,24 +47,39 @@ private:
         string name;
         string symbol;
         string cnic;
+        string na_area;
+        string p_area;
+        string candidate_province;
         int constituency_na;
         int provisional_pp;
-
-        Candidate(const string &c_name, const string &c_symbol, const string &c_cnic, int c_na, int c_pp) : name(c_name), symbol(c_symbol), cnic(c_cnic), constituency_na(c_na), provisional_pp(c_pp) {}
+        char province_name;
+       Candidate() {
+        name = "";
+        symbol = "";
+        cnic = "";
+        na_area = "";
+        p_area = "";
+        candidate_province = "";
+        constituency_na = 0;
+        provisional_pp = 0;
+        province_name = ' '; 
+    }
+        Candidate(const string &c_name, const string &c_symbol, const string &c_cnic, int c_na, const string &c_na_area, int c_p, const string &c_p_area,const string & u_candidate_province,const char& c_province_abb)
+            : name(c_name), symbol(c_symbol), cnic(c_cnic), constituency_na(c_na), na_area(c_na_area), provisional_pp(c_p), p_area(c_p_area),candidate_province(u_candidate_province),province_name(c_province_abb) {}
     };
     Ledger ledger;
     Province province;
-    char province_name;
     VoterManager *manage_votes; // manage voter
     VoteQueue queue_votes;      // obkect to store votes
     unordered_map<string, int> mpa_votes;
     unordered_map<string, int> mna_votes;
     vector<Candidate> mna_candidates;
     vector<Candidate> mpa_candidates;
+   
 
     unordered_map<int, string> *candidate_selected_area = nullptr;
     bool validate_provincial_seat(Province p, int seat);
     bool validate_national_assembly_seat(int seat);
-    void select_candidate_province();
-  
+    void select_candidate_province(Candidate& c);
+
 };
