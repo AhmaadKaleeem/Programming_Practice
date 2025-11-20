@@ -1,3 +1,0 @@
-/home/runner/work/Programming_Practice/Programming_Practice/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/elections.dir
-/home/runner/work/Programming_Practice/Programming_Practice/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/edit_cache.dir
-/home/runner/work/Programming_Practice/Programming_Practice/DSA_Problems_Cplusplus/project/voting_management/build/CMakeFiles/rebuild_cache.dir
