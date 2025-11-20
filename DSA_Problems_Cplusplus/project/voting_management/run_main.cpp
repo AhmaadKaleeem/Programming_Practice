@@ -26,7 +26,7 @@ int main()
         cout << "**                                       **\n";
         cout << "*******************************************\n";
         red();
-        cout << "Reminder Alert! Follow the Following Schedule For Voting\n";
+        cout << "\nReminder Alert! Follow the Following Schedule For Voting\n";
         blue();
         display_voting_schedule();
         black();
