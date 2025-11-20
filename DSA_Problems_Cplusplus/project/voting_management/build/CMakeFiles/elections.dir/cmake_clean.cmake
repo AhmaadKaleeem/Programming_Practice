@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/elections.dir/voter.cpp.obj.d"
   "CMakeFiles/elections.dir/voter_management.cpp.obj"
   "CMakeFiles/elections.dir/voter_management.cpp.obj.d"
+  "CMakeFiles/elections.dir/voting_time.cpp.obj"
+  "CMakeFiles/elections.dir/voting_time.cpp.obj.d"
   "elections.exe"
   "elections.exe.manifest"
   "elections.pdb"

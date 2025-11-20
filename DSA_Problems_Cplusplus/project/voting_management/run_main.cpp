@@ -1,6 +1,7 @@
 #include "libraries.h"
 #include "election.h"
 #include "console_color.h"
+#include "voting_time.h"
 using namespace std;
 
 int main()
@@ -22,6 +23,10 @@ int main()
         cout << "  **\n";
         cout << "**                                       **\n";
         cout << "*******************************************\n";
+        red();
+        cout << "Reminder Alert! Follow the Following Schedule For Voting\n";
+        blue();
+        display_voting_schedule();
         black();
         cout << "+---------------------------------------+\n";
         cout << "| 1. Register Voter                     |\n";

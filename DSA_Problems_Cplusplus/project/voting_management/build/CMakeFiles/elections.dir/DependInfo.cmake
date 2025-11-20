@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.cpp" "CMakeFiles/elections.dir/vote_queue.cpp.obj" "gcc" "CMakeFiles/elections.dir/vote_queue.cpp.obj.d"
   "D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.cpp" "CMakeFiles/elections.dir/voter.cpp.obj" "gcc" "CMakeFiles/elections.dir/voter.cpp.obj.d"
   "D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.cpp" "CMakeFiles/elections.dir/voter_management.cpp.obj" "gcc" "CMakeFiles/elections.dir/voter_management.cpp.obj.d"
+  "D:/Github/DSA_Problems_Cplusplus/project/voting_management/voting_time.cpp" "CMakeFiles/elections.dir/voting_time.cpp.obj" "gcc" "CMakeFiles/elections.dir/voting_time.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

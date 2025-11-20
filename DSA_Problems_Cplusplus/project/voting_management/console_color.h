@@ -1,5 +1,5 @@
 #pragma once
-#include "libraries.h" 
+#include "libraries.h"
 
 inline void blue()
 {
@@ -24,4 +24,9 @@ inline void yellow()
 inline void green()
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+}
+
+inline void red()
+{
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 }

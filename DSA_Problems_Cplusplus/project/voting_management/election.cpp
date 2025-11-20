@@ -1,5 +1,6 @@
 #include "election.h"
 #include "libraries.h"
+#include "voting_time.h"
 #include "static_data.h"
 using namespace std;
 
@@ -204,149 +205,165 @@ bool Election::has_voter_voted_mpa(const string &cnic) const
 
 void Election::cast_mpa_vote(const string &cnic)
 {
-  if (!manage_votes->check_voter(cnic))
+  if (is_voting_time())
   {
-    cout << "Voter CNIC Not Registered\n";
-    return;
-  }
+    if (!manage_votes->check_voter(cnic))
+    {
+      cout << "Voter CNIC Not Registered\n";
+      return;
+    }
 
-  Voter *voter = manage_votes->get_voter(cnic);
-  if (!voter)
-  {
-    cout << "Voter not found \n";
-    return;
-  }
+    Voter *voter = manage_votes->get_voter(cnic);
+    if (!voter)
+    {
+      cout << "Voter not found \n";
+      return;
+    }
 
-  if (has_voter_voted_mpa(cnic))
-  {
-    cout << "Voter Already Voted (MPA/PP)\n";
-    return;
-  }
+    if (has_voter_voted_mpa(cnic))
+    {
+      cout << "Voter Already Voted (MPA/PP)\n";
+      return;
+    }
 
-  int voter_pp = voter->provisional_p;
-  if (!validate_provincial_seat(voter->province, voter_pp))
-  {
-    cout << "Your registered provincial seat is invalid.\n";
-    return;
-  }
+    int voter_pp = voter->provisional_p;
+    if (!validate_provincial_seat(voter->province, voter_pp))
+    {
+      cout << "Your registered provincial seat is invalid.\n";
+      return;
+    }
 
-  vector<const Candidate *> eligible_candidates;
-  for (const Candidate &c : mpa_candidates)
-  {
-    if (c.provisional_pp == voter_pp)
-      eligible_candidates.push_back(&c);
-  }
+    vector<const Candidate *> eligible_candidates;
+    for (const Candidate &c : mpa_candidates)
+    {
+      if (c.provisional_pp == voter_pp)
+        eligible_candidates.push_back(&c);
+    }
 
-  if (eligible_candidates.empty())
-  {
-    cout << "No provincial candidates registered for P"
+    if (eligible_candidates.empty())
+    {
+      cout << "No provincial candidates registered for P"
+           << (voter->province == PUNJAB ? 'P' : (voter->province == SINDH ? 'S' : (voter->province == KPK ? 'K' : 'B')))
+           << "-" << voter_pp << "\n";
+      return;
+    }
+
+    cout << "\n===== Provincial Candidates for P"
          << (voter->province == PUNJAB ? 'P' : (voter->province == SINDH ? 'S' : (voter->province == KPK ? 'K' : 'B')))
-         << "-" << voter_pp << "\n";
-    return;
+         << "-" << voter_pp << " =====\n";
+    for (size_t i = 0; i < eligible_candidates.size(); ++i)
+    {
+      cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
+           << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
+    }
+
+    int choice;
+    cout << "Enter candidate number to cast your Provincial vote: ";
+    cin >> choice;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Invalid input\n";
+      return;
+    }
+
+    if (choice < 1 || choice > eligible_candidates.size())
+    {
+      cout << "Invalid choice\n";
+      return;
+    }
+
+    const Candidate *picked = eligible_candidates[choice - 1];
+    string type = "MPA";
+    queue_votes.enqueue(cnic, picked->name, type);
+    ledger.add_block(picked->cnic, cnic, type);
+    record_mpa_vote(picked->cnic);
+
+    cout << "Provincial vote cast successfully for " << picked->name << " - " << voter_pp << "\n";
   }
 
-  cout << "\n===== Provincial Candidates for P"
-       << (voter->province == PUNJAB ? 'P' : (voter->province == SINDH ? 'S' : (voter->province == KPK ? 'K' : 'B')))
-       << "-" << voter_pp << " =====\n";
-  for (size_t i = 0; i < eligible_candidates.size(); ++i)
+  else
   {
-    cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
-         << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
+    cout << "Voting is CLOSED\n";
+    display_voting_schedule();
   }
-
-  int choice;
-  cout << "Enter candidate number to cast your Provincial vote: ";
-  cin >> choice;
-  if (cin.fail())
-  {
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Invalid input\n";
-    return;
-  }
-
-  if (choice < 1 || choice > eligible_candidates.size())
-  {
-    cout << "Invalid choice\n";
-    return;
-  }
-
-  const Candidate *picked = eligible_candidates[choice - 1];
-  string type = "MPA";
-  queue_votes.enqueue(cnic, picked->name, type);
-  ledger.add_block(picked->cnic, cnic, type);
-  record_mpa_vote(picked->cnic);
-
-  cout << "Provincial vote cast successfully for " << picked->name << " - " << voter_pp << "\n";
 }
-
 void Election::cast_mna_vote(const string &cnic)
 {
-  if (!manage_votes->check_voter(cnic))
+  if (is_voting_time())
   {
-    cout << "Voter CNIC Not Registered\n";
-    return;
-  }
+    if (!manage_votes->check_voter(cnic))
+    {
+      cout << "Voter CNIC Not Registered\n";
+      return;
+    }
 
-  // find voter
-  Voter *voter = manage_votes->get_voter(cnic);
-  if (!voter)
+    // find voter
+    Voter *voter = manage_votes->get_voter(cnic);
+    if (!voter)
+    {
+      cout << "Voter not found (unexpected)\n";
+      return;
+    }
+
+    if (has_voter_voted_mna(cnic))
+    {
+      cout << "Voter Already Voted (MNA)\n";
+      return;
+    }
+
+    int voter_na = voter->na;
+    vector<const Candidate *> eligible_candidates;
+    for (const Candidate &c : mna_candidates)
+    {
+      if (c.constituency_na == voter_na)
+        eligible_candidates.push_back(&c);
+    }
+
+    if (eligible_candidates.empty())
+    {
+      cout << "No candidates registered for NA-" << voter_na << "\n";
+      return;
+    }
+
+    cout << "\n===== MNA Candidates for NA-" << voter_na << " =====\n";
+    for (size_t i = 0; i < eligible_candidates.size(); ++i)
+    {
+      cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
+           << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
+    }
+
+    int choice;
+    cout << "Enter candidate number to cast your NA vote: ";
+    cin >> choice;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Invalid input\n";
+      return;
+    }
+
+    if (choice < 1 || choice > eligible_candidates.size())
+    {
+      cout << "Invalid choice\n";
+      return;
+    }
+
+    const Candidate *picked = eligible_candidates[choice - 1];
+    string type = "MNA";
+    queue_votes.enqueue(cnic, picked->name, type);
+    ledger.add_block(picked->cnic, cnic, type);
+    record_mna_vote(picked->cnic);
+
+    cout << "MNA vote cast successfully for " << picked->name << " (NA-" << voter_na << ")\n";
+  }
+  else
   {
-    cout << "Voter not found (unexpected)\n";
-    return;
+    cout << "Voting is CLOSED\n";
+    display_voting_schedule();
   }
-
-  if (has_voter_voted_mna(cnic))
-  {
-    cout << "Voter Already Voted (MNA)\n";
-    return;
-  }
-
-  int voter_na = voter->na;
-  vector<const Candidate *> eligible_candidates;
-  for (const Candidate &c : mna_candidates)
-  {
-    if (c.constituency_na == voter_na)
-      eligible_candidates.push_back(&c);
-  }
-
-  if (eligible_candidates.empty())
-  {
-    cout << "No candidates registered for NA-" << voter_na << "\n";
-    return;
-  }
-
-  cout << "\n===== MNA Candidates for NA-" << voter_na << " =====\n";
-  for (size_t i = 0; i < eligible_candidates.size(); ++i)
-  {
-    cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
-         << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
-  }
-
-  int choice;
-  cout << "Enter candidate number to cast your NA vote: ";
-  cin >> choice;
-  if (cin.fail())
-  {
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Invalid input\n";
-    return;
-  }
-
-  if (choice < 1 || choice > eligible_candidates.size())
-  {
-    cout << "Invalid choice\n";
-    return;
-  }
-
-  const Candidate *picked = eligible_candidates[choice - 1];
-  string type = "MNA";
-  queue_votes.enqueue(cnic, picked->name, type);
-  ledger.add_block(picked->cnic, cnic, type);
-  record_mna_vote(picked->cnic);
-
-  cout << "MNA vote cast successfully for " << picked->name << " (NA-" << voter_na << ")\n";
 }
 
 void Election::record_mna_vote(const string &candidate_cnic)

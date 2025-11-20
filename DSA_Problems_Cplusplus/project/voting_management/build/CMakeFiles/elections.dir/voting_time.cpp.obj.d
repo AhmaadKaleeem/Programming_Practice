@@ -1,7 +1,5 @@
-CMakeFiles/elections.dir/election.cpp.obj: \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\election.cpp \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\election.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter_management.h \
+CMakeFiles/elections.dir/voting_time.cpp.obj: \
+ D:\Github\DSA_Problems_Cplusplus\project\voting_management\voting_time.cpp \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\libraries.h \
  C:/msys64/ucrt64/include/c++/13.2.0/ctime \
  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -378,9 +376,4 @@ CMakeFiles/elections.dir/election.cpp.obj: \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
  C:/msys64/ucrt64/include/imm.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\vote_queue.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\ledger.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\admin_panel.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\static_data.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\voting_time.h

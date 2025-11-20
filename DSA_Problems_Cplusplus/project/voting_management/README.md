@@ -143,6 +143,8 @@ voting_management/
 ├── vote_queue.cpp        # Queue implementation for votes
 ├── ledger.h              # Blockchain ledger declaration
 ├── ledger.cpp            # Ledger implementation with hashing
+├── voting_time.cpp       # Implemented display voting schedule and validating voting time
+├── voting_time.h         # Fixed voting schedule and validating voting time
 ├── libraries.h           # Common library includes
 ├── static_data.h         # Static data for constituencies and mappings
 ├── console_color.h       # Changing Console Colours Windows
@@ -208,6 +210,9 @@ The vote management system features:
 | `libraries.h`          | Header file containing all common library includes (iostream, string, vector, unordered_map, etc.) |
 | `static_data.h`        | Static data definitions including NA/PA constituency mappings, area names, and province enums      |
 | `console_color.h`      | To change console colors, making console user-friendly     |
+| `static_data.h`        | Static data definitions including NA/PA constituency mappings, area names, and province enums      |
+| `voting_time.cpp`      | Implemented functions to show voting schedule and validate voting time      |
+| `voting_time.h`        | Header File containing election the fixed election date and time and function declarations     |
 | `CMakeLists.txt`       | CMake build configuration specifying C++17 standard and executable generation                      |
 
 ## Build Details
@@ -235,6 +240,7 @@ add_executable(elections
     vote_queue.cpp
     voter_management.cpp
     voter.cpp
+    voting_time.cpp
 )
 ```
 
@@ -333,6 +339,6 @@ This project is developed as a university project for educational purposes. It d
 **Author**: Ahmad Kaleem Bhatti
 **Institution**: Air University  
 **Course**: Data Structures and Algorithms (Project)  
-**Year**: 2024
+**Year**: 2025
 
 ---

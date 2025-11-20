@@ -10,4 +10,5 @@ run_main.cpp
 vote_queue.cpp
 voter_management.cpp
 voter.cpp
+voting_time.cpp
 )

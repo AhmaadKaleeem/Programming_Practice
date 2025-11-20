@@ -296,6 +296,30 @@ voter_management.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter_management.cpp.s
 .PHONY : voter_management.cpp.s
 
+voting_time.obj: voting_time.cpp.obj
+.PHONY : voting_time.obj
+
+# target to build an object file
+voting_time.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.obj
+.PHONY : voting_time.cpp.obj
+
+voting_time.i: voting_time.cpp.i
+.PHONY : voting_time.i
+
+# target to preprocess a source file
+voting_time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.i
+.PHONY : voting_time.cpp.i
+
+voting_time.s: voting_time.cpp.s
+.PHONY : voting_time.s
+
+# target to generate assembly for a file
+voting_time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.s
+.PHONY : voting_time.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -326,6 +350,9 @@ help:
 	@echo ... voter_management.obj
 	@echo ... voter_management.i
 	@echo ... voter_management.s
+	@echo ... voting_time.obj
+	@echo ... voting_time.i
+	@echo ... voting_time.s
 .PHONY : help
 
 

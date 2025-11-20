@@ -218,13 +218,13 @@ void Voter::input_cnic()
 void Voter::display_voter()
 {
   cout << "============================================= Voter Information =============================================\n";
-  cout << "Name -> " << setw(5) << voter_name << "\nID -> " << setw(5) << voter_id << "\n";
-  cout << "CNIC -> " << setw(5) << voter_cnic << "\nAge -> " << setw(5) << voter_age << "\n";
-  cout << "Province -> " << setw(5) << pnames[province] << "\nCasted Vote -> " << setw(5) << (check_vote ? "Yes" : "No") << "\n";
+  cout << "Name -> " << setw(15) << voter_name << "\nID -> " << setw(15) << voter_id << "\n";
+  cout << "CNIC -> " << setw(15) << voter_cnic << "\nAge -> " << setw(15) << voter_age << "\n";
+  cout << "Province -> " << setw(15) << pnames[province] << "\nCasted Vote -> " << setw(15) << (check_vote ? "Yes" : "No") << "\n";
   if (na_area_names.find(na) != na_area_names.end())
-    cout << "NA -> " << na << setw(10) << "Area -> " << na_area_names[na] << "\n";
+    cout << "NA -> " << na << setw(25) << "Area -> " << na_area_names[na] << "\n";
 else
-    cout << "NA -> " << na << setw(10) << "Area -> Not Found\n";
+    cout << "NA -> " << na << setw(25) << "Area -> Not Found\n";
 
   if (na < 46 || na > 48) 
   {
@@ -232,10 +232,10 @@ else
     {
       if (selected_area->find(provisional_p) != selected_area->end())
         cout << "P" << province_name << " -> " << provisional_p
-             << setw(10) << "Area -> " << (*selected_area)[provisional_p] << "\n";
+             << setw(25) << "Area -> " << (*selected_area)[provisional_p] << "\n";
       else
         cout << "P" << province_name << " -> " << provisional_p
-             << setw(10) << "Area -> Not Found\n";
+             << setw(25) << "Area -> Not Found\n";
     }
   }
   else  
