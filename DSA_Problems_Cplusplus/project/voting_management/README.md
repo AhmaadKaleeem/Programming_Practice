@@ -308,21 +308,16 @@ We welcome contributions to improve the Election Management System! Here's how y
 
 - Database integration for persistent storage
 - GUI implementation using Qt or similar framework
-- Enhanced security features (password hashing, encryption)
-- Unit testing framework
-- Vote result export to PDF/CSV
 - Multi-language support
-- Mobile application interface
 
 ## License
 
 This project is developed as a university project for educational purposes. It demonstrates the implementation of data structures (linked lists, queues, hash maps) and object-oriented programming concepts in C++.
 
-**Author**: Ahmaa Kaleem  
-**Institution**: University Project  
-**Course**: Data Structures and Algorithms  
+**Author**: Ahmad Kaleem Bhatti
+**Institution**: Air University   
+**Course**: Data Structures and Algorithms (Project)  
 **Year**: 2024
 
 ---
 
-**Note**: This is an educational project and should not be used for actual election purposes without proper security audits, legal compliance verification, and production-ready enhancements.
