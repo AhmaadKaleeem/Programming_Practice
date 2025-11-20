@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\elections.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\elections.dir/objects.a @CMakeFiles\elections.dir\objects1.rsp
-C:\msys64\ucrt64\bin\c++.exe -Wl,--whole-archive CMakeFiles\elections.dir/objects.a -Wl,--no-whole-archive -o elections.exe -Wl,--out-implib,libelections.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\elections.dir\linkLibs.rsp
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/elections.dir/link.d CMakeFiles/elections.dir/admin_panel.cpp.o CMakeFiles/elections.dir/election.cpp.o CMakeFiles/elections.dir/ledger.cpp.o CMakeFiles/elections.dir/run_main.cpp.o CMakeFiles/elections.dir/vote_queue.cpp.o CMakeFiles/elections.dir/voter_management.cpp.o CMakeFiles/elections.dir/voter.cpp.o -o elections
