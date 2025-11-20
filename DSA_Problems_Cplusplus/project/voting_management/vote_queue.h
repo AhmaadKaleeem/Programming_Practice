@@ -1,7 +1,7 @@
 #pragma once
-
 #include"libraries.h"
 using namespace std;
+
 class VoteNode{
 public:
  

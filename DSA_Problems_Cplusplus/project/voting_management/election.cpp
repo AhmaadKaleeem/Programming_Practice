@@ -2,6 +2,7 @@
 #include "libraries.h"
 #include "static_data.h"
 using namespace std;
+
 // constuctor
 Election::Election(VoterManager *vm) : manage_votes(vm)
 {

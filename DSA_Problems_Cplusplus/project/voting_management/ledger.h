@@ -1,6 +1,7 @@
 #pragma once
-#include"libraries.h"
+#include "libraries.h"
 using namespace std;
+
 class LedgerBlock
 {
 public:
@@ -32,7 +33,7 @@ public:
   Ledger();
   ~Ledger();
 
-  void add_block(const string &candidiate,const string &voter, string &type);
+  void add_block(const string &candidiate, const string &voter, string &type);
   bool verify_ledger() const;
   void display_ledger() const;
 };

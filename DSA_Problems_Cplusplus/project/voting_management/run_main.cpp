@@ -3,7 +3,6 @@
 #include "console_color.h"
 using namespace std;
 
-
 int main()
 {
     VoterManager voterManager;
@@ -12,14 +11,18 @@ int main()
 
     int choice;
     do
-    { 
+    {
+        yellow();
+        cout << "*******************************************\n";
+        cout << "**                                       **\n";
+        cout << "**";
         green();
-        cout << "   ***************************************   \n";
-        cout << "  *                                     *  \n";
-        cout << " *   Pakistan Election Management System   * \n";
-        cout << "  *                                     *  \n";
-        cout << "   ***************************************   \n";
-        reset();
+        cout << "  Pakistan Election Management System";
+        yellow();
+        cout << "  **\n";
+        cout << "**                                       **\n";
+        cout << "*******************************************\n";
+        black();
         cout << "+---------------------------------------+\n";
         cout << "| 1. Register Voter                     |\n";
         cout << "| 2. Login as Voter                     |\n";
@@ -27,7 +30,7 @@ int main()
         cout << "| 4. Results                            |\n";
         cout << "| 5. Exit                               |\n";
         cout << "+---------------------------------------+\n";
-         blue();
+        blue();
         cout << "Enter Choice: ";
         cin >> choice;
         reset();

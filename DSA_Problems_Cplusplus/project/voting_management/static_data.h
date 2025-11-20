@@ -1,6 +1,15 @@
 #pragma once
 #include "libraries.h"
-enum Province { PUNJAB, SINDH, KPK, BALOCHISTAN,ISLAMABAD };
+
+enum Province
+{
+    PUNJAB,
+    SINDH,
+    KPK,
+    BALOCHISTAN,
+    ISLAMABAD
+};
+
 static unordered_map<int, string> na_area_names = {
     // Khyber Pakhtunkhwa
     {1, "Chitral Upper-cum-Chitral Lower"},
@@ -1147,5 +1156,4 @@ static unordered_map<int, vector<int>> na_to_provincial = {
     {263, {40, 41, 42}},
     {264, {43, 44, 45}},
     {265, {46, 47, 48, 49}},
-    {266, {50, 51}}
-};
+    {266, {50, 51}}};

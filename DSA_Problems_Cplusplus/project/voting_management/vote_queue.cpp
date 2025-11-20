@@ -1,6 +1,7 @@
 #include "vote_queue.h"
 #include"libraries.h"
 using namespace std;
+
 VoteNode::VoteNode(): cnic("Null"),c_name("Null"),next(nullptr){}
 VoteNode::VoteNode(const string& user_cnic, const string& canidate,const string& c_type ): cnic(user_cnic),c_name(canidate),type(c_type),next(nullptr){}
 VoteQueue::VoteQueue(){

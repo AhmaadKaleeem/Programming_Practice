@@ -1,5 +1,5 @@
 #include "ledger.h"
-#include"libraries.h"
+#include "libraries.h"
 using namespace std;
 
 LedgerBlock::LedgerBlock(int u_index, const string &u_c_cnic, const string &u_vcnic, const string &u_type, const string &u_hash) : index(u_index), candidate_cnic(u_c_cnic), voter_cnic(u_vcnic), vote_type(u_type), prev_hash(u_hash), next(nullptr)
@@ -7,6 +7,7 @@ LedgerBlock::LedgerBlock(int u_index, const string &u_c_cnic, const string &u_vc
     this->timestamp = get_time();
     this->current_hash = calculate_hash();
 }
+
 string LedgerBlock::get_time()
 {
     time_t current_time_now = time(0);
@@ -14,6 +15,7 @@ string LedgerBlock::get_time()
     current_timestamp.pop_back();
     return current_timestamp;
 }
+
 string LedgerBlock::calculate_hash() const
 {
     string data = to_string(index) + voter_cnic + candidate_cnic +
@@ -103,8 +105,6 @@ bool Ledger::verify_ledger() const
     }
     cout << "Hash Mismatch! Tampering Detected in Block '" << current_temp->index << "' \n";
     return false;
-
-      
 }
 void Ledger::display_ledger() const
 {

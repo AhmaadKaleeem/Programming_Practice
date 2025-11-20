@@ -48,30 +48,35 @@ A comprehensive C++ Election Management System designed to handle voting process
 Follow these steps to build and run the Election Management System:
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/AhmaadKaleeem/Programming_Practice.git
    cd Programming_Practice/DSA_Problems_Cplusplus/project/voting_management
    ```
 
 2. **Create build directory**
+
    ```bash
    mkdir build
    cd build
    ```
 
 3. **Configure with CMake**
+
    ```bash
    cmake ..
    ```
 
 4. **Build the project**
-   
+
    On Linux/macOS:
+
    ```bash
    make
    ```
-   
+
    On Windows (or any platform):
+
    ```bash
    cmake --build .
    ```
@@ -184,24 +189,24 @@ The vote management system features:
 
 ## File Descriptions
 
-| File | Purpose |
-|------|---------|
-| `run_main.cpp` | Application entry point containing the main menu loop and core program flow |
-| `election.h` | Class declaration for Election management with candidate and voting operations |
-| `election.cpp` | Implementation of election logic, vote casting, tallying, and result computation |
-| `voter.h` | Voter class declaration with properties like CNIC, name, age, constituency |
-| `voter.cpp` | Implementation of voter registration, validation, and profile management |
-| `voter_management.h` | VoterManager class for maintaining voter database and authentication |
-| `voter_management.cpp` | Implementation of voter storage using linked list and hash map for quick lookup |
-| `admin_panel.h` | Admin class declaration for administrative operations |
-| `admin_panel.cpp` | Implementation of admin authentication and panel functionalities |
-| `vote_queue.h` | VoteQueue class declaration using queue data structure |
-| `vote_queue.cpp` | Queue implementation for ordered vote processing |
-| `ledger.h` | Blockchain-inspired ledger class declaration with block structure |
-| `ledger.cpp` | Implementation of immutable ledger with hash calculation and verification |
-| `libraries.h` | Header file containing all common library includes (iostream, string, vector, unordered_map, etc.) |
-| `static_data.h` | Static data definitions including NA/PA constituency mappings, area names, and province enums |
-| `CMakeLists.txt` | CMake build configuration specifying C++17 standard and executable generation |
+| File                   | Purpose                                                                                            |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `run_main.cpp`         | Application entry point containing the main menu loop and core program flow                        |
+| `election.h`           | Class declaration for Election management with candidate and voting operations                     |
+| `election.cpp`         | Implementation of election logic, vote casting, tallying, and result computation                   |
+| `voter.h`              | Voter class declaration with properties like CNIC, name, age, constituency                         |
+| `voter.cpp`            | Implementation of voter registration, validation, and profile management                           |
+| `voter_management.h`   | VoterManager class for maintaining voter database and authentication                               |
+| `voter_management.cpp` | Implementation of voter storage using linked list and hash map for quick lookup                    |
+| `admin_panel.h`        | Admin class declaration for administrative operations                                              |
+| `admin_panel.cpp`      | Implementation of admin authentication and panel functionalities                                   |
+| `vote_queue.h`         | VoteQueue class declaration using queue data structure                                             |
+| `vote_queue.cpp`       | Queue implementation for ordered vote processing                                                   |
+| `ledger.h`             | Blockchain-inspired ledger class declaration with block structure                                  |
+| `ledger.cpp`           | Implementation of immutable ledger with hash calculation and verification                          |
+| `libraries.h`          | Header file containing all common library includes (iostream, string, vector, unordered_map, etc.) |
+| `static_data.h`        | Static data definitions including NA/PA constituency mappings, area names, and province enums      |
+| `CMakeLists.txt`       | CMake build configuration specifying C++17 standard and executable generation                      |
 
 ## Build Details
 
@@ -215,6 +220,7 @@ The project uses CMake for cross-platform build management:
 ### Build Configuration
 
 The `CMakeLists.txt` includes:
+
 ```cmake
 cmake_minimum_required(VERSION 3.10)
 project(VotingSystem)
@@ -235,6 +241,7 @@ add_executable(elections
 ### Common Build Issues
 
 **Problem**: CMake not found
+
 ```
 Solution: Install CMake from https://cmake.org/download/ or use package manager:
 - Ubuntu/Debian: sudo apt-get install cmake
@@ -243,6 +250,7 @@ Solution: Install CMake from https://cmake.org/download/ or use package manager:
 ```
 
 **Problem**: C++17 compiler not available
+
 ```
 Solution: Update your compiler:
 - GCC: Requires version 7+
@@ -251,6 +259,7 @@ Solution: Update your compiler:
 ```
 
 **Problem**: Build directory issues
+
 ```
 Solution: Clean and rebuild:
 rm -rf build
@@ -263,27 +272,32 @@ make
 ### Common Runtime Issues
 
 **Problem**: "Invalid CNIC" error during registration
+
 ```
 Solution: Ensure CNIC is exactly 13 digits with no spaces or dashes
 Example: 3520212345678 (not 35202-1234567-8)
 ```
 
 **Problem**: Cannot find constituency
+
 ```
 Solution: Verify that your NA seat number is between 1-266 and corresponds to valid constituency mapping
 ```
 
 **Problem**: "Already voted" message
+
 ```
 Solution: Each voter can only vote once per election type (MNA and MPA). This is by design to prevent double voting.
 ```
 
 **Problem**: Admin login fails
+
 ```
 Solution: Check admin credentials in admin_panel.cpp. Default credentials are hardcoded in the intialize_credentionals() function.
 ```
 
 **Problem**: Ledger verification fails
+
 ```
 Solution: This indicates data corruption. Restart the application as ledger is stored in memory and will reset.
 ```
@@ -296,7 +310,7 @@ We welcome contributions to improve the Election Management System! Here's how y
 2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
 3. **Make your changes**: Implement your feature or bug fix
 4. **Test thoroughly**: Ensure your changes don't break existing functionality
-5. **Follow coding standards**: 
+5. **Follow coding standards**:
    - Use consistent indentation (4 spaces)
    - Comment complex logic
    - Follow C++17 best practices
@@ -315,9 +329,8 @@ We welcome contributions to improve the Election Management System! Here's how y
 This project is developed as a university project for educational purposes. It demonstrates the implementation of data structures (linked lists, queues, hash maps) and object-oriented programming concepts in C++.
 
 **Author**: Ahmad Kaleem Bhatti
-**Institution**: Air University   
+**Institution**: Air University  
 **Course**: Data Structures and Algorithms (Project)  
 **Year**: 2024
 
 ---
-

@@ -2,6 +2,7 @@
 #include "election.h"
 #include "admin_panel.h"
 using namespace std;
+
 unordered_map<string, string> Admin::intialize_credentionals()
 {
     unordered_map<string, string> temp = {

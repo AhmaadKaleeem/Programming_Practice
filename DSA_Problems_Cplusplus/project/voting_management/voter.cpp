@@ -2,6 +2,7 @@
 #include "libraries.h"
 #include "static_data.h"
 using namespace std;
+
 // Constuuctor
 Voter::Voter() : voter_age(0), voter_name("Null"), voter_password("Null"), check_vote(false), voter_cnic("Null"), next(nullptr), provisional_p(0), na(0),voter_id("Null"){}
 

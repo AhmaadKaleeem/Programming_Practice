@@ -6,6 +6,7 @@
 #include "libraries.h"
 #include "static_data.h"
 using namespace std;
+
 class VoterManager;
 class Election
 {
