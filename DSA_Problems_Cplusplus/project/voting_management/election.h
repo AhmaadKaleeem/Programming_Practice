@@ -4,7 +4,7 @@
 #include "ledger.h"
 #include "voter.h"
 #include "libraries.h"
-#include "provinces.h"
+#include "static_data.h"
 using namespace std;
 class VoterManager;
 class Election
@@ -75,8 +75,6 @@ private:
     unordered_map<string, int> mna_votes;
     vector<Candidate> mna_candidates;
     vector<Candidate> mpa_candidates;
-   
-
     unordered_map<int, string> *candidate_selected_area = nullptr;
     bool validate_provincial_seat(Province p, int seat);
     bool validate_national_assembly_seat(int seat);

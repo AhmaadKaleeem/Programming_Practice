@@ -182,4 +182,4 @@ CMakeFiles/elections.dir/voter.cpp.obj: \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter_management.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\vote_queue.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\ledger.h \
- D:\Github\DSA_Problems_Cplusplus\project\voting_management\provinces.h
+ D:\Github\DSA_Problems_Cplusplus\project\voting_management\static_data.h

@@ -1,5 +1,6 @@
 #include "election.h"
 #include"libraries.h"
+#include "static_data.h"
 using namespace std;
 // constuctor
 Election::Election(VoterManager *vm) : manage_votes(vm)
@@ -100,8 +101,8 @@ void Election::add_mna_candidate(const string &name, const string &symbol, const
   }
   string temp = "";
   char temp_c = '0';
-  mna_candidates.push_back(Candidate(name, symbol, cnic, na, Voter::na_area_names[na], -1, temp, temp, temp_c));
-  cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " << Voter::na_area_names[na] << "\n";
+  mna_candidates.push_back(Candidate(name, symbol, cnic, na,na_area_names[na], -1, temp, temp, temp_c));
+  cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " <<na_area_names[na] << "\n";
   mna_votes[cnic] = 0;
 }
 
@@ -517,28 +518,28 @@ void Election::select_candidate_province(Candidate &c)
       province = PUNJAB;
       c.candidate_province = to_string(province);
       c.province_name = 'P';
-      this->candidate_selected_area = &Voter::pp_area_names;
+      this->candidate_selected_area = &pp_area_names;
       flag = false;
       break;
     case 2:
       province = SINDH;
       c.candidate_province = to_string(province);
       c.province_name = 'S';
-      this->candidate_selected_area = &Voter::ps_area_names;
+      this->candidate_selected_area = &ps_area_names;
       flag = false;
       break;
     case 3:
       province = KPK;
       c.candidate_province = to_string(province);
       c.province_name = 'K';
-      this->candidate_selected_area = &Voter::pk_area_names;
+      this->candidate_selected_area = &pk_area_names;
       flag = false;
       break;
     case 4:
       province = BALOCHISTAN;
       c.candidate_province = to_string(province);
       c.province_name = 'B';
-      this->candidate_selected_area = &Voter::pb_area_names;
+      this->candidate_selected_area = &pb_area_names;
       flag = false;
       break;
     default:

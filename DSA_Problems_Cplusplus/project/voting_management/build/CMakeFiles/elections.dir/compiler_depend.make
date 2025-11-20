@@ -185,7 +185,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
-  D:/Github/DSA_Problems_Cplusplus/project/voting_management/provinces.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.h
@@ -374,7 +374,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
-  D:/Github/DSA_Problems_Cplusplus/project/voting_management/provinces.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.h
@@ -746,7 +746,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
-  D:/Github/DSA_Problems_Cplusplus/project/voting_management/provinces.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.h
@@ -1307,7 +1307,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
-  D:/Github/DSA_Problems_Cplusplus/project/voting_management/provinces.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.h
@@ -1568,6 +1568,8 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h:
 C:/msys64/ucrt64/include/c++/13.2.0/ios:
 
 C:/msys64/ucrt64/include/c++/13.2.0/iosfwd:
+
+D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/iostream:
 

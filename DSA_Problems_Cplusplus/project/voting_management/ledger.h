@@ -1,4 +1,4 @@
-#pragma onc
+#pragma once
 #include"libraries.h"
 using namespace std;
 class LedgerBlock

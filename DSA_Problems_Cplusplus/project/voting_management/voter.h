@@ -1,7 +1,7 @@
 #pragma once
 #include "libraries.h"
 #include "admin_panel.h"
-#include "provinces.h"
+#include "static_data.h"
 using namespace std;
 
 class Voter
@@ -9,6 +9,7 @@ class Voter
 public:
   string voter_id;
   string voter_name;
+  char province_name;
   string voter_cnic;
   string voter_password;
   int voter_age;
@@ -17,20 +18,19 @@ public:
   Province province;
   bool check_vote;
   Voter *next;
-  static unordered_map<int,string> na_area_names;
-  static unordered_map<int,string> pp_area_names;
-  static unordered_map<int,string> ps_area_names;
-  static  unordered_map<int,string> pk_area_names;
-  static unordered_map<int,string> pb_area_names;
+  
    unordered_map<int, string> *selected_area = nullptr;
+   string pnames[5] = {"Punjab", "Sindh", "KPK", "Balochistan","Islamabad"};
  
 
   Voter();
   void register_voter(); 
   string auto_generate_voter_id(); 
+  void clear_buffer();
   bool validate_age();             
   bool validate_cnic();            
-  void input_cnic();               
+  void input_cnic();       
+  void determine_province_from_na();        
   void display_voter();   
   bool validate_provincial_seat(Province p ,int seat);
   bool validate_national_assembly_seat(int seat);
