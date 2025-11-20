@@ -145,6 +145,8 @@ voting_management/
 ├── ledger.cpp            # Ledger implementation with hashing
 ├── voting_time.cpp       # Implemented display voting schedule and validating voting time
 ├── voting_time.h         # Fixed voting schedule and validating voting time
+├── utilities.cpp         # Implemented helper functions
+├── utilities.h           # Included helper functiona 
 ├── libraries.h           # Common library includes
 ├── static_data.h         # Static data for constituencies and mappings
 ├── console_color.h       # Changing Console Colours Windows
@@ -213,6 +215,8 @@ The vote management system features:
 | `static_data.h`        | Static data definitions including NA/PA constituency mappings, area names, and province enums      |
 | `voting_time.cpp`      | Implemented functions to show voting schedule and validate voting time      |
 | `voting_time.h`        | Header File containing election the fixed election date and time and function declarations     |
+| `utilities.h`        | Header File containing helper functions definations     |
+| `utilities.cpp`        | Implemented all helper functions like hide password in order for user-friendly interface     |
 | `CMakeLists.txt`       | CMake build configuration specifying C++17 standard and executable generation                      |
 
 ## Build Details
@@ -241,6 +245,7 @@ add_executable(elections
     voter_management.cpp
     voter.cpp
     voting_time.cpp
+    utilities.cpp
 )
 ```
 

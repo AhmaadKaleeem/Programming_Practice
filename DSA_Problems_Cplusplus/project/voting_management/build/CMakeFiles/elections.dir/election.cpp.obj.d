@@ -377,7 +377,8 @@ CMakeFiles/elections.dir/election.cpp.obj: \
  C:/msys64/ucrt64/include/stralign.h \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
- C:/msys64/ucrt64/include/imm.h \
+ C:/msys64/ucrt64/include/imm.h C:/msys64/ucrt64/include/conio.h \
+ C:/msys64/ucrt64/include/sec_api/conio_s.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\vote_queue.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\ledger.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter.h \

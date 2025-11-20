@@ -1,5 +1,6 @@
 #include "libraries.h"
 #include "election.h"
+#include "utilities.h"
 #include "admin_panel.h"
 using namespace std;
 
@@ -27,7 +28,7 @@ bool Admin::authenticate_admin()
     cout << "Enter Admin Username: ";
     getline(cin, input_user);
     cout << "Enter Admin Password: ";
-    getline(cin, input_pass);
+    input_pass = hide_password();
     if (login_admin.find(input_user) != login_admin.end())
     {
         if (login_admin[input_user] == input_pass)

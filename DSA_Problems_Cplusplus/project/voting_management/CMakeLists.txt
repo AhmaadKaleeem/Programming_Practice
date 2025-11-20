@@ -11,4 +11,5 @@ vote_queue.cpp
 voter_management.cpp
 voter.cpp
 voting_time.cpp
+utilities.cpp
 )

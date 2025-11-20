@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/elections.dir/ledger.cpp.obj.d"
   "CMakeFiles/elections.dir/run_main.cpp.obj"
   "CMakeFiles/elections.dir/run_main.cpp.obj.d"
+  "CMakeFiles/elections.dir/utilities.cpp.obj"
+  "CMakeFiles/elections.dir/utilities.cpp.obj.d"
   "CMakeFiles/elections.dir/vote_queue.cpp.obj"
   "CMakeFiles/elections.dir/vote_queue.cpp.obj.d"
   "CMakeFiles/elections.dir/voter.cpp.obj"

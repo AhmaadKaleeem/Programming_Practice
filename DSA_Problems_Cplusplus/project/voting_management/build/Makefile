@@ -224,6 +224,30 @@ run_main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/run_main.cpp.s
 .PHONY : run_main.cpp.s
 
+utilities.obj: utilities.cpp.obj
+.PHONY : utilities.obj
+
+# target to build an object file
+utilities.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.obj
+.PHONY : utilities.cpp.obj
+
+utilities.i: utilities.cpp.i
+.PHONY : utilities.i
+
+# target to preprocess a source file
+utilities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.i
+.PHONY : utilities.cpp.i
+
+utilities.s: utilities.cpp.s
+.PHONY : utilities.s
+
+# target to generate assembly for a file
+utilities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.s
+.PHONY : utilities.cpp.s
+
 vote_queue.obj: vote_queue.cpp.obj
 .PHONY : vote_queue.obj
 
@@ -341,6 +365,9 @@ help:
 	@echo ... run_main.obj
 	@echo ... run_main.i
 	@echo ... run_main.s
+	@echo ... utilities.obj
+	@echo ... utilities.i
+	@echo ... utilities.s
 	@echo ... vote_queue.obj
 	@echo ... vote_queue.i
 	@echo ... vote_queue.s

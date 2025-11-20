@@ -10,4 +10,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <limits>
+#include <cstdlib>
 #include <windows.h>
+#include <conio.h>

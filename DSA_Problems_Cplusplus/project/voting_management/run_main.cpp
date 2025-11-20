@@ -1,6 +1,7 @@
 #include "libraries.h"
 #include "election.h"
 #include "console_color.h"
+#include "utilities.h"
 #include "voting_time.h"
 using namespace std;
 
@@ -13,6 +14,7 @@ int main()
     int choice;
     do
     {
+        system("cls");
         yellow();
         cout << "*******************************************\n";
         cout << "**                                       **\n";
@@ -43,18 +45,24 @@ int main()
         switch (choice)
         {
         case 1:
+            system("cls");
             voterManager.add_voter();
+            cout << "\nPress Enter to return to main menu...";
+            cin.ignore();
+            cin.get();
             break;
         case 2:
         {
+            system("cls");
             string cnic, password;
             cin.ignore();
             cout << "Enter CNIC: ";
             getline(cin, cnic);
             cout << "Enter Password: ";
-            getline(cin, password);
+            password = hide_password();
             if (voterManager.authenticate_voter(cnic, password))
             {
+                system("cls");
                 election.voter_menu(cnic);
             }
             else
@@ -64,15 +72,18 @@ int main()
             break;
         }
         case 3:
+            system("cls");
             if (admin.authenticate_admin())
             {
                 admin.admin_panel();
             }
             break;
         case 4:
+
             int res_choice;
             do
             {
+                system("cls");
                 cout << "\n==== Election Results Menu ====\n";
                 cout << "1. View Vote Counts (All Candidates, All Seats)\n";
                 cout << "2. View Current Winners (NA & Provincial Seats)\n";

@@ -1,10 +1,11 @@
 #include "voter.h"
 #include "libraries.h"
 #include "static_data.h"
+#include "utilities.h"
 using namespace std;
 
 // Constuuctor
-Voter::Voter() : voter_age(0), voter_name("Null"), voter_password("Null"), check_vote(false), voter_cnic("Null"), next(nullptr), provisional_p(0), na(0),voter_id("Null"){}
+Voter::Voter() : voter_age(0), voter_name("Null"), voter_password("Null"), check_vote(false), voter_cnic("Null"), next(nullptr), provisional_p(0), na(0), voter_id("Null") {}
 
 void Voter::register_voter()
 {
@@ -36,7 +37,7 @@ void Voter::register_voter()
 
   determine_province_from_na();
   cout << "Your Province: " << pnames[province] << "\n\n";
-    if (na >= 46 && na <= 48)
+  if (na >= 46 && na <= 48)
   {
     provisional_p = 0;
     cout << "\n=== Islamabad Region ===\n";
@@ -44,8 +45,9 @@ void Voter::register_voter()
     cout << "No Provincial Assembly seat for Islamabad\n";
     cout << "Proceeding to Registration Summary......\n\n";
   }
-  else{
-  cout << "\n === Provincial Assembly Seat Number ===\n";
+  else
+  {
+    cout << "\n === Provincial Assembly Seat Number ===\n";
     vector<int> p_options = na_to_provincial[na];
 
     if (p_options.empty())
@@ -56,25 +58,26 @@ void Voter::register_voter()
     else
     {
       cout << "Available Provisional constituencies for NA-" << na << ":\n";
-      for (int i = 0; i < p_options.size(); ++i) {
-          int seat_num = p_options[i];
-          cout << (i + 1) << ". P" << province_name << "-" << seat_num;
-          
-          if (selected_area != nullptr && selected_area->find(seat_num) != selected_area->end())
-          {
-              cout << " (" << (*selected_area)[seat_num] << ")";
-          }
-          cout << endl;
+      for (int i = 0; i < p_options.size(); ++i)
+      {
+        int seat_num = p_options[i];
+        cout << (i + 1) << ". P" << province_name << "-" << seat_num;
+
+        if (selected_area != nullptr && selected_area->find(seat_num) != selected_area->end())
+        {
+          cout << " (" << (*selected_area)[seat_num] << ")";
+        }
+        cout << endl;
       }
 
       int choice;
       bool valid_choice = false;
-      
+
       while (!valid_choice)
       {
         cout << "Select the Provisional constituency by number: ";
         cin >> choice;
-        
+
         if (cin.fail())
         {
           cin.clear();
@@ -83,18 +86,21 @@ void Voter::register_voter()
           continue;
         }
 
-        if (choice >= 1 && choice <= (int)p_options.size()) {
-            provisional_p = p_options[choice - 1];
-            cout << "You selected: P" << province_name << "-" << provisional_p;
-            
-            if (selected_area != nullptr && selected_area->find(provisional_p) != selected_area->end())
-            {
-                cout << " (" << (*selected_area)[provisional_p] << ")";
-            }
-            cout << endl;
-            valid_choice = true;
-        } else {
-            cout << "Invalid selection! Please enter a number between 1 and " << p_options.size() << "\n";
+        if (choice >= 1 && choice <= (int)p_options.size())
+        {
+          provisional_p = p_options[choice - 1];
+          cout << "You selected: P" << province_name << "-" << provisional_p;
+
+          if (selected_area != nullptr && selected_area->find(provisional_p) != selected_area->end())
+          {
+            cout << " (" << (*selected_area)[provisional_p] << ")";
+          }
+          cout << endl;
+          valid_choice = true;
+        }
+        else
+        {
+          cout << "Invalid selection! Please enter a number between 1 and " << p_options.size() << "\n";
         }
       }
 
@@ -106,10 +112,10 @@ void Voter::register_voter()
       }
     }
   }
-  
+
   clear_buffer();
   cout << "Set Password: ";
-  getline(cin, voter_password);
+  voter_password = hide_password();
 
   voter_id = auto_generate_voter_id();
 
@@ -198,7 +204,7 @@ bool Voter::validate_cnic()
     {
       if (!isdigit(c))
       {
-       cout << "Error! CNIC Must Contain Only digits.\n";
+        cout << "Error! CNIC Must Contain Only digits.\n";
         return false;
       }
     }
@@ -218,38 +224,38 @@ void Voter::input_cnic()
 void Voter::display_voter()
 {
   cout << "============================================= Voter Information =============================================\n";
-  cout << "Name -> " << setw(15) << voter_name << "\nID -> " << setw(15) << voter_id << "\n";
-  cout << "CNIC -> " << setw(15) << voter_cnic << "\nAge -> " << setw(15) << voter_age << "\n";
-  cout << "Province -> " << setw(15) << pnames[province] << "\nCasted Vote -> " << setw(15) << (check_vote ? "Yes" : "No") << "\n";
+  cout << "Name -> " <<  voter_name << "\nID -> " <<  voter_id << "\n";
+  cout << "CNIC -> " <<  voter_cnic << "\nAge -> " <<  voter_age << "\n";
+  cout << "Province -> " <<  pnames[province] << "\nCasted Vote -> " <<  (check_vote ? "Yes" : "No") << "\n";
   if (na_area_names.find(na) != na_area_names.end())
-    cout << "NA -> " << na << setw(25) << "Area -> " << na_area_names[na] << "\n";
-else
-    cout << "NA -> " << na << setw(25) << "Area -> Not Found\n";
+    cout << "NA -> " << na << "         Area -> " << na_area_names[na] << "\n";
+  else
+    cout << "NA -> " << na << "          Area -> Not Found\n";
 
-  if (na < 46 || na > 48) 
+  if (na < 46 || na > 48)
   {
     if (selected_area != nullptr)
     {
       if (selected_area->find(provisional_p) != selected_area->end())
         cout << "P" << province_name << " -> " << provisional_p
-             << setw(25) << "Area -> " << (*selected_area)[provisional_p] << "\n";
+             << "         Area -> " << (*selected_area)[provisional_p] << "\n";
       else
         cout << "P" << province_name << " -> " << provisional_p
-             << setw(25) << "Area -> Not Found\n";
+             << "         Area -> Not Found\n";
     }
   }
-  else  
+  else
   {
     cout << "Islamabad voters vote for National Assembly ONLY\n";
     cout << "No Provincial Assembly seat for Islamabad\n";
   }
-
 }
 
-void Voter::clear_buffer(){
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
+void Voter::clear_buffer()
+{
+  cin.clear();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
 
 void Voter::determine_province_from_na()
 {
@@ -261,7 +267,7 @@ void Voter::determine_province_from_na()
   }
   else if (na >= 46 && na <= 48)
   {
-    province = ISLAMABAD; 
+    province = ISLAMABAD;
     province_name = 'I';
     this->selected_area = nullptr;
   }
