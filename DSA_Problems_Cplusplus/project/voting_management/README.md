@@ -145,6 +145,7 @@ voting_management/
 ├── ledger.cpp            # Ledger implementation with hashing
 ├── libraries.h           # Common library includes
 ├── static_data.h         # Static data for constituencies and mappings
+├── console_color.h       # Changing Console Colours Windows
 └── CMakeLists.txt        # Build configuration
 ```
 
@@ -206,6 +207,7 @@ The vote management system features:
 | `ledger.cpp`           | Implementation of immutable ledger with hash calculation and verification                          |
 | `libraries.h`          | Header file containing all common library includes (iostream, string, vector, unordered_map, etc.) |
 | `static_data.h`        | Static data definitions including NA/PA constituency mappings, area names, and province enums      |
+| `console_color.h`      | To change console colors, making console user-friendly     |
 | `CMakeLists.txt`       | CMake build configuration specifying C++17 standard and executable generation                      |
 
 ## Build Details
