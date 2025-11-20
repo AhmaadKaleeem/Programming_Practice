@@ -1,0 +1,23 @@
+# Build directory
+build/
+
+# Compiled executables
+elections
+elections.exe
+
+# Object files
+*.o
+*.obj
+
+# CMake cache and generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
