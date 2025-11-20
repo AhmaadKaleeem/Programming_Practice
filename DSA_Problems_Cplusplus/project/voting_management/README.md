@@ -1,6 +1,6 @@
 # Election Management System
 
-A comprehensive C++ Election Management System designed to manage MNA (Member of National Assembly) and MPA (Member of Provincial Assembly) voting processes. This system provides secure voter registration, authentication, vote casting, and result management with blockchain-inspired ledger verification.
+A comprehensive C++ Election Management System designed to handle voting processes. This system provides secure voter registration, authentication, vote casting, and result management with blockchain-inspired ledger verification and stimulates real-world Pakistan election workflow.
 
 ## Table of Contents
 
