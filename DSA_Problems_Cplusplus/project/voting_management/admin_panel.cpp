@@ -48,6 +48,7 @@ void Admin::admin_panel()
         cout << "1. Add MNA Candidate\n2. Add MPA Candidate\n3. Display All MNA Candidates\n";
         cout << "4. Display All MPA Candidates\n5. Tally All Results\n6. Verify Ledger Integrity\n";
         cout << "7. View Ledger File\n8. Exit\n";
+        cout << "Enter Choice: ";
         cin >> choice;
 
         switch (choice)
@@ -74,8 +75,11 @@ void Admin::admin_panel()
         case 7:
             this->election->display_ledger();
             break;
+        case 8:
+            cout << "Exiting Admin Panel....\n";
+            break;
         default:
-        cout << "Invalid Choice\n";
+            cout << "Invalid Choice\n";
         }
     } while (choice != 8);
 }

@@ -1,6 +1,9 @@
 #include "libraries.h"
 #include "election.h"
+#include "console_color.h"
 using namespace std;
+
+
 int main()
 {
     VoterManager voterManager;
@@ -9,10 +12,25 @@ int main()
 
     int choice;
     do
-    {
-        cout << "==== Election Management System ====\n";
-        cout << "1. Register Voter\n2. Login as Voter\n3. Login as Admin\n4. Results \n5. Exit\n";
+    { 
+        green();
+        cout << "   ***************************************   \n";
+        cout << "  *                                     *  \n";
+        cout << " *   Pakistan Election Management System   * \n";
+        cout << "  *                                     *  \n";
+        cout << "   ***************************************   \n";
+        reset();
+        cout << "+---------------------------------------+\n";
+        cout << "| 1. Register Voter                     |\n";
+        cout << "| 2. Login as Voter                     |\n";
+        cout << "| 3. Login as Admin                     |\n";
+        cout << "| 4. Results                            |\n";
+        cout << "| 5. Exit                               |\n";
+        cout << "+---------------------------------------+\n";
+         blue();
+        cout << "Enter Choice: ";
         cin >> choice;
+        reset();
 
         switch (choice)
         {
@@ -51,13 +69,15 @@ int main()
                 cout << "1. View Vote Counts (All Candidates, All Seats)\n";
                 cout << "2. View Current Winners (NA & Provincial Seats)\n";
                 cout << "3. Back to Main Menu\n";
+                cout << "Enter Choice: ";
+
                 cin >> res_choice;
 
                 switch (res_choice)
                 {
                 case 1:
                     cout << "\n--- Vote Counts ---\n";
-                    election.display_all_votes(); 
+                    election.display_all_votes();
                     break;
                 case 2:
                     cout << "\n--- Current Winners ---\n";
@@ -69,16 +89,14 @@ int main()
                 default:
                     cout << "Invalid Choice\n";
                 }
-            } 
-            while (res_choice != 3);
+            } while (res_choice != 3);
             break;
-        
-    case 5:
-        cout << "Election Ended. Exiting the Election...\n";
-        break;
-    default:
-        cout << "Invalid Choice\n";
-    }
-}
-while (choice != 5)    ;
+
+        case 5:
+            cout << "Election Ended. Exiting the Election...\n";
+            break;
+        default:
+            cout << "Invalid Choice\n";
+        }
+    } while (choice != 5);
 }

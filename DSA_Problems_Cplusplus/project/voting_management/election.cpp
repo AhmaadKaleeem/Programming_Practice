@@ -1,5 +1,5 @@
 #include "election.h"
-#include"libraries.h"
+#include "libraries.h"
 #include "static_data.h"
 using namespace std;
 // constuctor
@@ -101,8 +101,8 @@ void Election::add_mna_candidate(const string &name, const string &symbol, const
   }
   string temp = "";
   char temp_c = '0';
-  mna_candidates.push_back(Candidate(name, symbol, cnic, na,na_area_names[na], -1, temp, temp, temp_c));
-  cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " <<na_area_names[na] << "\n";
+  mna_candidates.push_back(Candidate(name, symbol, cnic, na, na_area_names[na], -1, temp, temp, temp_c));
+  cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " << na_area_names[na] << "\n";
   mna_votes[cnic] = 0;
 }
 
@@ -685,52 +685,60 @@ void Election::display_winners_till_now()
     if (is_winner)
     {
       cout << "P" << c.province_name << "-" << c.provisional_pp << " | " << c.name
-           << " | " << setw(10) << c.symbol << " | Area: " << c.p_area << " | " << c.candidate_province 
+           << " | " << setw(10) << c.symbol << " | Area: " << c.p_area << " | " << c.candidate_province
            << " | Votes: " << votes << "\n";
     }
   }
 }
 
+void Election::voter_menu(const string &cnic)
+{
+  int choice;
+  do
+  {
+    cout << "\n==== Voter Menu ====\n";
+    cout << "1. View My Profile\n";
+    cout << "2. View My Constituency (NA / PP)\n";
+    cout << "3. Cast Vote for MNA\n";
+    cout << "4. Cast Vote for MPA\n";
+    cout << "5. Logout\n";
+    cout << "Enter Choice: ";
 
-void Election::voter_menu(const string &cnic) {
-    int choice;
-    do {
-        cout << "\n==== Voter Menu ====\n";
-        cout << "1. View My Profile\n";
-        cout << "2. View My Constituency (NA / PP)\n";
-        cout << "3. Cast Vote for MNA\n";
-        cout << "4. Cast Vote for MPA\n";
-        cout << "5. Logout\n";
-        cin >> choice;
+    cin >> choice;
 
-        switch(choice) {
-            case 1: {
-                Voter *v = manage_votes->get_voter(cnic);
-                if(v) {
-                  v->display_voter();
-                }
-                break;
-            }
-            case 2: {
-                Voter *v = manage_votes->get_voter(cnic);
-                if(v) {
-                    cout << "National Assembly Seat: NA-" << v->na << "\n";
-                    char prov_char = (v->province == PUNJAB ? 'P' : (v->province == SINDH ? 'S' : (v->province == KPK ? 'K' : 'B')));
-                    cout << "YProvincial Assembly Seat: P" << prov_char << "-" << v->provisional_p << "\n";
-                }
-                break;
-            }
-            case 3:
-                cast_mna_vote(cnic);
-                break;
-            case 4:
-                cast_mpa_vote(cnic);
-                break;
-            case 5:
-                cout << "Logging out...\n";
-                break;
-            default:
-                cout << "Invalid Choice\n";
-        }
-    } while(choice != 5);
+    switch (choice)
+    {
+    case 1:
+    {
+      Voter *v = manage_votes->get_voter(cnic);
+      if (v)
+      {
+        v->display_voter();
+      }
+      break;
+    }
+    case 2:
+    {
+      Voter *v = manage_votes->get_voter(cnic);
+      if (v)
+      {
+        cout << "National Assembly Seat: NA-" << v->na << "\n";
+        char prov_char = (v->province == PUNJAB ? 'P' : (v->province == SINDH ? 'S' : (v->province == KPK ? 'K' : 'B')));
+        cout << "YProvincial Assembly Seat: P" << prov_char << "-" << v->provisional_p << "\n";
+      }
+      break;
+    }
+    case 3:
+      cast_mna_vote(cnic);
+      break;
+    case 4:
+      cast_mpa_vote(cnic);
+      break;
+    case 5:
+      cout << "Logging out...\n";
+      break;
+    default:
+      cout << "Invalid Choice\n";
+    }
+  } while (choice != 5);
 }
