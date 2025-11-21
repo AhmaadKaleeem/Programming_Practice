@@ -174,9 +174,20 @@ CMakeFiles/elections.dir/ledger.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/istream.tcc \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
  C:/msys64/ucrt64/include/c++/13.2.0/iostream \
+ C:/msys64/ucrt64/include/c++/13.2.0/chrono \
+ C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
+ C:/msys64/ucrt64/include/c++/13.2.0/ratio \
+ C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h \
+ C:/msys64/ucrt64/include/c++/13.2.0/limits \
+ C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
+ C:/msys64/ucrt64/include/c++/13.2.0/thread \
+ C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
+ C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
+ C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
  C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
  C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
- C:/msys64/ucrt64/include/c++/13.2.0/limits \
  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
@@ -381,4 +392,5 @@ CMakeFiles/elections.dir/ledger.cpp.obj: \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
  C:/msys64/ucrt64/include/imm.h C:/msys64/ucrt64/include/conio.h \
- C:/msys64/ucrt64/include/sec_api/conio_s.h
+ C:/msys64/ucrt64/include/sec_api/conio_s.h \
+ D:\Github\DSA_Problems_Cplusplus\project\voting_management\console_color.h

@@ -14,10 +14,11 @@ Election::Election(VoterManager *vm) : manage_votes(vm)
 
 bool Election::validate_candidate_cnic(const string &cnic)
 {
-
   if (cnic.length() != 13)
   {
+    red();
     cout << "Error! CNIC Must Consist Of 13 Digits\n";
+    reset();
     return false;
   }
   else
@@ -26,7 +27,9 @@ bool Election::validate_candidate_cnic(const string &cnic)
     {
       if (!isdigit(c))
       {
+        red();
         cout << "Error! CNIC Must Consist of 13 Digits\n";
+        reset();
         return false;
       }
     }
@@ -87,25 +90,37 @@ void Election::add_mna_candidate(const string &name, const string &symbol, const
 
   if (!validate_candidate_cnic(cnic))
     return;
+
+  blue();
   cout << "Enter NA Seat Number : ";
+  reset();
   cin >> na;
+
   if (!validate_national_assembly_seat(na))
   {
+    red();
     cout << "Invalid NA Seat!\n";
+    reset();
     return;
   }
   for (const Candidate &c : mna_candidates)
   {
     if (cnic == c.cnic && name == c.name && na == c.constituency_na)
     {
+      red();
       cout << "Candidate Already Exists\n";
+      reset();
       return;
     }
   }
   string temp = "";
   char temp_c = '0';
   mna_candidates.push_back(Candidate(name, symbol, cnic, na, na_area_names[na], -1, temp, temp, temp_c));
-  cout << "Candidate Registered For NA -> " << na << setw(10) << "Area -> " << na_area_names[na] << "\n";
+  green();
+  cout << "Candidate Registered For NA -> " << na << " | "
+                                                     "Area -> "
+       << na_area_names[na] << "\n";
+  reset();
   mna_votes[cnic] = 0;
 }
 
@@ -116,11 +131,17 @@ void Election::add_mpa_candidate(const string &name, const string &symbol, const
     return;
   Candidate c_temp;
   select_candidate_province(c_temp);
+
+  blue();
   cout << "Enter P" << c_temp.province_name << " Seat Number: ";
+  reset();
   cin >> p;
+
   if (!validate_provincial_seat(province, p))
   {
+    red();
     cout << "Invalid Seat Number!\n";
+    reset();
     return;
   }
 
@@ -128,51 +149,74 @@ void Election::add_mpa_candidate(const string &name, const string &symbol, const
   {
     if (cnic == c.cnic && name == c.name && p == c.provisional_pp)
     {
+      red();
       cout << "Candidate Already Exists\n";
+      reset();
       return;
     }
   }
 
   mpa_candidates.push_back(Candidate(name, symbol, cnic, -1, "", p, (*candidate_selected_area)[p],
                                      c_temp.candidate_province, c_temp.province_name));
-  cout << "Candidate Registered For P" << c_temp.candidate_province << " -> " << p << setw(10) << "Area -> " << (*candidate_selected_area)[p] << "\n";
+  green();
+  cout << "Candidate Registered For P" << c_temp.candidate_province << " -> " << p << " | " << "Area -> " << (*candidate_selected_area)[p] << "\n";
+  reset();
   mpa_votes[cnic] = 0;
 }
 
 void Election::display_mna() const
 {
   int index = 1;
+  yellow();
   cout << "====================== MNA CANDIDATES ======================\n";
+  reset();
   for (const Candidate &c : mna_candidates)
   {
-    cout << index++ << ". " << c.name
-         << " | " << setw(10) << c.symbol
+    blue();
+    cout << index << ". ";
+    reset();
+    cout << c.name
+         << " | " << c.symbol
          << " | NA-" << c.constituency_na
          << " | Area: " << c.na_area << "\n";
+    index++;
   }
+  reset();
 }
+
 void Election::display_mpa() const
 {
   int index = 1;
+  yellow();
   cout << "====================== MPA CANDIDATES ======================\n";
+  reset();
   for (const Candidate &c : mpa_candidates)
   {
-    cout << index++ << ". " << c.name
-         << " | " << setw(10) << c.symbol
+    blue();
+    cout << index << ". ";
+    reset();
+    cout << c.name
+         << " | " << c.symbol
          << " | " << " P" << c.province_name << "-" << c.provisional_pp
          << " | Area: " << c.p_area << "\n";
+    index++;
   }
+  reset();
 }
 
 void Election::authenticate_voter(const string &id, const string &password)
 {
   if (manage_votes->authenticate_voter(id, password))
   {
+    green();
     cout << "Voter Authenticated Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Invalid Credentials, Unsuccessful Authentication\n";
+    reset();
   }
 }
 
@@ -210,27 +254,35 @@ void Election::cast_mpa_vote(const string &cnic)
   {
     if (!manage_votes->check_voter(cnic))
     {
+      red();
       cout << "Voter CNIC Not Registered\n";
+      reset();
       return;
     }
 
     Voter *voter = manage_votes->get_voter(cnic);
     if (!voter)
     {
+      red();
       cout << "Voter not found \n";
+      reset();
       return;
     }
 
     if (has_voter_voted_mpa(cnic))
     {
+      red();
       cout << "Voter Already Voted (MPA/PP)\n";
+      reset();
       return;
     }
 
     int voter_pp = voter->provisional_p;
     if (!validate_provincial_seat(voter->province, voter_pp))
     {
+      red();
       cout << "Your registered provincial seat is invalid.\n";
+      reset();
       return;
     }
 
@@ -243,35 +295,49 @@ void Election::cast_mpa_vote(const string &cnic)
 
     if (eligible_candidates.empty())
     {
+      red();
       cout << "No provincial candidates registered for P"
            << (voter->province == PUNJAB ? 'P' : (voter->province == SINDH ? 'S' : (voter->province == KPK ? 'K' : 'B')))
            << "-" << voter_pp << "\n";
+      reset();
       return;
     }
 
+    green();
     cout << "\n===== Provincial Candidates for P"
          << (voter->province == PUNJAB ? 'P' : (voter->province == SINDH ? 'S' : (voter->province == KPK ? 'K' : 'B')))
          << "-" << voter_pp << " =====\n";
+    reset();
+
     for (size_t i = 0; i < eligible_candidates.size(); ++i)
     {
-      cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
+      yellow();
+      cout << i + 1 << ". ";
+      reset();
+      cout << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
            << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
     }
 
     int choice;
+    blue();
     cout << "Enter candidate number to cast your Provincial vote: ";
+    reset();
     cin >> choice;
     if (cin.fail())
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      red();
       cout << "Invalid input\n";
+      reset();
       return;
     }
 
     if (choice < 1 || choice > eligible_candidates.size())
     {
+      red();
       cout << "Invalid choice\n";
+      reset();
       return;
     }
 
@@ -281,22 +347,28 @@ void Election::cast_mpa_vote(const string &cnic)
     ledger.add_block(picked->cnic, cnic, type);
     record_mpa_vote(picked->cnic);
 
+    green();
     cout << "Provincial vote cast successfully for " << picked->name << " - " << voter_pp << "\n";
+    reset();
   }
-
   else
   {
-    cout << "Voting is CLOSED\n";
+    red();
+    cout << "\nVoting is CLOSED\n";
+    reset();
     display_voting_schedule();
   }
 }
+
 void Election::cast_mna_vote(const string &cnic)
 {
   if (is_voting_time())
   {
     if (!manage_votes->check_voter(cnic))
     {
+      red();
       cout << "Voter CNIC Not Registered\n";
+      reset();
       return;
     }
 
@@ -304,13 +376,17 @@ void Election::cast_mna_vote(const string &cnic)
     Voter *voter = manage_votes->get_voter(cnic);
     if (!voter)
     {
+      red();
       cout << "Voter not found (unexpected)\n";
+      reset();
       return;
     }
 
     if (has_voter_voted_mna(cnic))
     {
+      red();
       cout << "Voter Already Voted (MNA)\n";
+      reset();
       return;
     }
 
@@ -324,31 +400,45 @@ void Election::cast_mna_vote(const string &cnic)
 
     if (eligible_candidates.empty())
     {
+      red();
       cout << "No candidates registered for NA-" << voter_na << "\n";
+      reset();
       return;
     }
 
+    green();
     cout << "\n===== MNA Candidates for NA-" << voter_na << " =====\n";
+    reset();
+
     for (size_t i = 0; i < eligible_candidates.size(); ++i)
     {
-      cout << i + 1 << ". " << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
+      yellow();
+      cout << i + 1 << ". ";
+      reset();
+      cout << eligible_candidates[i]->name << " | " << eligible_candidates[i]->symbol
            << " | CNIC: " << eligible_candidates[i]->cnic << "\n";
     }
 
     int choice;
+    blue();
     cout << "Enter candidate number to cast your NA vote: ";
+    reset();
     cin >> choice;
     if (cin.fail())
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      red();
       cout << "Invalid input\n";
+      reset();
       return;
     }
 
     if (choice < 1 || choice > eligible_candidates.size())
     {
+      red();
       cout << "Invalid choice\n";
+      reset();
       return;
     }
 
@@ -358,11 +448,15 @@ void Election::cast_mna_vote(const string &cnic)
     ledger.add_block(picked->cnic, cnic, type);
     record_mna_vote(picked->cnic);
 
+    green();
     cout << "MNA vote cast successfully for " << picked->name << " (NA-" << voter_na << ")\n";
+    reset();
   }
   else
   {
-    cout << "Voting is CLOSED\n";
+    red();
+    cout << "\nVoting is CLOSED\n";
+    reset();
     display_voting_schedule();
   }
 }
@@ -423,11 +517,16 @@ void Election::tally_mna_results()
 {
   vector<string> tied_mna_candidates; // in case of same votes
   int highest_votes = 0;
+  yellow();
   cout << "============================================= MNA RESULTS =============================================\n";
+  reset();
   for (const Candidate &c : mna_candidates)
   {
     int votes = get_mna_candidate_votes(c.cnic, c.name);
-    cout << c.name << setw(10) << c.symbol << setw(10) << "Votes --> " << votes << "\n";
+    blue();
+    cout << c.name << " | ";
+    reset();
+    cout << c.symbol << " | " << "Votes --> " << votes << "\n";
     if (votes > highest_votes)
     {
       mna_winner_cnic = c.cnic;
@@ -449,9 +548,13 @@ void Election::tally_mna_results()
   {
     int random_index = rand() % tied_mna_candidates.size();
     mna_winner_cnic = tied_mna_candidates[random_index];
+    red();
     cout << "Election Tied! Winner Decided By LOT\n";
+    reset();
   }
-  cout << "============================================= MNA SEAT WNNER =============================================\n ";
+  yellow();
+  cout << "============================================= MNA SEAT WINNER =============================================\n ";
+  reset();
   winner_mna();
 }
 
@@ -462,7 +565,10 @@ void Election::winner_mna() const
     if (c.cnic == mna_winner_cnic)
     {
       int votes = get_mna_candidate_votes(c.cnic, c.name);
-      cout << c.name << setw(10) << c.symbol << setw(10) << "Votes --> " << votes << "\n";
+      green();
+      cout << c.name;
+      reset();
+      cout << " | " << c.symbol << " | " << "Votes --> " << votes << "\n";
     }
   }
 }
@@ -471,11 +577,16 @@ void Election::tally_mpa_results()
 {
   vector<string> tied_mpa_candidates; // in case of same votes
   int highest_votes = 0;
+  yellow();
   cout << "============================================= MPA RESULTS =============================================\n";
+  reset();
   for (const Candidate &c : mpa_candidates)
   {
     int votes = get_mpa_candidate_votes(c.cnic, c.name);
-    cout << c.name << setw(10) << c.symbol << setw(10) << "Votes --> " << votes << "\n";
+    blue();
+    cout << c.name;
+    reset();
+    cout << " | " << c.symbol << " | " << "Votes --> " << votes << "\n";
     if (votes > highest_votes)
     {
       mpa_winner_cnic = c.cnic;
@@ -497,9 +608,13 @@ void Election::tally_mpa_results()
   {
     int random_index = rand() % tied_mpa_candidates.size();
     mpa_winner_cnic = tied_mpa_candidates[random_index];
+    red();
     cout << "Election Tied! Winner Decided By LOT\n";
+    reset();
   }
-  cout << "============================================= MPA SEAT WNNER =============================================\n ";
+  yellow();
+  cout << "============================================= MPA SEAT WINNER =============================================\n ";
+  reset();
   winner_mpa();
 }
 
@@ -510,7 +625,10 @@ void Election::winner_mpa() const
     if (c.cnic == mpa_winner_cnic)
     {
       int votes = get_mpa_candidate_votes(c.cnic, c.name);
-      cout << c.name << setw(10) << c.symbol << setw(10) << "Votes --> " << votes << "\n";
+      green();
+      cout << c.name;
+      reset();
+      cout << " | " << c.symbol << " | " << "Votes --> " << votes << "\n";
     }
   }
 }
@@ -520,15 +638,26 @@ void Election::select_candidate_province(Candidate &c)
   bool flag = true;
   while (flag)
   {
+    green();
     cout << "Select Province:\n";
+    reset();
+    blue();
     cout << "1. Punjab\n2. Sindh\n3. KPK\n4. Balochistan\n";
+    reset();
+
+    blue();
+    cout << "Enter Choice: ";
+    reset();
+
     int p_choice;
     cin >> p_choice;
     if (cin.fail())
     {
       cin.clear();            // clear error flag
       cin.ignore(1000, '\n'); // discard invalid input
+      red();
       cout << "Invalid input. Please enter a number.\n";
+      reset();
       continue;
     }
     switch (p_choice)
@@ -562,7 +691,9 @@ void Election::select_candidate_province(Candidate &c)
       flag = false;
       break;
     default:
+      red();
       cout << "Invalid province choice!\n";
+      reset();
       break;
     }
   }
@@ -572,12 +703,18 @@ void Election::add_mna_admin()
 {
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   string name, cnic, symbol;
+
+  blue();
   cout << "Enter Candidate Name: ";
+  reset();
   getline(cin, name);
+
   bool flag = false;
   while (!flag)
   {
+    blue();
     cout << "Enter Candidate CNIC: ";
+    reset();
     getline(cin, cnic);
     if (!validate_candidate_cnic(cnic))
     {
@@ -588,21 +725,31 @@ void Election::add_mna_admin()
       flag = true;
     }
   }
+
+  blue();
   cout << "Enter Candidate Symbol : ";
+  reset();
   getline(cin, symbol);
   add_mna_candidate(name, symbol, cnic);
 }
+
 void Election::add_mpa_admin()
 {
   string name, cnic, symbol;
+
+  blue();
   cout << "Enter Candidate Name: ";
+  reset();
   cin.clear();
   cin.ignore(1000, '\n');
   getline(cin, name);
+
   bool flag = false;
   while (!flag)
   {
+    blue();
     cout << "Enter Candidate CNIC: ";
+    reset();
     getline(cin, cnic);
     if (!validate_candidate_cnic(cnic))
     {
@@ -613,16 +760,21 @@ void Election::add_mpa_admin()
       flag = true;
     }
   }
+
+  blue();
   cout << "Enter Candidate Symbol : ";
+  reset();
   cin.clear();
   cin.ignore(1000, '\n');
   getline(cin, symbol);
   add_mpa_candidate(name, symbol, cnic);
 }
+
 void Election::verify_ledger_admin()
 {
   ledger.verify_ledger();
 }
+
 void Election::display_ledger()
 {
   ledger.display_ledger();
@@ -630,28 +782,41 @@ void Election::display_ledger()
 
 void Election::display_all_votes()
 {
+  yellow();
   cout << "==================== ALL MNA VOTES ====================\n";
+  reset();
   for (const Candidate &c : mna_candidates)
   {
     int votes = get_mna_candidate_votes(c.cnic, c.name);
-    cout << "NA-" << c.constituency_na << " | " << c.name
-         << " | " << setw(10) << c.symbol
+    blue();
+    cout << "NA-" << c.constituency_na;
+    reset();
+    cout << " | " << c.name
+         << " | " << c.symbol
          << " | Area: " << c.na_area
          << " | Votes: " << votes << "\n";
   }
 
+  yellow();
   cout << "\n==================== ALL MPA VOTES ====================\n";
+  reset();
   for (const Candidate &c : mpa_candidates)
   {
     int votes = get_mpa_candidate_votes(c.cnic, c.name);
-    cout << "P" << c.province_name << "-" << c.provisional_pp << " | " << c.name
-         << " | " << setw(10) << c.symbol
+    blue();
+    cout << "P" << c.province_name << "-" << c.provisional_pp;
+    reset();
+    cout << " | " << c.name
+         << " | " << c.symbol
          << " | Area: " << c.p_area << " | " << c.candidate_province << " | Votes: " << votes << "\n";
   }
 }
+
 void Election::display_winners_till_now()
 {
+  yellow();
   cout << "==================== CURRENT MNA WINNERS ====================\n";
+  reset();
 
   for (const Candidate &c : mna_candidates)
   {
@@ -673,15 +838,19 @@ void Election::display_winners_till_now()
 
     if (is_winner)
     {
-      cout << "NA-" << c.constituency_na
-           << " | " << c.name
-           << " | " << setw(10) << c.symbol
+      green();
+      cout << "NA-" << c.constituency_na;
+      reset();
+      cout << " | " << c.name
+           << " | " << c.symbol
            << " | Area: " << c.na_area
            << " | Votes: " << votes << "\n";
     }
   }
 
+  yellow();
   cout << "\n==================== CURRENT MPA WINNERS ====================\n";
+  reset();
 
   for (const Candidate &c : mpa_candidates)
   {
@@ -703,8 +872,11 @@ void Election::display_winners_till_now()
 
     if (is_winner)
     {
-      cout << "P" << c.province_name << "-" << c.provisional_pp << " | " << c.name
-           << " | " << setw(10) << c.symbol << " | Area: " << c.p_area << " | " << c.candidate_province
+      green();
+      cout << "P" << c.province_name << "-" << c.provisional_pp;
+      reset();
+      cout << " | " << c.name
+           << " | " << c.symbol << " | Area: " << c.p_area << " | " << c.candidate_province
            << " | Votes: " << votes << "\n";
     }
   }
@@ -715,49 +887,104 @@ void Election::voter_menu(const string &cnic)
   int choice;
   do
   {
-    cout << "\n==== Voter Menu ====\n";
+    system("cls");
+    yellow();
+    cout << "========================================\n";
+    cout << "         VOTER MENU\n";
+    cout << "========================================\n";
+    reset();
+
+    blue();
     cout << "1. View My Profile\n";
     cout << "2. View My Constituency (NA / PP)\n";
     cout << "3. Cast Vote for MNA\n";
     cout << "4. Cast Vote for MPA\n";
     cout << "5. Logout\n";
-    cout << "Enter Choice: ";
+    reset();
 
+    black();
+    cout << "+---------------------------------------+\n";
+    cout << "+---------------------------------------+\n";
+    reset();
+
+    blue();
+    cout << "Enter Choice: ";
+    reset();
     cin >> choice;
 
     switch (choice)
     {
     case 1:
     {
+      system("cls");
       Voter *v = manage_votes->get_voter(cnic);
       if (v)
       {
         v->display_voter();
       }
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
       break;
     }
     case 2:
     {
+      system("cls");
+      green();
+      cout << "========================================\n";
+      cout << "    MY CONSTITUENCY INFORMATION\n";
+      cout << "========================================\n";
+      reset();
+
       Voter *v = manage_votes->get_voter(cnic);
       if (v)
       {
-        cout << "National Assembly Seat: NA-" << v->na << "\n";
+        blue();
+        cout << "National Assembly Seat: ";
+        reset();
+        cout << "NA-" << v->na << "\n";
+
         char prov_char = (v->province == PUNJAB ? 'P' : (v->province == SINDH ? 'S' : (v->province == KPK ? 'K' : 'B')));
-        cout << "Provincial Assembly Seat: P" << prov_char << "-" << v->provisional_p << "\n";
+        blue();
+        cout << "Provincial Assembly Seat: ";
+        reset();
+        cout << "P" << prov_char << "-" << v->provisional_p << "\n";
       }
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
       break;
     }
     case 3:
       cast_mna_vote(cnic);
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
       break;
     case 4:
       cast_mpa_vote(cnic);
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
       break;
     case 5:
-      cout << "Logging out...\n";
+      system("cls");
+      yellow();
+      cout << "========================================\n";
+      cout << "      Logging out...\n";
+      cout << "========================================\n";
+      reset();
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
       break;
     default:
+      red();
       cout << "Invalid Choice\n";
+      reset();
+      cout << "\nPress Enter to continue...";
+      cin.ignore();
+      cin.get();
     }
   } while (choice != 5);
 }
@@ -767,28 +994,30 @@ void Election::save_voters_to_file()
   ofstream voter_file("Voters.txt");
   if (voter_file.is_open())
   {
-    int count;
+    int count = 0;
     Voter *temp = manage_votes->head;
     while (temp != nullptr)
     {
-      voter_file << temp->voter_cnic << "|" << temp->voter_name << "|" << temp->voter_password << "|" << temp->na << "|"
+      voter_file << temp->voter_cnic << "|" << temp->voter_name << "|" << temp->voter_password << "|" << temp->voter_age << "|" << temp->na << "|"
                  << temp->provisional_p << "|" << temp->province_name << "|" << temp->pnames[temp->province] << "|" << temp->voter_id << "|" << temp->check_vote << "\n";
       temp = temp->next;
       count++;
     }
+    green();
     cout << count << " Voters saved successfully to Voters.txt\n";
-
+    reset();
     voter_file.close();
   }
   else
   {
+    red();
     cout << "Error while Opening Voters File For Saving Data\n";
+    reset();
   }
 }
 
 void Election::save_mna_candidates_to_file()
 {
-
   ofstream mna_candidate_file("MNA_Candidates.txt");
   if (mna_candidate_file.is_open())
   {
@@ -796,19 +1025,22 @@ void Election::save_mna_candidates_to_file()
     {
       mna_candidate_file << c.name << "|" << c.symbol << "|" << c.cnic << "|" << c.na_area << "|" << c.p_area << "|"
                          << c.candidate_province << "|" << c.constituency_na << "|" << c.provisional_pp << "|" << c.province_name << "\n";
-      mna_candidate_file.close();
-      cout << (int)mna_candidates.size() << "MNA Candidates saved successfully to MNA_Candidates.txt\n";
     }
+    mna_candidate_file.close();
+    green();
+    cout << (int)mna_candidates.size() << " MNA Candidates saved successfully to MNA_Candidates.txt\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error while Opening MNA Candidate File For Saving Data\n";
+    reset();
   }
 }
 
 void Election::save_mpa_candidates_to_file()
 {
-
   ofstream mpa_candidate_file("MPA_Candidates.txt");
   if (mpa_candidate_file.is_open())
   {
@@ -816,13 +1048,17 @@ void Election::save_mpa_candidates_to_file()
     {
       mpa_candidate_file << c.name << "|" << c.symbol << "|" << c.cnic << "|" << c.na_area << "|" << c.p_area << "|"
                          << c.candidate_province << "|" << c.constituency_na << "|" << c.provisional_pp << "|" << c.province_name << "\n";
-      mpa_candidate_file.close();
-      cout << (int)mpa_candidates.size() << " MPA Candidates saved successfully to MPA_Candidates.txt\n";
     }
+     mpa_candidate_file.close();
+      green();
+      cout << (int)mpa_candidates.size() << " MPA Candidates saved successfully to MPA_Candidates.txt\n";
+      reset();
   }
   else
   {
+    red();
     cout << "Error while Opening mpa Candidate File For Saving Data\n";
+    reset();
   }
 }
 
@@ -832,7 +1068,7 @@ void Election::load_mna_candidates_from_file()
   if (load_data_file.is_open())
   {
     string line;
-    int count;
+    int count = 0;
     while (getline(load_data_file, line))
     {
       string name, symbol, cnic, na_area, p_area, candidate_province, constituency_na, provisional_pp, province_name;
@@ -847,9 +1083,9 @@ void Election::load_mna_candidates_from_file()
       getline(ss, na_area, '|');
       getline(ss, p_area, '|');
       getline(ss, candidate_province, '|');
-      getline(ss, constituency_na, '|'); // coverting to int after
-      getline(ss, provisional_pp, '|');  // coverting to int after
-      getline(ss, province_name, '|');   // coverting to char after
+      getline(ss, constituency_na, '|');
+      getline(ss, provisional_pp, '|');
+      getline(ss, province_name, '|');
       char province_name_char = province_name[0];
       int constituency_na_int = stoi(constituency_na);
       int provisional_pp_int = stoi(provisional_pp);
@@ -857,11 +1093,15 @@ void Election::load_mna_candidates_from_file()
       mna_votes[cnic] = 0;
       count++;
     }
+    green();
     cout << "Successfully Loaded " << count << " MNA Candidates Data \n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error while Opening MNA Candidate File For Loading Data\n";
+    reset();
   }
 }
 
@@ -871,7 +1111,7 @@ void Election::load_mpa_candidates_from_file()
   if (load_data_file.is_open())
   {
     string line;
-    int count;
+    int count = 0;
     while (getline(load_data_file, line))
     {
       string name, symbol, cnic, na_area, p_area, candidate_province, constituency_na, provisional_pp, province_name;
@@ -886,9 +1126,9 @@ void Election::load_mpa_candidates_from_file()
       getline(ss, na_area, '|');
       getline(ss, p_area, '|');
       getline(ss, candidate_province, '|');
-      getline(ss, constituency_na, '|'); // coverting to int after
-      getline(ss, provisional_pp, '|');  // coverting to int after
-      getline(ss, province_name, '|');   // coverting to char after
+      getline(ss, constituency_na, '|');
+      getline(ss, provisional_pp, '|');
+      getline(ss, province_name, '|');
       char province_name_char = province_name[0];
       int constituency_na_int = stoi(constituency_na);
       int provisional_pp_int = stoi(provisional_pp);
@@ -896,11 +1136,15 @@ void Election::load_mpa_candidates_from_file()
       mpa_votes[cnic] = 0;
       count++;
     }
+    green();
     cout << "Successfully Loaded " << count << " MPA Candidates Data \n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error while Opening MPA Candidate File For Loading Data\n";
+    reset();
   }
 }
 
@@ -953,11 +1197,15 @@ void Election::load_voters_from_file()
       count++;
     }
     load_data_file.close();
+    green();
     cout << "Loaded " << count << " voters from Voters.txt\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error while Opening Voters File For Loading Data\n";
+    reset();
   }
 }
 
@@ -973,11 +1221,15 @@ void Election::save_votes_to_file()
       temp = temp->next;
     }
     vote_file.close();
+    green();
     cout << "Voting Records Saved Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error While Opening Votes File For Saving Data\n";
+    reset();
   }
 }
 
@@ -1004,11 +1256,15 @@ void Election::load_votes_from_file()
       queue_votes.enqueue(voter_cnic, candidate_name, vote_type);
     }
     vote_file.close();
+    green();
     cout << "Voting Records Loaded Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error While Opening Voting Records File For Loading Data\n";
+    reset();
   }
 }
 
@@ -1020,7 +1276,7 @@ void Election::save_vote_counts_to_file()
     count_file << "MNA\n";
     for (const auto &pair : mna_votes)
     {
-      count_file << pair.first << "|" << pair.second << "\n"; // first belong to map key ,second to value
+      count_file << pair.first << "|" << pair.second << "\n";
     }
 
     count_file << "MPA\n";
@@ -1030,11 +1286,15 @@ void Election::save_vote_counts_to_file()
     }
 
     count_file.close();
+    green();
     cout << "Vote Counts Saved Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error While Opening Vote Counts File For Saving Data\n";
+    reset();
   }
 }
 
@@ -1081,11 +1341,15 @@ void Election::load_vote_counts_from_file()
       }
     }
     count_file.close();
+    green();
     cout << "Vote Counts Loaded Successfully\n";
+    reset();
   }
   else
   {
-    cout << "Error While Opening Vote Counts File For Loading Datah\n";
+    red();
+    cout << "Error While Opening Vote Counts File For Loading Data\n";
+    reset();
   }
 }
 
@@ -1094,7 +1358,6 @@ void Election::save_ledger_to_file()
   ofstream ledger_file("Ledger.txt");
   if (ledger_file.is_open())
   {
-
     LedgerBlock *temp = ledger.head;
     while (temp != nullptr)
     {
@@ -1103,11 +1366,15 @@ void Election::save_ledger_to_file()
       temp = temp->next;
     }
     ledger_file.close();
+    green();
     cout << "Blockchain Ledger Saved Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error While Opening Ledger File For Saving Data\n";
+    reset();
   }
 }
 
@@ -1139,49 +1406,57 @@ void Election::load_ledger_from_file()
       ledger.restore_block(block_index, candidate_cnic, voter_cnic, vote_type, timestamp, current_hash, prev_hash);
     }
     ledger_file.close();
+    green();
     cout << "Blockchain Ledger Loaded Successfully\n";
+    reset();
   }
   else
   {
+    red();
     cout << "Error While Opening Ledger File For Loading Data\n";
+    reset();
   }
 }
 
-
 void Election::save_all_data()
 {
+  system("cls");
   red();
   cout << "\n==========================================\n";
   cout << "     Saving Election System Data    \n";
   cout << "==========================================\n\n";
-reset();
+  reset();
+
   save_voters_to_file();
   save_mna_candidates_to_file();
   save_mpa_candidates_to_file();
   save_votes_to_file();
   save_vote_counts_to_file();
   save_ledger_to_file();
-green();
+
+  green();
   cout << "\n==========================================\n";
   cout << "   All Data Saved Successfully!    \n";
   cout << "==========================================\n\n";
-reset();
+  reset();
 }
 
 void Election::load_all_data()
 {
-    red();
+  red();
   cout << "\n==========================================\n";
   cout << "    Loading Election System Data...   \n";
   cout << "==========================================\n\n";
-reset();
+  reset();
+
   load_voters_from_file();
   load_mna_candidates_from_file();
   load_mpa_candidates_from_file();
   load_votes_from_file();
   load_vote_counts_from_file();
   load_ledger_from_file();
- green();
+
+  green();
   cout << "\n==========================================\n";
   cout << "   All Data Loaded Successfully!    \n";
   cout << "==========================================\n\n";

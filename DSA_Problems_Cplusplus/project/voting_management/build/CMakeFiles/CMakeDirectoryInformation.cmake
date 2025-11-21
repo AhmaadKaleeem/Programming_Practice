@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "D:/Github/DSA_Problems_Cplusplus/project/voting_management")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "D:/Github/DSA_Problems_Cplusplus/project/voting_management/build")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "D:/Github/DSa_Problems_Cplusplus/project/voting_management/build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

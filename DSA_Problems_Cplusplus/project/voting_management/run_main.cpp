@@ -12,10 +12,11 @@ int main()
     Admin admin(&election);
 
     int choice;
+    election.load_all_data();
+    this_thread::sleep_for(chrono::seconds(5));
     do
     {
         system("cls");
-        election.load_all_data();
         yellow();
         cout << "*******************************************\n";
         cout << "**                                       **\n";
@@ -40,13 +41,18 @@ int main()
         cout << "+---------------------------------------+\n";
         blue();
         cout << "Enter Choice: ";
-        cin >> choice;
         reset();
+        cin >> choice;
 
         switch (choice)
         {
         case 1:
             system("cls");
+            green();
+            cout << "========================================\n";
+            cout << "      VOTER REGISTRATION \n";
+            cout << "========================================\n";
+            reset();
             voterManager.add_voter();
             cout << "\nPress Enter to return to main menu...";
             cin.ignore();
@@ -55,11 +61,21 @@ int main()
         case 2:
         {
             system("cls");
+            green();
+            cout << "========================================\n";
+            cout << "         VOTER LOGIN \n";
+            cout << "========================================\n";
+            reset();
+
             string cnic, password;
             cin.ignore();
+            blue();
             cout << "Enter CNIC: ";
+            reset();
             getline(cin, cnic);
+            blue();
             cout << "Enter Password: ";
+            reset();
             password = hide_password();
             if (voterManager.authenticate_voter(cnic, password))
             {
@@ -68,7 +84,9 @@ int main()
             }
             else
             {
+                red();
                 cout << "Invalid Credentials\n";
+                reset();
             }
             break;
         }
@@ -85,43 +103,84 @@ int main()
             do
             {
                 system("cls");
-                cout << "\n==== Election Results Menu ====\n";
-                cout << "1. View Vote Counts (All Candidates, All Seats)\n";
-                cout << "2. View Current Winners (NA & Provincial Seats)\n";
+                yellow();
+                cout << "========================================\n";
+                cout << "    ELECTION RESULTS \n";
+                cout << "========================================\n";
+                reset();
+                blue();
+                cout << "1. View Vote Counts (All Candidates)\n";
+                cout << "2. View Current Winners\n";
                 cout << "3. Back to Main Menu\n";
-                cout << "Enter Choice: ";
+                reset();
 
+                blue();
+                cout << "Enter Choice: ";
+                reset();
                 cin >> res_choice;
 
                 switch (res_choice)
                 {
                 case 1:
+                    system("cls");
+                    green();
                     cout << "\n--- Vote Counts ---\n";
+                    reset();
                     election.display_all_votes();
+                    cout << "\nPress Enter to continue...";
+                    cin.ignore();
+                    cin.get();
                     break;
+
                 case 2:
+                    system("cls");
+                    green();
                     cout << "\n--- Current Winners ---\n";
+                    reset();
                     election.display_winners_till_now();
+                    cout << "\nPress Enter to continue...";
+                    cin.ignore();
+                    cin.get();
                     break;
+
                 case 3:
+                    yellow();
                     cout << "Returning to Main Menu...\n";
+                    reset();
+                    cout << "\nPress Enter to return to main menu...";
+                    cin.ignore();
+                    cin.get();
                     break;
+
                 default:
+                    red();
                     cout << "Invalid Choice\n";
+                    reset();
+                    cout << "\nPress Enter to continue...";
+                    cin.ignore();
+                    cin.get();
                 }
             } while (res_choice != 3);
             break;
 
         case 5:
-            cout << "Election Ended. Exiting the Election...\n";
+            system("cls");
+            green();
+            cout << "========================================\n";
+            cout << "          Exiting the System\n";
+            cout << "========================================\n";
+            reset();
             election.save_all_data();
-            cout << "\nPress Enter to return to main menu...";
+            cout << "\nPress Enter to exit...";
             cin.ignore();
             cin.get();
             break;
+
         default:
+            red();
             cout << "Invalid Choice\n";
-            cout << "\nPress Enter to return to main menu...";
+            reset();
+            cout << "\nPress Enter to return to menu...";
             cin.ignore();
             cin.get();
         }

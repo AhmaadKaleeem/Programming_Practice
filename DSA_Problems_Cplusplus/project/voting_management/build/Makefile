@@ -59,7 +59,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = D:\Github\DSA_Problems_Cplusplus\project\voting_management
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Github\DSA_Problems_Cplusplus\project\voting_management\build
+CMAKE_BINARY_DIR = D:\Github\DSa_Problems_Cplusplus\project\voting_management\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles D:\Github\DSA_Problems_Cplusplus\project\voting_management\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

@@ -429,6 +429,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsavesintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/admin_panel.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/console_color.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
@@ -1303,6 +1304,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsaveoptintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsavesintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/console_color.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h
 
@@ -3033,6 +3035,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsavesintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/admin_panel.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/console_color.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
