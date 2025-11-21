@@ -12,8 +12,9 @@ int main()
     Admin admin(&election);
 
     int choice;
+     system("cls");
     election.load_all_data();
-    this_thread::sleep_for(chrono::seconds(5));
+    this_thread::sleep_for(chrono::seconds(4));
     do
     {
         system("cls");
