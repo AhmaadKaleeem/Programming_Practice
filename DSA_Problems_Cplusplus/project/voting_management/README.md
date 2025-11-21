@@ -54,7 +54,7 @@ Follow these steps to build and run the Election Management System:
    cd Programming_Practice/DSA_Problems_Cplusplus/project/voting_management
    ```
 
-2. **Create build directory**
+2. **Create build directory (Delete Previous Build)**
 
    ```bash
    mkdir build
@@ -64,7 +64,7 @@ Follow these steps to build and run the Election Management System:
 3. **Configure with CMake**
 
    ```bash
-   cmake ..
+   cmake -G "MinGW Makefiles" ..  
    ```
 
 4. **Build the project**
@@ -78,7 +78,7 @@ Follow these steps to build and run the Election Management System:
    On Windows (or any platform):
 
    ```bash
-   cmake --build .
+   mingw32-make
    ```
 
 5. **Run the application**
