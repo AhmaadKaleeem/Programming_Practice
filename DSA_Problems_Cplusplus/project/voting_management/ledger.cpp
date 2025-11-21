@@ -7,13 +7,34 @@ LedgerBlock::LedgerBlock(int u_index, const string &u_c_cnic, const string &u_vc
     this->timestamp = get_time();
     this->current_hash = calculate_hash();
 }
-
+LedgerBlock::LedgerBlock(int idx, const string &c_cnic, const string &v_cnic,
+                         const string &t, const string &ts, const string &h, const string &ph)
+    : index(idx), candidate_cnic(c_cnic), voter_cnic(v_cnic), vote_type(t), 
+      timestamp(ts), current_hash(h), prev_hash(ph), next(nullptr) {}
 string LedgerBlock::get_time()
 {
     time_t current_time_now = time(0);
     string current_timestamp = ctime(&current_time_now);
     current_timestamp.pop_back();
     return current_timestamp;
+}
+void Ledger::restore_block(int index, const string &candidate_cnic, const string &voter_cnic,
+                          const string &type, const string &timestamp,
+                          const string &hash, const string &prev_hash)
+{
+    LedgerBlock *new_block = new LedgerBlock(index, candidate_cnic, voter_cnic, type, 
+                                             timestamp, hash, prev_hash);
+    
+    if (head == nullptr)
+    {
+        head = tail = new_block;
+    }
+    else
+    {
+        tail->next = new_block;
+        tail = new_block;
+    }
+    size++;
 }
 
 string LedgerBlock::calculate_hash() const

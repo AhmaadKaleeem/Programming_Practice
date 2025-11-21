@@ -15,6 +15,7 @@ int main()
     do
     {
         system("cls");
+        election.load_all_data();
         yellow();
         cout << "*******************************************\n";
         cout << "**                                       **\n";
@@ -113,9 +114,16 @@ int main()
 
         case 5:
             cout << "Election Ended. Exiting the Election...\n";
+            election.save_all_data();
+            cout << "\nPress Enter to return to main menu...";
+            cin.ignore();
+            cin.get();
             break;
         default:
             cout << "Invalid Choice\n";
+            cout << "\nPress Enter to return to main menu...";
+            cin.ignore();
+            cin.get();
         }
     } while (choice != 5);
 }

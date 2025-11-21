@@ -38,6 +38,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -115,6 +116,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -141,8 +143,10 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -471,6 +475,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -548,6 +553,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -574,8 +580,10 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -858,6 +866,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsavesintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/admin_panel.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/console_color.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
@@ -904,6 +913,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -981,6 +991,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -1007,8 +1018,10 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -1330,6 +1343,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -1407,6 +1421,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -1433,8 +1448,10 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -1765,6 +1782,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -1842,6 +1860,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -1868,8 +1887,10 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -2191,6 +2212,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -2268,6 +2290,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -2294,8 +2317,10 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -2617,6 +2642,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -2694,6 +2720,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -2720,8 +2747,10 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -3050,6 +3079,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -3127,6 +3157,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -3153,8 +3184,10 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -3482,6 +3515,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h \
@@ -3559,6 +3593,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/fstream \
   C:/msys64/ucrt64/include/c++/13.2.0/functional \
   C:/msys64/ucrt64/include/c++/13.2.0/initializer_list \
   C:/msys64/ucrt64/include/c++/13.2.0/iomanip \
@@ -3585,8 +3620,10 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/unordered_set \
   C:/msys64/ucrt64/include/c++/13.2.0/vector \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -3872,6 +3909,8 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voting_time.h
 
 
+C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h:
+
 C:/msys64/ucrt64/include/c++/13.2.0/bits/locale_classes.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/nested_exception.h:
@@ -4051,6 +4090,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/exception.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/amxfp16intrin.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/exception_defines.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/fstream.tcc:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/memoryfwd.h:
 
@@ -4258,6 +4299,10 @@ C:/msys64/ucrt64/include/c++/13.2.0/ext/string_conversions.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/ext/type_traits.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsaveoptintrin.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/fstream:
+
 C:/msys64/ucrt64/include/c++/13.2.0/functional:
 
 C:/msys64/ucrt64/include/propidl.h:
@@ -4325,6 +4370,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
 C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h:
 
@@ -4737,8 +4784,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/vaesintrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/wmmintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsaveintrin.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsaveoptintrin.h:
 
 D:/Github/DSA_Problems_Cplusplus/project/voting_management/utilities.h:
 

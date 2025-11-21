@@ -11,5 +11,7 @@
 #include <unordered_set>
 #include <limits>
 #include <cstdlib>
+#include <fstream>
+#include <sstream>
 #include <windows.h>
 #include <conio.h>

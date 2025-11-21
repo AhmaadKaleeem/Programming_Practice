@@ -32,6 +32,21 @@ public:
     void display_all_votes();
     void display_winners_till_now();
     void voter_menu(const string& cnic);
+    // File Handling
+    void save_voters_to_file();
+    void save_mna_candidates_to_file();
+    void save_mpa_candidates_to_file();
+    void load_voters_from_file();
+    void load_mna_candidates_from_file();
+    void load_mpa_candidates_from_file();
+    void load_all_data();
+    void save_all_data();
+    void save_votes_to_file();
+    void load_votes_from_file();
+    void save_vote_counts_to_file();
+    void load_vote_counts_from_file();
+    void save_ledger_to_file();
+    void load_ledger_from_file();
 
 private:
     string mna_winner_cnic;
