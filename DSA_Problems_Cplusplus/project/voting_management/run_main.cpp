@@ -12,20 +12,21 @@ int main()
     Admin admin(&election);
 
     int choice;
-     system("cls");
+    system("cls");
     election.load_all_data();
     this_thread::sleep_for(chrono::seconds(4));
     do
     {
+
         system("cls");
         yellow();
         cout << "*******************************************\n";
         cout << "**                                       **\n";
         cout << "**";
         green();
-        cout << "  Pakistan Election Management System";
+        cout << "    Pakistan Digital Election 2025 ";
         yellow();
-        cout << "  **\n";
+        cout << "    **\n";
         cout << "**                                       **\n";
         cout << "*******************************************\n";
         red();
@@ -44,6 +45,10 @@ int main()
         cout << "Enter Choice: ";
         reset();
         cin >> choice;
+        if (!check_valid_int())
+        {
+            continue;
+        }
 
         switch (choice)
         {
@@ -119,6 +124,10 @@ int main()
                 cout << "Enter Choice: ";
                 reset();
                 cin >> res_choice;
+                if (!check_valid_int())
+                {
+                    continue;
+                }
 
                 switch (res_choice)
                 {

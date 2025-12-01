@@ -400,4 +400,5 @@ CMakeFiles/elections.dir/election.cpp.obj: \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\admin_panel.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\static_data.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\voting_time.h \
+ D:\Github\DSA_Problems_Cplusplus\project\voting_management\utilities.h \
  D:\Github\DSA_Problems_Cplusplus\project\voting_management\console_color.h

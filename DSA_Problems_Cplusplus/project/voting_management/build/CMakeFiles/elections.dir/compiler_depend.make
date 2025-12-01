@@ -28,6 +28,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -63,6 +64,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -73,6 +75,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -90,7 +93,9 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -99,9 +104,11 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -129,6 +136,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -136,6 +144,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -274,6 +283,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -409,6 +419,7 @@ CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -466,6 +477,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -501,6 +513,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -511,6 +524,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -528,7 +542,9 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -537,9 +553,11 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -567,6 +585,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -574,6 +593,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -712,6 +732,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -847,6 +868,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -872,6 +894,7 @@ CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/static_data.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/utilities.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.h \
@@ -904,6 +927,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -939,6 +963,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -949,6 +974,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -966,7 +992,9 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -975,9 +1003,11 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -1005,6 +1035,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -1012,6 +1043,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -1150,6 +1182,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -1285,6 +1318,7 @@ CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/projec
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -1335,6 +1369,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -1370,6 +1405,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -1380,6 +1416,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -1397,7 +1434,9 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -1406,9 +1445,11 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -1436,6 +1477,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -1443,6 +1485,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -1581,6 +1624,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -1716,6 +1760,7 @@ CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/proj
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -1774,6 +1819,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -1809,6 +1855,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -1819,6 +1866,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -1836,7 +1884,9 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -1845,9 +1895,11 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -1875,6 +1927,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -1882,6 +1935,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -2020,6 +2074,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -2155,6 +2210,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -2174,6 +2230,7 @@ CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pro
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsaveoptintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xsavesintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xtestintrin.h \
+  D:/Github/DSA_Problems_Cplusplus/project/voting_management/console_color.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/libraries.h \
   D:/Github/DSA_Problems_Cplusplus/project/voting_management/utilities.h
 
@@ -2204,6 +2261,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -2239,6 +2297,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -2249,6 +2308,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -2266,7 +2326,9 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -2275,9 +2337,11 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -2305,6 +2369,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -2312,6 +2377,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -2450,6 +2516,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -2585,6 +2652,7 @@ CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/pr
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -2634,6 +2702,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -2669,6 +2738,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -2679,6 +2749,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -2696,7 +2767,9 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -2705,9 +2778,11 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -2735,6 +2810,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -2742,6 +2818,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -2880,6 +2957,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -3015,6 +3093,7 @@ CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -3072,6 +3151,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -3107,6 +3187,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -3117,6 +3198,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -3134,7 +3216,9 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -3143,9 +3227,11 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -3173,6 +3259,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -3180,6 +3267,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -3318,6 +3406,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -3453,6 +3542,7 @@ CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusp
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -3508,6 +3598,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/cpp_type_traits.h \
@@ -3543,6 +3634,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/node_handle.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/ptr_traits.h \
@@ -3553,6 +3645,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_bvector.h \
@@ -3570,7 +3663,9 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h \
   C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h \
@@ -3579,9 +3674,11 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.2.0/cctype \
   C:/msys64/ucrt64/include/c++/13.2.0/cerrno \
+  C:/msys64/ucrt64/include/c++/13.2.0/chrono \
   C:/msys64/ucrt64/include/c++/13.2.0/clocale \
   C:/msys64/ucrt64/include/c++/13.2.0/compare \
   C:/msys64/ucrt64/include/c++/13.2.0/cstddef \
+  C:/msys64/ucrt64/include/c++/13.2.0/cstdint \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdio \
   C:/msys64/ucrt64/include/c++/13.2.0/cstdlib \
   C:/msys64/ucrt64/include/c++/13.2.0/ctime \
@@ -3609,6 +3706,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/new \
   C:/msys64/ucrt64/include/c++/13.2.0/ostream \
   C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/msys64/ucrt64/include/c++/13.2.0/ratio \
   C:/msys64/ucrt64/include/c++/13.2.0/sstream \
   C:/msys64/ucrt64/include/c++/13.2.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.2.0/stdlib.h \
@@ -3616,6 +3714,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/c++/13.2.0/string \
   C:/msys64/ucrt64/include/c++/13.2.0/string_view \
   C:/msys64/ucrt64/include/c++/13.2.0/system_error \
+  C:/msys64/ucrt64/include/c++/13.2.0/thread \
   C:/msys64/ucrt64/include/c++/13.2.0/tuple \
   C:/msys64/ucrt64/include/c++/13.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.2.0/typeinfo \
@@ -3754,6 +3853,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/include/specstrings.h \
   C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
   C:/msys64/ucrt64/include/stralign.h \
@@ -3889,6 +3989,7 @@ CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/p
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/smmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tbmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h \
@@ -3984,6 +4085,10 @@ C:/msys64/ucrt64/include/c++/13.2.0/unordered_set:
 
 C:/msys64/ucrt64/include/apiset.h:
 
+C:/msys64/ucrt64/include/winbase.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/chrono.h:
+
 C:/msys64/ucrt64/include/psdk_inc/_ip_mreq1.h:
 
 C:/msys64/ucrt64/include/apisetcconv.h:
@@ -4006,17 +4111,19 @@ C:/msys64/ucrt64/include/c++/13.2.0/vector:
 
 C:/msys64/ucrt64/include/bcrypt.h:
 
-C:/msys64/ucrt64/include/winapifamily.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/sstream:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.h:
-
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/avx512vlintrin.h:
 
 C:/msys64/ucrt64/include/ddeml.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/array:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/parse_numbers.h:
+
+C:/msys64/ucrt64/include/winapifamily.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/sstream:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/basic_string.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bit:
 
@@ -4041,12 +4148,6 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/hash_bytes.h:
 C:/msys64/ucrt64/include/c++/13.2.0/compare:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/char_traits.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mwaitintrin.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/cwchar:
-
-C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/avx512vpopcntdqintrin.h:
 
@@ -4152,6 +4253,14 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/new_allocator.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mwaitintrin.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/cwchar:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/postypes.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/thread:
+
 C:/msys64/ucrt64/include/c++/13.2.0/bits/predefined_ops.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/avx512fintrin.h:
@@ -4181,6 +4290,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/bits/stl_function.h:
 C:/msys64/ucrt64/include/c++/13.2.0/bits/std_abs.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/std_function.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/std_thread.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/avx512bitalgintrin.h:
 
@@ -4232,15 +4343,21 @@ C:/msys64/ucrt64/include/unknwnbase.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/stringfwd.h:
 
+C:/msys64/ucrt64/include/c++/13.2.0/bits/this_thread_sleep.h:
+
 C:/msys64/ucrt64/include/sec_api/conio_s.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/uniform_int_dist.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/bits/unique_ptr.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_map.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/unordered_set.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator.h:
+
+C:/msys64/ucrt64/include/stdint.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/bits/uses_allocator_args.h:
 
@@ -4260,6 +4377,12 @@ C:/msys64/ucrt64/include/wctype.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/cerrno:
 
+C:/msys64/ucrt64/include/pshpack4.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/debug/assertions.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/chrono:
+
 C:/msys64/ucrt64/include/c++/13.2.0/cwctype:
 
 C:/msys64/ucrt64/include/c++/13.2.0/clocale:
@@ -4268,6 +4391,10 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/xopintrin.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/cstddef:
 
+C:/msys64/ucrt64/include/processtopologyapi.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/cstdint:
+
 C:/msys64/ucrt64/include/c++/13.2.0/cstdio:
 
 C:/msys64/ucrt64/include/driverspecs.h:
@@ -4275,10 +4402,6 @@ C:/msys64/ucrt64/include/driverspecs.h:
 C:/msys64/ucrt64/include/c++/13.2.0/cstdlib:
 
 C:/msys64/ucrt64/include/c++/13.2.0/ctime:
-
-C:/msys64/ucrt64/include/pshpack4.h:
-
-C:/msys64/ucrt64/include/c++/13.2.0/debug/assertions.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/debug/debug.h:
 
@@ -4349,6 +4472,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/ostream:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/bmiintrin.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/pstl/pstl_config.h:
+
+C:/msys64/ucrt64/include/c++/13.2.0/ratio:
 
 C:/msys64/ucrt64/include/c++/13.2.0/stdexcept:
 
@@ -4536,8 +4661,6 @@ D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.h:
 
 C:/msys64/ucrt64/include/processthreadsapi.h:
 
-C:/msys64/ucrt64/include/processtopologyapi.h:
-
 C:/msys64/ucrt64/include/rpcnsi.h:
 
 C:/msys64/ucrt64/include/profileapi.h:
@@ -4635,8 +4758,6 @@ C:/msys64/ucrt64/include/tvout.h:
 C:/msys64/ucrt64/include/urlmon.h:
 
 C:/msys64/ucrt64/include/wchar.h:
-
-C:/msys64/ucrt64/include/winbase.h:
 
 C:/msys64/ucrt64/include/wincrypt.h:
 
@@ -4777,6 +4898,8 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h:
 D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdint.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/tmmintrin.h:
 

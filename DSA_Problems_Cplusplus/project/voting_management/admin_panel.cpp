@@ -27,23 +27,23 @@ bool Admin::authenticate_admin()
     system("cls");
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     string input_user, input_pass;
-    
+
     green();
     cout << "========================================\n";
     cout << "      ADMIN AUTHENTICATION\n";
     cout << "========================================\n";
     reset();
-    
+
     blue();
     cout << "Enter Admin Username: ";
     reset();
     getline(cin, input_user);
-    
+
     blue();
     cout << "Enter Admin Password: ";
     reset();
     input_pass = hide_password();
-    
+
     if (login_admin.find(input_user) != login_admin.end())
     {
         if (login_admin[input_user] == input_pass)
@@ -60,7 +60,7 @@ bool Admin::authenticate_admin()
             return true;
         }
     }
-    
+
     system("cls");
     red();
     cout << "========================================\n";
@@ -78,13 +78,13 @@ void Admin::admin_panel()
     do
     {
         system("cls");
-        
+
         yellow();
         cout << "=========================================\n";
         cout << "          ADMIN PANEL MENU\n";
         cout << "=========================================\n";
         reset();
-        
+
         black();
         cout << "+---------------------------------------+\n";
         cout << "| 1. Add MNA Candidate                  |\n";
@@ -97,12 +97,15 @@ void Admin::admin_panel()
         cout << "| 8. Exit                               |\n";
         cout << "+---------------------------------------+\n";
         reset();
-        
+
         blue();
         cout << "Enter Choice: ";
         reset();
         cin >> choice;
-
+        if (!check_valid_int())
+        {
+            continue;
+        }
         switch (choice)
         {
         case 1:
@@ -117,7 +120,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 2:
             system("cls");
             green();
@@ -130,7 +133,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 3:
             system("cls");
             blue();
@@ -143,7 +146,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 4:
             system("cls");
             blue();
@@ -156,7 +159,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 5:
             system("cls");
             yellow();
@@ -170,7 +173,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 6:
             system("cls");
             blue();
@@ -183,7 +186,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 7:
             system("cls");
             yellow();
@@ -196,7 +199,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         case 8:
             system("cls");
             green();
@@ -208,7 +211,7 @@ void Admin::admin_panel()
             cin.ignore();
             cin.get();
             break;
-            
+
         default:
             red();
             cout << "Invalid Choice\n";
