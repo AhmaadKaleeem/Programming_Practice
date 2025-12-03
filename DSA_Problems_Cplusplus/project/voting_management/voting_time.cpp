@@ -14,7 +14,7 @@ return false;
 void display_voting_schedule(){
     cout << "\n====================== Voting Schedule " << vote_year << " =========================\n";
     cout << "==  Date: " << setw(2) << setfill('0') << vote_day
-         << "            Month: " << setw(2) << setfill('0') << vote_month
+         << "            Month: " << setw(2) << setfill('0') << votemonth[vote_month-1]
          << "           Year: " << vote_year << "             ==\n";
     cout << "==  Starting Hour: " << setw(2) << setfill('0') << voting_start_time_hour << ":00"
          << "                     Ending Hour: " << setw(2) << setfill('0') << voting_end_time_hour << ":00"
