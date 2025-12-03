@@ -14,7 +14,7 @@ int main()
     int choice;
     system("cls");
     election.load_all_data();
-    this_thread::sleep_for(chrono::seconds(4));
+    this_thread::sleep_for(chrono::seconds(3));
     do
     {
 
