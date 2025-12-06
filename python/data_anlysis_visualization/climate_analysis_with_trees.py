@@ -1,5 +1,5 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
 temperature_data = pd.read_csv("python/data_anlysis_visualization/tempreture_1901_2016_pakistan.csv")
 trees_data = pd.read_csv("python/data_anlysis_visualization/treecover_loss__ha.csv")
 
@@ -27,6 +27,13 @@ print(temperature_data.tail())
 print(trees_data.head())
 print(trees_data.tail())
 
+plt.figure(figsize=(10,5))
+plt.plot(trees_data["Year"],trees_data["umd_tree_cover_loss__ha"])
+plt.title("Tress Loss Cover 2001 - 2015")
+plt.xlabel("Year")
+plt.ylabel("Tree Cover Loss (hect)")
+plt.grid(True)
+plt.show()
 # Merging Into New Dataset For Analysis
 climate_chnage = pd.merge(temperature_data,trees_data, on="Year", how="inner")
 print("\nNew Combined Data")
@@ -77,4 +84,4 @@ print(f"\nTemperature Before {min_year}")
 print(before_lowest_cutting_year)
 
 # Making New CSV Data File With Updated Data
-climate_chnage.to_csv("python/Excel-Automation/temperature_with_tree_loss_2001-2015.csv",index=False)
+climate_chnage.to_csv("python/data_anlysis_visualization/temperature_with_tree_loss_2001-2015.csv",index=False)
