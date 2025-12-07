@@ -4,6 +4,17 @@ let currentAdminSection = 'overview';
 let naAreaNames = {};
 let paAreaNames = {};
 
+// ==================== HELPER FUNCTIONS ====================
+// Get NA seat number with fallback for backward compatibility
+function getNASeat(candidate) {
+    return candidate.naSeat || candidate.constituency || 0;
+}
+
+// Get PA seat number with fallback for backward compatibility
+function getPASeat(candidate) {
+    return candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+}
+
 // ==================== INITIALIZE ADMIN PANEL ====================
 function initializeAdminPanel() {
     console.log('Admin Panel Initialized');
@@ -56,15 +67,12 @@ async function loadConstituencyNames() {
     try {
         console.log('📡 Loading constituency names for admin panel...');
         
-        // Load NA names
-        const naResponse = await fetch(`${CONFIG.API.BASE_URL}/constituencies/na-names`);
-        if (naResponse.ok) {
-            const naData = await naResponse.json();
-            if (naData.success) {
-                naAreaNames = naData.data;
-                console.log(`✅ Loaded ${Object.keys(naAreaNames).length} NA constituencies`);
-                populateMNAConstituencyDropdown();
-            }
+        // Load NA names using API service
+        const naResponse = await API.call(CONFIG.API.ENDPOINTS.GET_NA_NAMES);
+        if (naResponse.success) {
+            naAreaNames = naResponse.data;
+            console.log(`✅ Loaded ${Object.keys(naAreaNames).length} NA constituencies`);
+            populateMNAConstituencyDropdown();
         }
     } catch (error) {
         console.error('❌ Error loading constituency names:', error);
@@ -113,15 +121,13 @@ function populateMNAConstituencyDropdown() {
 async function loadPANamesForProvince(province) {
     try {
         console.log(`📡 Loading ${province} PA constituency names...`);
-        const response = await fetch(`${CONFIG.API.BASE_URL}/constituencies/pa-names?province=${province}`);
+        // Use API service with query parameter
+        const response = await API.call(`${CONFIG.API.ENDPOINTS.GET_PA_NAMES}?province=${province}`);
         
-        if (response.ok) {
-            const data = await response.json();
-            if (data.success) {
-                paAreaNames = data.data;
-                console.log(`✅ Loaded ${Object.keys(paAreaNames).length} ${province} PA constituencies`);
-                return true;
-            }
+        if (response.success) {
+            paAreaNames = response.data;
+            console.log(`✅ Loaded ${Object.keys(paAreaNames).length} ${province} PA constituencies`);
+            return true;
         }
         return false;
     } catch (error) {
@@ -448,10 +454,10 @@ function displayCandidatesTable(candidates, type, container) {
                         let area = candidate.area || 'N/A';
                         
                         if (type === 'mna') {
-                            const naSeat = candidate.naSeat || candidate.constituency || 0;
+                            const naSeat = getNASeat(candidate);
                             constituency = `NA-${naSeat}`;
                         } else {
-                            const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                            const paSeat = getPASeat(candidate);
                             const provinceCode = getProvinceCode(candidate.province);
                             constituency = `${provinceCode}-${paSeat}`;
                         }
@@ -547,7 +553,7 @@ function displayAdminResults(data, container) {
                         </thead>
                         <tbody>
                             ${mnaResults.map((candidate, index) => {
-                                const naSeat = candidate.naSeat || candidate.constituency || 0;
+                                const naSeat = getNASeat(candidate);
                                 return `
                                     <tr ${index === 0 ? 'class="winner"' : ''}>
                                         <td>${index + 1}${index === 0 ? ' 🏆' : ''}</td>
@@ -583,7 +589,7 @@ function displayAdminResults(data, container) {
                         </thead>
                         <tbody>
                             ${mpaResults.map((candidate, index) => {
-                                const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                                const paSeat = getPASeat(candidate);
                                 const provinceCode = getProvinceCode(candidate.province);
                                 return `
                                     <tr ${index === 0 ? 'class="winner"' : ''}>

@@ -5,6 +5,17 @@ let resultsData = null;
 
 console.log('🎬 Results.js loaded');
 
+// ==================== HELPER FUNCTIONS ====================
+// Get NA seat number with fallback for backward compatibility
+function getNASeat(candidate) {
+    return candidate.naSeat || candidate.constituency || 0;
+}
+
+// Get PA seat number with fallback for backward compatibility
+function getPASeat(candidate) {
+    return candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+}
+
 // ==================== INITIALIZE RESULTS PAGE ====================
 function initializeResultsPage() {
     console.log('📊 Results Page Initialized');
@@ -167,8 +178,8 @@ function displayAllVotes() {
     if (mnaCandidates.length > 0) {
         // Sort by constituency (backend uses naSeat)
         const mnaSorted = [...mnaCandidates].sort((a, b) => {
-            const aConstituency = a.naSeat || a.constituency || 0;
-            const bConstituency = b.naSeat || b.constituency || 0;
+            const aConstituency = getNASeat(a);
+            const bConstituency = getNASeat(b);
             if (aConstituency === bConstituency) {
                 return (b.votes || 0) - (a.votes || 0);
             }
@@ -191,8 +202,8 @@ function displayAllVotes() {
     if (mpaCandidates.length > 0) {
         // Sort by province and seat (backend uses paSeat)
         const mpaSorted = [...mpaCandidates].sort((a, b) => {
-            const aPaSeat = a.paSeat || a.provisionalPP || a.provisional_pp || 0;
-            const bPaSeat = b.paSeat || b.provisionalPP || b.provisional_pp || 0;
+            const aPaSeat = getPASeat(a);
+            const bPaSeat = getPASeat(b);
             if (a.province === b.province && aPaSeat === bPaSeat) {
                 return (b.votes || 0) - (a.votes || 0);
             }
@@ -236,13 +247,13 @@ function displayResultsGrid(candidates, type) {
                 let areaName = candidate.area || '';
                 
                 if (type === 'mna') {
-                    const naSeat = candidate.naSeat || candidate.constituency || 0;
+                    const naSeat = getNASeat(candidate);
                     constituencyDisplay = `NA-${naSeat}`;
                     if (areaName) {
                         constituencyDisplay += ` | ${areaName}`;
                     }
                 } else {
-                    const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                    const paSeat = getPASeat(candidate);
                     const paCode = candidate.provinceName || candidate.province || 'PA';
                     constituencyDisplay = `${paCode}-${paSeat}`;
                     if (areaName) {
@@ -370,7 +381,7 @@ function calculateWinnersByProvinceAndSeat(candidates) {
     const grouped = {};
     
     candidates.forEach(candidate => {
-        const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+        const paSeat = getPASeat(candidate);
         const key = `${candidate.province}-${paSeat}`;
         if (!grouped[key]) {
             grouped[key] = [];
@@ -408,13 +419,13 @@ function displayWinnersGrid(winners, type) {
                 let areaName = candidate.area || '';
                 
                 if (type === 'mna') {
-                    const naSeat = candidate.naSeat || candidate.constituency || 0;
+                    const naSeat = getNASeat(candidate);
                     constituencyDisplay = `NA-${naSeat}`;
                     if (areaName) {
                         constituencyDisplay += ` | ${areaName}`;
                     }
                 } else {
-                    const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                    const paSeat = getPASeat(candidate);
                     const paCode = candidate.provinceName || candidate.province || 'PA';
                     constituencyDisplay = `${paCode}-${paSeat}`;
                     if (areaName) {
