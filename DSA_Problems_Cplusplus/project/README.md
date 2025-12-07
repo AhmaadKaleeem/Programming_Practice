@@ -1,6 +1,6 @@
 # 🇵🇰 Pakistan Election Management System
 
-A **Data Structures & Algorithms (DSA) project** in C++ demonstrating core DSA concepts through a real-world election system.  Features **dual operation modes**: CLI application and REST API server for web frontend.
+A **Data Structures & Algorithms (DSA) project** in C++ demonstrating core DSA concepts through a real-world election system. Features **dual operation modes**: CLI application and REST API server for web frontend.
 
 
 ##  Table of Contents
@@ -18,7 +18,7 @@ A **Data Structures & Algorithms (DSA) project** in C++ demonstrating core DSA c
 
 ##  Overview
 
-University DSA project implementing Pakistan's election management system in C++. Backend showcases various data structures and can operate in two modes:
+University DSA project implementing Pakistan's election management system in C++.Backend showcases various data structures and can operate in two modes:
 
 ###  CLI Mode (Original DSA Demo)
 - Console-based interface with color-coded menus
@@ -32,7 +32,7 @@ University DSA project implementing Pakistan's election management system in C++
 - Same backend logic, different interface
 - Demonstrates practical DSA application
 
-> **Note**: Both modes share the **same DSA implementation** and **same data files** (. txt format). 
+> **Note**: Both modes share the **same DSA implementation** and **same data files** (.txt format).
 
 ##  DSA Concepts
 
@@ -62,7 +62,7 @@ University DSA project implementing Pakistan's election management system in C++
 - ✅ Blockchain vote ledger with SHA-256
 - ✅ Password-protected authentication
 - ✅ Double-vote prevention
-- ✅ File-based persistence (. txt files)
+- ✅ File-based persistence (.txt files)
 - ✅ Admin panel for candidate management
 - ✅ Real-time results calculation
 
@@ -99,13 +99,13 @@ University DSA project implementing Pakistan's election management system in C++
 
 ## Installation
 
-### 1. Clone Repository
+### 1.Clone Repository
 ```bash
-git clone https://github.com/AhmaadKaleeem/Programming_Practice. git
+git clone https://github.com/AhmaadKaleeem/Programming_Practice.git
 cd Programming_Practice/DSA_Problems_Cplusplus/project/voting_management
 ```
 
-### 2. Build Project
+### 2.Build Project
 ```bash
 mkdir build && cd build
 cmake -G "MinGW Makefiles" ..
@@ -113,7 +113,7 @@ mingw32-make
 ```
 
 This builds both executables:
-- `elections. exe` (CLI mode)
+- `elections.exe` (CLI mode)
 - `elections_api.exe` (API server mode)
 
 ##  Usage
@@ -127,11 +127,11 @@ cd build
 
 **Main Menu:**
 ```
-1. Register Voter
-2. Login as Voter
-3. Login as Admin
-4. View Results
-5. Exit
+1.Register Voter
+2.Login as Voter
+3.Login as Admin
+4.View Results
+5.Exit
 ```
 
 **Operations:**
@@ -167,13 +167,13 @@ python -m http.server 3000
 ```
 voting_management/
 │
-├── CMakeLists. txt              # Build configuration
+├── CMakeLists.txt              # Build configuration
 │
 ├── C++ Source Files (DSA Implementation)
 │   ├── run_main.cpp            # CLI entry point
 │   ├── server.cpp              # API entry point
 │   ├── election.h/cpp          # Core election logic
-│   ├── voter. h/cpp             # Voter class
+│   ├── voter.h/cpp             # Voter class
 │   ├── voter_management.h/cpp  # Linked list + hash map
 │   ├── admin_panel.h/cpp       # Admin authentication
 │   ├── vote_queue.h/cpp        # Queue (FIFO)
@@ -187,11 +187,11 @@ voting_management/
 ├── frontend/ (AI-Generated Web UI)
 │   ├── index.html
 │   ├── register.html
-│   ├── login. html
+│   ├── login.html
 │   ├── voter-dashboard.html
 │   ├── admin-panel.html
 │   ├── results.html
-│   ├── css/ (main. css, components.css, forms.css, dashboard.css, results.css)
+│   ├── css/ (main.css, components.css, forms.css, dashboard.css, results.css)
 │   └── js/ (config.js, api.js, auth.js, admin.js, voter.js, utils.js)
 │
 ├── include/
@@ -207,7 +207,7 @@ voting_management/
     ├── MPA_Candidates.txt
     ├── Votes.txt
     ├── VoteCounts.txt
-    └── Ledger. txt
+    └── Ledger.txt
 ```
 
 ##  API Documentation
@@ -278,6 +278,7 @@ Content-Type: application/json
 }
 ```
 
+
 ##  Data Persistence
 
 Data stored in plain text files (same for both modes):
@@ -287,7 +288,7 @@ Data stored in plain text files (same for both modes):
 V001|Ahmad Khan|3520212345678|25|117|Punjab|145|password|false|false
 ```
 
-**MNA_Candidates. txt**
+**MNA_Candidates.txt**
 ```
 Imran Khan|1234567890123|Bat|117|Islamabad
 ```
@@ -299,18 +300,38 @@ Voter CNIC: 3520212345678
 Candidate CNIC: 1234567890123
 Vote Type: MNA
 Timestamp: 2025-12-07 14:30:00
-Hash: abc123def456... 
+Hash: abc123def456...
 Previous Hash: 000000000000...
 ---
 ```
 
 **Data Flow:**
-1. **Startup**: Load . txt files → Memory (DSA)
-2. **Runtime**: All operations on in-memory structures
-3. **Exit**: Save DSA → . txt files
-4. **Shared**: Both CLI and API use same files
+1.**Startup**: Load .txt files → Memory (DSA)
+2.**Runtime**: All operations on in-memory structures
+3.**Exit**: Save DSA → .txt files
+4.**Shared**: Both CLI and API use same files
 
-## 🐛 Troubleshooting
+##  Troubleshooting
+
+### Elections Timings Issue
+**Updating Timings** -  The election start and end times are hardcoded in the source file.
+```bash
+# Navigate to the project directory
+cd project/voting_management/
+
+# Open the file (voting_time.h) and update the constant timings and dates
+const int voting_start_time_hour = 5;  // 5:00 AM
+const int voting_end_time_hour = 20;   // 8:00 PM (Change this value)
+
+#Rebuild the project:
+cd build
+cmake -G "MinGW Makefiles" ..
+mingw32-make
+
+# Restart the api/cli:
+./elections
+./elections_api
+```
 
 ### Build Issues
 
@@ -372,15 +393,15 @@ kill -9 <pid>
 
 **Frontend can't connect**
 ```
-1. Verify API running: curl http://localhost:8080/
-2. Check browser console (F12)
-3. Use HTTP server for frontend (not file://)
-4. Try Chrome browser
+1.Verify API running: curl http://localhost:8080/
+2.Check browser console (F12)
+3.Use HTTP server for frontend (not file://)
+4.Try Chrome browser
 ```
 
 **CORS errors**
 ```
-Ensure CORS is enabled in server. cpp
+Ensure CORS is enabled in server.cpp
 Check API response headers
 ```
 
@@ -388,9 +409,9 @@ Check API response headers
 
 **Data not saving**
 ```
-1. Use "Exit" option (not Ctrl+C)
-2. Check write permissions
-3. Verify . txt files in same directory as . exe
+1.Use "Exit" option (not Ctrl+C)
+2.Check write permissions
+3.Verify .txt files in same directory as .exe
 ```
 
 **Ledger verification fails**
@@ -401,9 +422,9 @@ Solution: Delete Ledger.txt to reset
 
 **Missing candidates/voters**
 ```
-1. Always exit properly (menu option)
-2. Check if . txt files exist
-3. Verify file paths
+1.Always exit properly (menu option)
+2.Check if .txt files exist
+3.Verify file paths
 ```
 
 ##  Contributing
@@ -431,14 +452,14 @@ Educational contributions welcome!
 
 ##  License
 
-**Educational project** for Data Structures & Algorithms course. 
+**Educational project** for Data Structures & Algorithms course.
 
 **Author**: Ahmad Kaleem Bhatti  
 **Institution**: Air University, Islamabad  
 **Course**: Data Structures & Algorithms  
 **Year**: 2024-2025
 
-Free for academic use.  Attribution required.
+Free for academic use. Attribution required.
 
 ##  Acknowledgments
 
