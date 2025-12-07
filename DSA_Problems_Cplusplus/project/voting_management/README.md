@@ -1,399 +1,462 @@
-# Election Management System
+# 🇵🇰 Pakistan Election Management System
 
-A comprehensive C++ Election Management System designed to handle voting processes. This system provides secure voter registration, authentication, vote casting, and result management with blockchain-inspired ledger verification and simulates real-world Pakistan election workflows.
+A **Data Structures & Algorithms (DSA) project** in C++ demonstrating core DSA concepts through a real-world election system.  Features **dual operation modes**: CLI application and REST API server for web frontend.
 
-## Table of Contents
 
+##  Table of Contents
+
+- [Overview](#overview)
+- [DSA Concepts](#dsa-concepts)
 - [Features](#features)
 - [System Requirements](#system-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Main Menu](#main-menu)
-  - [Voter Menu](#voter-menu)
-  - [Admin Panel](#admin-panel)
 - [Project Structure](#project-structure)
-- [System Features](#system-features)
-  - [Election Types](#election-types)
-  - [Voter Registration](#voter-registration)
-  - [Vote Management](#vote-management)
-- [File Descriptions](#file-descriptions)
-- [Build Details](#build-details)
-- [Data Persistence](#data-persistence)
+- [API Documentation](#api-documentation)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
 - [License](#license)
+
+##  Overview
+
+University DSA project implementing Pakistan's election management system in C++. Backend showcases various data structures and can operate in two modes:
+
+###  CLI Mode (Original DSA Demo)
+- Console-based interface with color-coded menus
+- Direct interaction with data structures
+- Perfect for understanding DSA implementation
+- Hidden password input for security
+
+###  API Mode (Modern Web Integration)
+- HTTP REST server exposing DSA operations
+- Powers web frontend (AI-generated UI)
+- Same backend logic, different interface
+- Demonstrates practical DSA application
+
+> **Note**: Both modes share the **same DSA implementation** and **same data files** (. txt format). 
+
+##  DSA Concepts
+
+### Data Structures Implemented
+
+| Structure | File | Purpose | Complexity |
+|-----------|------|---------|------------|
+| **Linked List** | `voter_management.cpp` | Dynamic voter storage | O(n) traversal |
+| **Hash Map** | `voter_management.cpp` | Fast CNIC lookup | O(1) average |
+| **Queue** | `vote_queue.cpp` | FIFO vote processing | O(1) enqueue/dequeue |
+| **Blockchain** | `ledger.cpp` | Immutable vote ledger | O(n) verification |
+| **Vectors** | `election.cpp` | Candidate storage | O(1) access |
+
+### Algorithms Used
+
+- **SHA-256 Hashing**: Blockchain integrity
+- **Hash Table Operations**: Collision handling, dynamic resizing
+- **CNIC Validation**: Format check, age calculation, province detection
+- **Sorting**: Vote count ranking (O(n log n))
+- **Search**: Hash-based O(1) lookups, linear search in lists
 
 ## Features
 
-1. **Dual Election System**: Support for both National Assembly (MNA) and Provincial Assembly (MPA) elections with separate voting processes
-2. **Secure Voter Registration**: Comprehensive CNIC validation (13-digit Pakistani identity number) with automatic province and constituency determination
-3. **Authentication System**: Password-protected voter and admin login mechanisms with hidden password input for enhanced security
-4. **Constituency Management**: Automatic mapping of 266 National Assembly and 297+ Provincial Assembly seats across all provinces (Punjab, Sindh, KPK, Balochistan, Islamabad)
-5. **Vote Queue System**: Efficient vote processing using queue data structure for ordered vote handling
-6. **Blockchain-Inspired Ledger**: Immutable vote recording with hash verification for election integrity and transparency with full verification capabilities
-7. **Real-time Results**: Live vote counting and winner determination for both MNA and MPA elections
-8. **Admin Panel**: Comprehensive administrative controls for candidate management and result verification with color-coded interface
-9. **Data Integrity**: Built-in ledger verification system to detect tampering and ensure election security
-10. **User-Friendly Interface**: Color-coded console-based menu system with clear navigation and system feedback
-11. **Voting Time Validation**: Fixed voting schedule with real-time validation to enforce voting windows (8:00 AM to 5:00 PM)
-12. **Data Persistence**: Save and load all election data including voters, candidates, votes, and blockchain ledger to files
+### Core Functionality (Both Modes)
+- ✅ Dual elections (MNA - 266 seats, MPA - 600+ seats)
+- ✅ CNIC validation with auto-province detection
+- ✅ Blockchain vote ledger with SHA-256
+- ✅ Password-protected authentication
+- ✅ Double-vote prevention
+- ✅ File-based persistence (. txt files)
+- ✅ Admin panel for candidate management
+- ✅ Real-time results calculation
 
-## System Requirements
+### CLI Mode Only
+- Color-coded Pakistan green theme
+- Interactive menus
+- Hidden password input
+- Real-time status updates
 
-- **CMake**: Version 3.10 or higher
-- **C++ Compiler**: Supporting C++17 standard or later (GCC 7+, Clang 5+, or MSVC 2017+)
-- **Operating System**: Windows, Linux, or macOS
-- **Memory**: Minimum 512 MB RAM
-- **Storage**: 50 MB free disk space for data files
+### API Mode Only
+- RESTful JSON endpoints
+- CORS support
+- HTTP status codes
+- Session management
+
+### Web Frontend (AI-Generated)
+- Responsive design
+- Pakistan flag colors (green & white)
+- Real-time updates
+- Mobile-friendly
+- Toast notifications
+
+## 💻 System Requirements
+
+**Backend:**
+- CMake 3.10+
+- C++17 compiler (GCC 7+, MinGW-w64, MSVC 2017+)
+- 512 MB RAM minimum
+- 100 MB disk space
+
+**Frontend (Web Mode):**
+- Modern browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
+- HTTP server (Python or Node.js recommended)
 
 ## Installation
 
-Follow these steps to build and run the Election Management System:
+### 1. Clone Repository
+```bash
+git clone https://github.com/AhmaadKaleeem/Programming_Practice. git
+cd Programming_Practice/DSA_Problems_Cplusplus/project/voting_management
+```
 
-1. **Clone the repository**
+### 2. Build Project
+```bash
+mkdir build && cd build
+cmake -G "MinGW Makefiles" ..
+mingw32-make
+```
 
-   ```bash
-   git clone https://github.com/AhmaadKaleeem/Programming_Practice.git
-   cd Programming_Practice/DSA_Problems_Cplusplus/project/voting_management
-   ```
+This builds both executables:
+- `elections. exe` (CLI mode)
+- `elections_api.exe` (API server mode)
 
-2. **Create build directory**
+##  Usage
 
-   ```bash
-   mkdir build
-   cd build
-   ```
+### CLI Mode
 
-3. **Configure with CMake**
+```bash
+cd build
+./elections.exe
+```
 
-   ```bash
-   cmake -G "MinGW Makefiles" ..
-   ```
+**Main Menu:**
+```
+1. Register Voter
+2. Login as Voter
+3. Login as Admin
+4. View Results
+5. Exit
+```
 
-   Or for other platforms:
-   ```bash
-   cmake ..
-   ```
+**Operations:**
+- **Register**: Name, CNIC (13 digits), NA seat, PA seat, password
+- **Voter**: View profile, cast MNA/MPA votes, see results
+- **Admin**: Add candidates, view statistics, verify ledger
 
-4. **Build the project**
+### API Server Mode
 
-   On Linux/macOS:
+```bash
+cd build
+./elections_api.exe
+# Server starts on http://localhost:8080
+```
 
-   ```bash
-   make
-   ```
+### Web Frontend
 
-   On Windows:
+```bash
+cd frontend
+python -m http.server 3000
+# Visit http://localhost:3000
+```
 
-   ```bash
-   mingw32-make
-   ```
+**Access Points:**
+- Landing: `http://localhost:3000/index.html`
+- Register: `http://localhost:3000/register.html`
+- Login: `http://localhost:3000/login.html`
+- Admin: `http://localhost:3000/admin-panel.html`
+- Results: `http://localhost:3000/results.html`
 
-5. **Run the application**
-   ```bash
-   ./elections
-   ```
-
-## Usage
-
-### Main Menu
-
-When you launch the application, you'll see the main menu with color-coded options:
-
-1. **Register Voter**: Create a new voter account with CNIC validation, age verification, and password setup
-2. **Login as Voter**: Access voter portal to view profile and cast votes
-3. **Login as Admin**: Administrative access for candidate management and system oversight
-4. **Results**: View election results including vote counts and current winners
-5. **Exit**: Close the application and save all system data
-
-### Voter Menu
-
-After successful voter login, you have access to:
-
-- **View My Profile**: Display your voter information including CNIC, name, age, and constituency details (NA and Provincial seats)
-- **View My Constituency**: See detailed information about your assigned National Assembly and Provincial Assembly constituencies
-- **Cast Vote for MNA**: Vote for your preferred National Assembly candidate (one-time vote only)
-- **Cast Vote for MPA**: Vote for your preferred Provincial Assembly candidate (one-time vote only)
-- **Logout**: Return to the main menu
-
-**Note**: Each voter can cast only one vote for MNA and one vote for MPA per election. The system prevents double voting automatically.
-
-### Admin Panel
-
-Admin authentication provides access to:
-
-- **Add MNA Candidates**: Register new candidates for National Assembly elections with name, symbol, and CNIC
-- **Add MPA Candidates**: Register new candidates for Provincial Assembly elections with proper provincial seat allocation
-- **Display All MNA Candidates**: View list of registered MNA candidates with their constituency information
-- **Display All MPA Candidates**: View list of registered MPA candidates with their provincial assignment
-- **Tally All Results**: Calculate final vote counts and determine winners for both elections
-- **Verify Ledger Integrity**: Check blockchain integrity to detect any data tampering or corruption
-- **View Ledger File**: Display the complete voting record with all block information and hashes
-- **Exit**: Return to main menu
-
-## Project Structure
-
-The project consists of the following source files organized in a modular architecture:
+##  Project Structure
 
 ```
 voting_management/
-├── run_main.cpp             # Main application entry point with menu loop
-├── election.h               # Election class declaration
-├── election.cpp             # Core election logic, voting operations, and file I/O
-├── voter.h                  # Voter class declaration
-├── voter.cpp                # Voter registration, validation, and profile management
-├── voter_management.h       # Voter manager class declaration
-├── voter_management.cpp     # Voter storage using linked list and hash map
-├── admin_panel.h            # Admin class declaration
-├── admin_panel.cpp          # Admin authentication and panel operations
-├── vote_queue.h             # Vote queue data structure declaration
-├── vote_queue.cpp           # FIFO queue implementation for vote processing
-├── ledger.h                 # Blockchain ledger class declaration
-├── ledger.cpp               # Ledger implementation with hash verification
-├── voting_time.h            # Voting schedule declarations
-├── voting_time.cpp          # Voting time validation functions
-├── utilities.h              # Helper function declarations
-├── utilities.cpp            # Helper functions including hidden password input
-├── libraries.h              # Common library includes and dependencies
-├── console_color.h          # Console color functions for UI enhancement
-├── static_data.h            # Static data for constituencies and mappings
-├── CMakeLists.txt           # CMake build configuration
-└── build/                   # Build directory (generated after compilation)
+│
+├── CMakeLists. txt              # Build configuration
+│
+├── C++ Source Files (DSA Implementation)
+│   ├── run_main.cpp            # CLI entry point
+│   ├── server.cpp              # API entry point
+│   ├── election.h/cpp          # Core election logic
+│   ├── voter. h/cpp             # Voter class
+│   ├── voter_management.h/cpp  # Linked list + hash map
+│   ├── admin_panel.h/cpp       # Admin authentication
+│   ├── vote_queue.h/cpp        # Queue (FIFO)
+│   ├── ledger.h/cpp            # Blockchain (SHA-256)
+│   ├── voting_time.h/cpp       # Time validation
+│   ├── utilities.h/cpp         # Helper functions
+│   ├── libraries.h             # Common includes
+│   ├── console_color.h         # CLI colors
+│   └── static_data.h           # Constituency mappings
+│
+├── frontend/ (AI-Generated Web UI)
+│   ├── index.html
+│   ├── register.html
+│   ├── login. html
+│   ├── voter-dashboard.html
+│   ├── admin-panel.html
+│   ├── results.html
+│   ├── css/ (main. css, components.css, forms.css, dashboard.css, results.css)
+│   └── js/ (config.js, api.js, auth.js, admin.js, voter.js, utils.js)
+│
+├── include/
+│   └── httplib.h               # cpp-httplib library
+│
+├── build/
+│   ├── elections.exe           # CLI executable
+│   └── elections_api.exe       # API server executable
+│
+└── data/ (Generated at runtime)
+    ├── Voters.txt
+    ├── MNA_Candidates.txt
+    ├── MPA_Candidates.txt
+    ├── Votes.txt
+    ├── VoteCounts.txt
+    └── Ledger. txt
 ```
 
-## System Features
+##  API Documentation
 
-### Election Types
-
-The system manages two distinct types of elections:
-
-- **MNA (Member of National Assembly)**: National-level representatives with 266 constituencies covering all provinces and territories
-- **MPA (Member of Provincial Assembly)**: Provincial-level representatives with province-specific seats:
-  - Punjab: 297 seats
-  - Sindh: 130 seats
-  - Khyber Pakhtunkhwa (KPK): 115 seats
-  - Balochistan: 51 seats
-  - Islamabad: No provincial assembly (National only)
-
-### Voter Registration
-
-The voter registration process includes:
-
-1. **Name Entry**: User provides full name
-2. **CNIC Validation**: 13-digit national identity card number verification
-3. **Age Verification**: Ensures voters are at least 18 years old
-4. **NA Seat Selection**: User selects their National Assembly constituency (1-266)
-5. **Automatic Province Detection**: Province is determined from NA seat number
-6. **PA Seat Selection**: User selects their Provincial Assembly seat (if applicable)
-7. **Secure Password**: Password protection with hidden input display
-8. **Auto-generated Voter ID**: Unique identifier assigned to each voter
-
-### Vote Management
-
-The vote management system features:
-
-- **Vote Queue**: Efficient FIFO (First-In-First-Out) processing of votes
-- **Vote Counting**: Real-time tallying of votes for each candidate
-- **Immutable Ledger**: Each vote is recorded in a blockchain-inspired ledger with:
-  - Block index for sequencing
-  - Voter CNIC (for integrity)
-  - Candidate CNIC
-  - Vote type (MNA or MPA)
-  - Timestamp of vote casting
-  - Hash of current block
-  - Hash of previous block (chain integrity)
-- **Verification System**: Built-in ledger verification to detect tampering
-- **Voting Time Window**: Restricted voting between 8:00 AM and 5:00 PM on election day
-- **Results Display**: Comprehensive presentation of vote counts and winners
-
-## File Descriptions
-
-| File                   | Purpose                                                                                            |
-| ---------------------- | -------------------------------------------------------------------------------------------------- |
-| `run_main.cpp`         | Application entry point with main menu loop and data loading/saving                               |
-| `election.h`           | Class declaration for Election management with voting and file I/O operations                      |
-| `election.cpp`         | Implementation of election logic, voting, result calculation, and data persistence                 |
-| `voter.h`              | Voter class declaration with registration and validation methods                                   |
-| `voter.cpp`            | Implementation of voter registration, validation, and information display                          |
-| `voter_management.h`   | VoterManager class for maintaining voter database                                                  |
-| `voter_management.cpp` | Implementation of voter storage using linked list and hash map for quick lookup                    |
-| `admin_panel.h`        | Admin class declaration for administrative operations                                              |
-| `admin_panel.cpp`      | Implementation of admin authentication with color-coded interface                                  |
-| `vote_queue.h`         | VoteQueue class declaration using queue data structure                                             |
-| `vote_queue.cpp`       | FIFO queue implementation for ordered vote processing                                              |
-| `ledger.h`             | Blockchain-inspired ledger class with block restoration support                                    |
-| `ledger.cpp`           | Ledger implementation with hash calculation and verification with color output                     |
-| `voting_time.h`        | Fixed voting schedule constants and validation function declarations                               |
-| `voting_time.cpp`      | Implementation of voting time validation and schedule display                                      |
-| `utilities.h`          | Helper function declarations for common operations                                                 |
-| `utilities.cpp`        | Implementation of helper functions including hidden password input                                 |
-| `libraries.h`          | Centralized include file with all standard and third-party library includes                       |
-| `console_color.h`      | Console color functions for color-coded terminal output                                            |
-| `static_data.h`        | Static constituency mappings, area names, and province enumerations                                |
-| `CMakeLists.txt`       | CMake build configuration specifying C++17 standard and executable generation                      |
-
-## Build Details
-
-The project uses CMake for cross-platform build management:
-
-- **CMake Minimum Version**: 3.10
-- **C++ Standard**: C++17
-- **Executable Name**: `elections`
-- **Build System**: Compatible with Unix Makefiles, Visual Studio, Ninja, and other CMake generators
-
-### Build Configuration
-
-The `CMakeLists.txt` includes:
-
-```cmake
-cmake_minimum_required(VERSION 3.10)
-project(VotingSystem)
-set(CMAKE_CXX_STANDARD 17)
-add_executable(elections
-    admin_panel.cpp
-    election.cpp
-    ledger.cpp
-    run_main.cpp
-    vote_queue.cpp
-    voter_management.cpp
-    voter.cpp
-    voting_time.cpp
-    utilities.cpp
-)
+### Base URL
+```
+http://localhost:8080
 ```
 
-## Data Persistence
+### Key Endpoints
 
-The system implements comprehensive data persistence with the following files:
-
-- **Voters.txt**: Stores all registered voters with their credentials and constituency information
-- **MNA_Candidates.txt**: Stores all registered MNA candidates with their symbols and constituencies
-- **MPA_Candidates.txt**: Stores all registered MPA candidates with their provincial assignments
-- **Votes.txt**: Records all cast votes with voter and candidate information
-- **VoteCounts.txt**: Maintains current vote counts for all candidates
-- **Ledger.txt**: Stores the complete blockchain ledger with all transactions and hashes
-
-Data is automatically loaded when the application starts and saved when exiting. This allows the election system to maintain state across multiple sessions.
-
-## Troubleshooting
-
-### Common Build Issues
-
-**Problem**: CMake not found
-
-```
-Solution: Install CMake from https://cmake.org/download/ or use package manager:
-- Ubuntu/Debian: sudo apt-get install cmake
-- macOS: brew install cmake
-- Windows: Download installer from cmake.org
+**Authentication**
+```http
+POST /api/register          # Register voter
+POST /api/login             # Voter login
+POST /api/admin/login       # Admin login
 ```
 
-**Problem**: C++17 compiler not available
-
+**Candidate Management**
+```http
+POST /api/admin/add-mna-candidate    # Add MNA candidate
+POST /api/admin/add-mpa-candidate    # Add MPA candidate
+GET  /api/candidates/mna             # Get all MNA candidates
+GET  /api/candidates/mpa             # Get all MPA candidates
 ```
-Solution: Update your compiler:
-- GCC: Requires version 7+
-- Clang: Requires version 5+
-- MSVC: Requires Visual Studio 2017+
+
+**Voting**
+```http
+POST /api/vote/mna          # Cast MNA vote
+POST /api/vote/mpa          # Cast MPA vote
 ```
 
-**Problem**: Build directory issues
-
+**Results & Admin**
+```http
+GET /api/results                    # Get election results
+GET /api/admin/stats                # Get statistics
+GET /api/admin/verify-ledger        # Verify blockchain
+GET /api/admin/ledger               # View ledger
 ```
-Solution: Clean and rebuild:
+
+### Example Request
+
+```http
+POST /api/register
+Content-Type: application/json
+
+{
+  "name": "Ahmad Khan",
+  "cnic": "3520212345678",
+  "age": 25,
+  "naSeat": 117,
+  "province": "Punjab",
+  "paSeat": 145,
+  "password": "securePass123"
+}
+```
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "message": "Voter registered successfully",
+  "data": {
+    "voterID": "V001",
+    "name": "Ahmad Khan"
+  }
+}
+```
+
+##  Data Persistence
+
+Data stored in plain text files (same for both modes):
+
+**Voters.txt**
+```
+V001|Ahmad Khan|3520212345678|25|117|Punjab|145|password|false|false
+```
+
+**MNA_Candidates. txt**
+```
+Imran Khan|1234567890123|Bat|117|Islamabad
+```
+
+**Ledger.txt** (Blockchain)
+```
+Block #0
+Voter CNIC: 3520212345678
+Candidate CNIC: 1234567890123
+Vote Type: MNA
+Timestamp: 2025-12-07 14:30:00
+Hash: abc123def456... 
+Previous Hash: 000000000000...
+---
+```
+
+**Data Flow:**
+1. **Startup**: Load . txt files → Memory (DSA)
+2. **Runtime**: All operations on in-memory structures
+3. **Exit**: Save DSA → . txt files
+4. **Shared**: Both CLI and API use same files
+
+## 🐛 Troubleshooting
+
+### Build Issues
+
+**CMake not found**
+```bash
+# Windows: Download from cmake.org
+# Linux: sudo apt-get install cmake
+# macOS: brew install cmake
+```
+
+**C++17 compiler error**
+```bash
+# Install MinGW-w64 (Windows)
+# Update GCC (Linux): sudo apt-get install g++-7
+# Xcode tools (Mac): xcode-select --install
+```
+
+**Build fails**
+```bash
+# Clean rebuild
 rm -rf build
-mkdir build
-cd build
-cmake ..
-make
+mkdir build && cd build
+cmake -G "MinGW Makefiles" ..
+mingw32-make
 ```
 
-### Common Runtime Issues
+### CLI Runtime Issues
 
-**Problem**: "Invalid CNIC" error during registration
-
+**"Invalid CNIC"**
 ```
-Solution: Ensure CNIC is exactly 13 digits with no spaces or dashes
-Example: 3520212345678 (not 35202-1234567-8)
-```
-
-**Problem**: Cannot find constituency
-
-```
-Solution: Verify that your NA seat number is between 1-266 and corresponds to valid constituency mapping
+Must be exactly 13 digits: 3520212345678
+NOT: 35202-1234567-8
 ```
 
-**Problem**: "Already voted" message
-
+**"Already voted"**
 ```
-Solution: Each voter can only vote once per election type (MNA and MPA). This is by design to prevent double voting.
-```
-
-**Problem**: Admin login fails
-
-```
-Solution: Check admin credentials in admin_panel.cpp. Default credentials are hardcoded in the initialize_credentials() function.
+By design - one vote per election type
+Use different CNIC for testing
 ```
 
-**Problem**: Ledger verification fails
-
+**No colors in console**
 ```
-Solution: Hash mismatch indicates data corruption. This should not occur during normal operation.
-Check the Ledger.txt file for corruption or restart the application to reload clean data.
-```
-
-**Problem**: Voting is CLOSED message
-
-```
-Solution: Voting is restricted to the scheduled time window (8:00 AM to 5:00 PM on the election date).
-Check voting_time.h to see or modify the voting schedule.
+Use Windows Terminal or enable ANSI:
+reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1
 ```
 
-**Problem**: Data files are not found on startup
+### API Runtime Issues
 
+**Port 8080 in use**
+```bash
+# Windows
+netstat -ano | findstr :8080
+taskkill /PID <pid> /F
+
+# Linux/Mac
+lsof -i :8080
+kill -9 <pid>
 ```
-Solution: The application will create new data files on first run. If data from a previous session is needed,
-ensure Voters.txt, MNA_Candidates.txt, MPA_Candidates.txt, and other data files are in the same directory as the executable.
+
+**Frontend can't connect**
+```
+1. Verify API running: curl http://localhost:8080/
+2. Check browser console (F12)
+3. Use HTTP server for frontend (not file://)
+4. Try Chrome browser
 ```
 
-## Contributing
+**CORS errors**
+```
+Ensure CORS is enabled in server. cpp
+Check API response headers
+```
 
-We welcome contributions to improve the Election Management System! Here's how you can contribute:
+### Data Issues
 
-1. **Fork the repository**: Create your own fork of the project
-2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
-3. **Make your changes**: Implement your feature or bug fix
-4. **Test thoroughly**: Ensure your changes don't break existing functionality
-5. **Follow coding standards**:
-   - Use consistent indentation (4 spaces)
-   - Comment complex logic
-   - Follow C++17 best practices
-   - Keep modules loosely coupled
-6. **Commit your changes**: `git commit -m "Add: description of your changes"`
-7. **Push to your fork**: `git push origin feature/your-feature-name`
-8. **Submit a pull request**: Open a PR with a clear description of your changes
+**Data not saving**
+```
+1. Use "Exit" option (not Ctrl+C)
+2. Check write permissions
+3. Verify . txt files in same directory as . exe
+```
 
-### Areas for Contribution
+**Ledger verification fails**
+```
+Hash mismatch = corruption
+Solution: Delete Ledger.txt to reset
+```
 
-- Database integration for persistent storage (SQLite or similar)
-- GUI implementation using Qt or similar framework
-- Multi-language support
-- Performance optimization for large-scale voting
-- Enhanced security features
-- Mobile application development
-- Detailed logging and audit trails
-- Advanced election analytics
+**Missing candidates/voters**
+```
+1. Always exit properly (menu option)
+2. Check if . txt files exist
+3. Verify file paths
+```
 
-## License
+##  Contributing
 
-This project is developed as a university project for educational purposes. It demonstrates the implementation of data structures (linked lists, queues, hash maps) and object-oriented programming concepts in C++.
+Educational contributions welcome! 
+
+**DSA Improvements:**
+- Red-Black Tree for balanced storage
+- Heap for priority vote processing
+- Merge/Quick Sort optimization
+- Graph for constituency relationships
+- Trie for name-based search
+
+**Backend Improvements:**
+- SQLite integration
+- Multi-threading
+- Unit tests
+- Performance benchmarks
+
+**Frontend Improvements:**
+- WebSockets for real-time updates
+- Chart.js visualizations
+- Urdu language support
+- Mobile app
+
+##  License
+
+**Educational project** for Data Structures & Algorithms course. 
 
 **Author**: Ahmad Kaleem Bhatti  
-**Institution**: Air University  
-**Course**: Data Structures and Algorithms (Project)  
-**Year**: 2025  
-**Last Updated**: November 2025
+**Institution**: Air University, Islamabad  
+**Course**: Data Structures & Algorithms  
+**Year**: 2024-2025
+
+Free for academic use.  Attribution required.
+
+##  Acknowledgments
+
+- **cpp-httplib**: Yuji Hirose (REST framework)
+- **nlohmann/json**: JSON library
+- **Frontend**: AI-generated UI
+- **Inspiration**: Election Commission of Pakistan
+
+---
+##  Contact & Support
+
+For issues, questions, or suggestions:
+
+- **GitHub Issues**: [Open an issue](https://github.com/AhmaadKaleeem/Programming_Practice/issues)
+- **Email**: ahmadkaleeem1@gamil.com
+- **Repository**: [Programming_Practice/voting_management](https://github.com/AhmaadKaleeem/Programming_Practice/tree/main/DSA_Problems_Cplusplus/project/voting_management)
 
 ---
 
-For more information, issues, or feature requests, please visit the [GitHub Repository](https://github.com/AhmaadKaleeem/Programming_Practice).
+**Made with 💚 by Ahmad for Pakistan** 🇵🇰  
+[GitHub Repository](https://github.com/AhmaadKaleeem/Programming_Practice/tree/main/DSA_Problems_Cplusplus/project/voting_management)
