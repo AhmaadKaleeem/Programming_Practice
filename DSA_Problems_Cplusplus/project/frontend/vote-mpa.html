@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for MPA - Pakistan EMS</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="flag-background">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>Pakistan EMS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="voter-dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><button onclick="AuthService.logout()" class="btn-nav-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Voting Container -->
+    <div class="voting-container">
+        <div class="voting-wrapper">
+            <!-- Header -->
+            <div class="voting-header">
+                <a href="voter-dashboard.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <h1><i class="fas fa-building"></i> Cast Vote for MPA</h1>
+                <p>Provincial Assembly Representative</p>
+            </div>
+
+            <!-- Voter Info -->
+            <div class="voter-info-card">
+                <div class="info-item">
+                    <label><i class="fas fa-user"></i> Voter Name:</label>
+                    <span id="voter-name-display">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <label><i class="fas fa-id-card"></i> CNIC:</label>
+                    <span id="voter-cnic-display">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <label><i class="fas fa-flag"></i> Province:</label>
+                    <span id="voter-province-display">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <label><i class="fas fa-map-marker-alt"></i> PA Constituency:</label>
+                    <span id="voter-pa-display">Loading...</span>
+                </div>
+            </div>
+
+            <!-- Voting Status -->
+            <div id="mpa-voting-status" class="voting-status-alert">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Candidates Section -->
+            <div class="candidates-section">
+                <h2><i class="fas fa-users"></i> Select Your MPA Candidate</h2>
+                <div id="mpa-candidates-list">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading candidates...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vote Button -->
+            <div class="vote-action">
+                <button id="cast-mpa-vote-btn" class="btn btn-primary btn-lg" disabled>
+                    <i class="fas fa-check-circle"></i>
+                    Cast Vote for MPA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/voting.js"></script>
+    <script>
+        // Initialize MPA voting page
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMPAVoting();
+        });
+    </script>
+</body>
+</html>

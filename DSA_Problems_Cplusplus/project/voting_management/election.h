@@ -47,14 +47,13 @@ public:
     void load_vote_counts_from_file();
     void save_ledger_to_file();
     void load_ledger_from_file();
-
-private:
-    string mna_winner_cnic;
-    string mpa_winner_cnic;
     bool has_voter_voted_mna(const string &cnic) const;
     bool has_voter_voted_mpa(const string &cnic) const;
     void record_mna_vote(const string &candidate_name);
     void record_mpa_vote(const string &candidate_name);
+    string mna_winner_cnic;
+    string mpa_winner_cnic;
+  
     bool validate_candidate_cnic(const string &cnic);
 
     struct Candidate

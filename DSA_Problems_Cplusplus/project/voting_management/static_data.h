@@ -1,6 +1,6 @@
 #pragma once
 #include "libraries.h"
-
+using namespace std;
 enum Province
 {
     PUNJAB,

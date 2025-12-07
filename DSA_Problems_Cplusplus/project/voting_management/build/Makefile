@@ -59,7 +59,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = D:\Github\DSA_Problems_Cplusplus\project\voting_management
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Github\DSa_Problems_Cplusplus\project\voting_management\build
+CMAKE_BINARY_DIR = D:\github\DSA_Problems_Cplusplus\project\voting_management\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles D:\github\DSA_Problems_Cplusplus\project\voting_management\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,12 +128,26 @@ elections/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/build
 .PHONY : elections/fast
 
+#=============================================================================
+# Target rules for targets named elections_api
+
+# Build rule for target.
+elections_api: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 elections_api
+.PHONY : elections_api
+
+# fast build rule for target.
+elections_api/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/build
+.PHONY : elections_api/fast
+
 admin_panel.obj: admin_panel.cpp.obj
 .PHONY : admin_panel.obj
 
 # target to build an object file
 admin_panel.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/admin_panel.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/admin_panel.cpp.obj
 .PHONY : admin_panel.cpp.obj
 
 admin_panel.i: admin_panel.cpp.i
@@ -142,6 +156,7 @@ admin_panel.i: admin_panel.cpp.i
 # target to preprocess a source file
 admin_panel.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/admin_panel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/admin_panel.cpp.i
 .PHONY : admin_panel.cpp.i
 
 admin_panel.s: admin_panel.cpp.s
@@ -150,6 +165,7 @@ admin_panel.s: admin_panel.cpp.s
 # target to generate assembly for a file
 admin_panel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/admin_panel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/admin_panel.cpp.s
 .PHONY : admin_panel.cpp.s
 
 election.obj: election.cpp.obj
@@ -158,6 +174,7 @@ election.obj: election.cpp.obj
 # target to build an object file
 election.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/election.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/election.cpp.obj
 .PHONY : election.cpp.obj
 
 election.i: election.cpp.i
@@ -166,6 +183,7 @@ election.i: election.cpp.i
 # target to preprocess a source file
 election.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/election.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/election.cpp.i
 .PHONY : election.cpp.i
 
 election.s: election.cpp.s
@@ -174,6 +192,7 @@ election.s: election.cpp.s
 # target to generate assembly for a file
 election.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/election.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/election.cpp.s
 .PHONY : election.cpp.s
 
 ledger.obj: ledger.cpp.obj
@@ -182,6 +201,7 @@ ledger.obj: ledger.cpp.obj
 # target to build an object file
 ledger.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/ledger.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/ledger.cpp.obj
 .PHONY : ledger.cpp.obj
 
 ledger.i: ledger.cpp.i
@@ -190,6 +210,7 @@ ledger.i: ledger.cpp.i
 # target to preprocess a source file
 ledger.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/ledger.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/ledger.cpp.i
 .PHONY : ledger.cpp.i
 
 ledger.s: ledger.cpp.s
@@ -198,6 +219,7 @@ ledger.s: ledger.cpp.s
 # target to generate assembly for a file
 ledger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/ledger.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/ledger.cpp.s
 .PHONY : ledger.cpp.s
 
 run_main.obj: run_main.cpp.obj
@@ -224,12 +246,37 @@ run_main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/run_main.cpp.s
 .PHONY : run_main.cpp.s
 
+server.obj: server.cpp.obj
+.PHONY : server.obj
+
+# target to build an object file
+server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/server.cpp.obj
+.PHONY : server.cpp.obj
+
+server.i: server.cpp.i
+.PHONY : server.i
+
+# target to preprocess a source file
+server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/server.cpp.i
+.PHONY : server.cpp.i
+
+server.s: server.cpp.s
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/server.cpp.s
+.PHONY : server.cpp.s
+
 utilities.obj: utilities.cpp.obj
 .PHONY : utilities.obj
 
 # target to build an object file
 utilities.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/utilities.cpp.obj
 .PHONY : utilities.cpp.obj
 
 utilities.i: utilities.cpp.i
@@ -238,6 +285,7 @@ utilities.i: utilities.cpp.i
 # target to preprocess a source file
 utilities.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/utilities.cpp.i
 .PHONY : utilities.cpp.i
 
 utilities.s: utilities.cpp.s
@@ -246,6 +294,7 @@ utilities.s: utilities.cpp.s
 # target to generate assembly for a file
 utilities.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/utilities.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/utilities.cpp.s
 .PHONY : utilities.cpp.s
 
 vote_queue.obj: vote_queue.cpp.obj
@@ -254,6 +303,7 @@ vote_queue.obj: vote_queue.cpp.obj
 # target to build an object file
 vote_queue.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/vote_queue.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/vote_queue.cpp.obj
 .PHONY : vote_queue.cpp.obj
 
 vote_queue.i: vote_queue.cpp.i
@@ -262,6 +312,7 @@ vote_queue.i: vote_queue.cpp.i
 # target to preprocess a source file
 vote_queue.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/vote_queue.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/vote_queue.cpp.i
 .PHONY : vote_queue.cpp.i
 
 vote_queue.s: vote_queue.cpp.s
@@ -270,6 +321,7 @@ vote_queue.s: vote_queue.cpp.s
 # target to generate assembly for a file
 vote_queue.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/vote_queue.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/vote_queue.cpp.s
 .PHONY : vote_queue.cpp.s
 
 voter.obj: voter.cpp.obj
@@ -278,6 +330,7 @@ voter.obj: voter.cpp.obj
 # target to build an object file
 voter.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter.cpp.obj
 .PHONY : voter.cpp.obj
 
 voter.i: voter.cpp.i
@@ -286,6 +339,7 @@ voter.i: voter.cpp.i
 # target to preprocess a source file
 voter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter.cpp.i
 .PHONY : voter.cpp.i
 
 voter.s: voter.cpp.s
@@ -294,6 +348,7 @@ voter.s: voter.cpp.s
 # target to generate assembly for a file
 voter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter.cpp.s
 .PHONY : voter.cpp.s
 
 voter_management.obj: voter_management.cpp.obj
@@ -302,6 +357,7 @@ voter_management.obj: voter_management.cpp.obj
 # target to build an object file
 voter_management.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter_management.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter_management.cpp.obj
 .PHONY : voter_management.cpp.obj
 
 voter_management.i: voter_management.cpp.i
@@ -310,6 +366,7 @@ voter_management.i: voter_management.cpp.i
 # target to preprocess a source file
 voter_management.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter_management.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter_management.cpp.i
 .PHONY : voter_management.cpp.i
 
 voter_management.s: voter_management.cpp.s
@@ -318,6 +375,7 @@ voter_management.s: voter_management.cpp.s
 # target to generate assembly for a file
 voter_management.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voter_management.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voter_management.cpp.s
 .PHONY : voter_management.cpp.s
 
 voting_time.obj: voting_time.cpp.obj
@@ -326,6 +384,7 @@ voting_time.obj: voting_time.cpp.obj
 # target to build an object file
 voting_time.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voting_time.cpp.obj
 .PHONY : voting_time.cpp.obj
 
 voting_time.i: voting_time.cpp.i
@@ -334,6 +393,7 @@ voting_time.i: voting_time.cpp.i
 # target to preprocess a source file
 voting_time.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voting_time.cpp.i
 .PHONY : voting_time.cpp.i
 
 voting_time.s: voting_time.cpp.s
@@ -342,6 +402,7 @@ voting_time.s: voting_time.cpp.s
 # target to generate assembly for a file
 voting_time.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/voting_time.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/voting_time.cpp.s
 .PHONY : voting_time.cpp.s
 
 # Help Target
@@ -353,6 +414,7 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... elections
+	@echo ... elections_api
 	@echo ... admin_panel.obj
 	@echo ... admin_panel.i
 	@echo ... admin_panel.s
@@ -365,6 +427,9 @@ help:
 	@echo ... run_main.obj
 	@echo ... run_main.i
 	@echo ... run_main.s
+	@echo ... server.obj
+	@echo ... server.i
+	@echo ... server.s
 	@echo ... utilities.obj
 	@echo ... utilities.i
 	@echo ... utilities.s

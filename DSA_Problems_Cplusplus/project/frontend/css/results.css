@@ -1,0 +1,367 @@
+/* ==================== RESULTS CONTAINER ==================== */
+.results-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 2rem 4rem;
+    min-height: 100vh;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.results-header h1 {
+    font-size: 3rem;
+    color: var(--pakistan-white);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.results-header h1 i {
+    color: var(--pakistan-green-light);
+}
+
+.results-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.results-header .btn {
+    margin-top: 1rem;
+}
+
+/* ==================== RESULTS TABS ==================== */
+.results-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.results-tabs .tab-btn {
+    padding: 1rem 2rem;
+    background: var(--bg-card);
+    border: 2px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.results-tabs .tab-btn:hover {
+    border-color: var(--pakistan-green-light);
+    background: rgba(12, 107, 61, 0.1);
+}
+
+.results-tabs .tab-btn.active {
+    background: var(--gradient-primary);
+    border-color: var(--pakistan-green-light);
+    color: var(--pakistan-white);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ==================== RESULTS SECTIONS ==================== */
+.results-section {
+    display: none;
+}
+
+.results-section.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+/* ==================== RESULTS CARD ==================== */
+.results-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(12, 107, 61, 0.3);
+}
+
+.card-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.8rem;
+    color: var(--pakistan-white);
+    margin: 0;
+}
+
+.card-header h2 i {
+    color: var(--pakistan-green-light);
+}
+
+.winners-header h2 i {
+    color: var(--pakistan-star);
+}
+
+/* ==================== RESULTS GRID ==================== */
+.results-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.result-item {
+    background: var(--bg-card);
+    border: 1px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.result-item:hover {
+    border-color: var(--pakistan-green-light);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.result-item.winner-item {
+    border-color: var(--pakistan-star);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.result-candidate {
+    flex: 1;
+}
+
+.result-candidate-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--pakistan-white);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.result-candidate-details {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.result-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.result-detail i {
+    color: var(--pakistan-green-light);
+    font-size: 1rem;
+}
+
+.result-votes {
+    text-align: center;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(12, 107, 61, 0.3);
+    min-width: 120px;
+}
+
+.result-votes-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.result-votes-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--pakistan-green-lighter);
+}
+
+/* ==================== WINNER BADGE ==================== */
+.winner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 215, 0, 0.2);
+    border: 1px solid var(--pakistan-star);
+    color: var(--pakistan-star);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.winner-badge i {
+    font-size: 1rem;
+}
+
+/* ==================== NO RESULTS STYLING ==================== */
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(12, 107, 61, 0.05);
+    border: 2px dashed rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: var(--pakistan-green-light);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.no-results h3 {
+    color: var(--pakistan-white);
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-results .btn {
+    margin-top: 1.5rem;
+}
+
+/* ==================== LOADING STATE ==================== */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.loading i {
+    font-size: 3rem;
+    color: var(--pakistan-green-light);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.loading p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .results-container {
+        padding: 6rem 1rem 2rem;
+    }
+    
+    .results-header h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .results-tabs {
+        flex-direction: column;
+    }
+    
+    .results-tabs .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .results-card {
+        padding: 1.5rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .result-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .result-candidate-name {
+        justify-content: center;
+    }
+    
+    .result-candidate-details {
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+    
+    .result-votes {
+        border-left: none;
+        border-top: 2px solid rgba(12, 107, 61, 0.3);
+        padding: 1rem 0 0 0;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .no-results {
+        padding: 3rem 1.5rem;
+    }
+    
+    .no-results i {
+        font-size: 3rem;
+    }
+    
+    .no-results h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .results-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .result-candidate-name {
+        font-size: 1.1rem;
+    }
+    
+    .result-votes-number {
+        font-size: 1.5rem;
+    }
+}

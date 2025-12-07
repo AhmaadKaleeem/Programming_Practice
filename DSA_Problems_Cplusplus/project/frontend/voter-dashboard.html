@@ -1,0 +1,197 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Dashboard - Pakistan EMS</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="flag-background">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>Pakistan EMS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="voter-dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><button onclick="AuthService.logout()" class="btn-nav-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="voter-name">Loading...</h3>
+                <p class="voter-id" id="voter-id">VTR-XXXXX</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#profile" class="menu-item active" onclick="showSection('profile')">
+                    <i class="fas fa-user"></i>
+                    <span>My Profile</span>
+                </a>
+                <a href="#constituency" class="menu-item" onclick="showSection('constituency')">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>My Constituency</span>
+                </a>
+                <a href="#vote-mna" class="menu-item" onclick="showSection('vote-mna')">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Vote for MNA</span>
+                    <span class="badge" id="mna-badge"></span>
+                </a>
+                <a href="#vote-mpa" class="menu-item" onclick="showSection('vote-mpa')">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>Vote for MPA</span>
+                    <span class="badge" id="mpa-badge"></span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="voting-status-mini" id="voting-status-mini">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="banner-content">
+                    <h1>Welcome, <span id="welcome-name">Voter</span>!</h1>
+                    <p>Exercise your democratic right by casting your vote</p>
+                </div>
+                <div class="banner-icon">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="dashboard-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> My Profile</h2>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-grid">
+                        <div class="profile-item">
+                            <label><i class="fas fa-user"></i> Full Name</label>
+                            <p id="profile-name">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <label><i class="fas fa-id-card"></i> CNIC</label>
+                            <p id="profile-cnic">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <label><i class="fas fa-calendar"></i> Age</label>
+                            <p id="profile-age">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <label><i class="fas fa-id-badge"></i> Voter ID</label>
+                            <p id="profile-voter-id">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <label><i class="fas fa-flag"></i> Province</label>
+                            <p id="profile-province">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <label><i class="fas fa-check-circle"></i> Voting Status</label>
+                            <p id="profile-vote-status">
+                                <span class="status-badge">Loading...</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Constituency Section -->
+            <section id="constituency-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marker-alt"></i> My Constituency</h2>
+                </div>
+
+                <div class="constituency-grid">
+                    <div class="constituency-card">
+                        <div class="card-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>National Assembly</h3>
+                        <div class="constituency-info">
+                            <p class="constituency-number" id="na-number">NA-XXX</p>
+                            <p class="constituency-area" id="na-area">Loading...</p>
+                        </div>
+                    </div>
+
+                    <div class="constituency-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Provincial Assembly</h3>
+                        <div class="constituency-info">
+                            <p class="constituency-number" id="pa-number">PX-XXX</p>
+                            <p class="constituency-area" id="pa-area">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vote MNA Section -->
+            <section id="vote-mna-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-vote-yea"></i> Cast Vote for MNA</h2>
+                    <p>National Assembly Representative</p>
+                </div>
+
+                <div class="voting-status-alert" id="mna-voting-status">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div id="mna-candidates-container">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Vote MPA Section -->
+            <section id="vote-mpa-section" class="dashboard-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-vote-yea"></i> Cast Vote for MPA</h2>
+                    <p>Provincial Assembly Representative</p>
+                </div>
+
+                <div class="voting-status-alert" id="mpa-voting-status">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div id="mpa-candidates-container">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/voter.js"></script>
+</body>
+</html>

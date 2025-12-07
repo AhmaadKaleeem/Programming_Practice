@@ -1,0 +1,311 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width.initial-scale=1.0">
+    <title>Pakistan Election Management System 2025</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Pakistani Flag Background -->
+    <div class="flag-background">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>Pakistan EMS</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <div class="hero-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Blockchain Secured</span>
+            </div>
+            <h1 class="hero-title">
+                Pakistan Election <br>
+                <span class="gradient-text">Management System</span>
+            </h1>
+            <p class="hero-subtitle">
+                🗳️ Secure • Transparent • Democratic
+            </p>
+            <p class="hero-description">
+                Experience the future of voting with blockchain-verified elections.
+                Vote for National and Provincial Assembly representatives with complete transparency and security.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="register.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-user-plus"></i>
+                    Register to Vote
+                </a>
+                <a href="login.html" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Voter Login
+                </a>
+                <a href="login.html? admin=true" class="btn btn-danger btn-lg">
+                    <i class="fas fa-user-shield"></i>
+                    Admin Panel
+                </a>
+            </div>
+        </div>
+
+        <!-- Voting Status Card -->
+        <div class="voting-status-card fade-in-up">
+            <div class="status-header">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Election Schedule</h3>
+            </div>
+            <div id="voting-status-content" class="status-content">
+                <!-- Populated by JavaScript -->
+            </div>
+            <div class="election-info">
+                <p><strong>Date:</strong> <span id="election-date"></span></p>
+                <p><strong>Time:</strong> <span id="voting-hours"></span></p>
+                <div class="current-time" id="current-time"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card fade-in-up">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="0" id="stat-voters">0</h3>
+                        <p>Registered Voters</p>
+                    </div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="266">0</h3>
+                        <p>NA Constituencies</p>
+                    </div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="593">0</h3>
+                        <p>PA Seats</p>
+                    </div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="100">0</h3>
+                        <p>% Secure</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">System Features</h2>
+                <p class="section-subtitle">Built with cutting-edge technology for transparent elections</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h3>CNIC Authentication</h3>
+                    <p>Secure voter registration with 13-digit CNIC validation and password protection</p>
+                    <div class="feature-badge">Secure</div>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <h3>Dual Election System</h3>
+                    <p>Vote for both National Assembly (MNA) and Provincial Assembly (MPA) representatives</p>
+                    <div class="feature-badge">Democratic</div>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Blockchain Ledger</h3>
+                    <p>Immutable vote recording with hash verification and tamper-proof security</p>
+                    <div class="feature-badge">Transparent</div>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Live Results</h3>
+                    <p>Real-time vote counting with instant winner determination and analytics</p>
+                    <div class="feature-badge">Real-time</div>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Constituency Management</h3>
+                    <p>Automatic mapping of all 266 NA and 593+ PA seats across Pakistan</p>
+                    <div class="feature-badge">Complete</div>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Validation</h3>
+                    <p>Strict voting schedule enforcement with real-time time checking</p>
+                    <div class="feature-badge">Reliable</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="process-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple 4-step process to cast your vote</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Register</h3>
+                        <p>Create your account with CNIC and select your constituency</p>
+                    </div>
+                </div>
+
+                <div class="process-step fade-in-up">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Login</h3>
+                        <p>Secure login with CNIC and password authentication</p>
+                    </div>
+                </div>
+
+                <div class="process-step fade-in-up">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Cast Vote</h3>
+                        <p>Vote for your preferred MNA and MPA candidates</p>
+                    </div>
+                </div>
+
+                <div class="process-step fade-in-up">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Verify</h3>
+                        <p>Your vote is recorded in the blockchain ledger</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-vote-yea"></i> Pakistan EMS</h3>
+                    <p>Empowering democracy through secure.transparent.and efficient voting systems.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/AhmaadKaleeem/Programming_Practice" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="login.html?admin=true">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#about">About System</a></li>
+                        <li><a href="#about">How to Vote</a></li>
+                        <li><a href="#about">Security</a></li>
+                        <li><a href="#about">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-university"></i> Air University</p>
+                    <p><i class="fas fa-envelope"></i> ahmad.kaleem@students.au.edu.pk</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Islamabad.Pakistan</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pakistan Election Management System | Developed by Ahmad Kaleem Bhatti</p>
+                <p>Air University - Data Structures & Algorithms Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -55,7 +55,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = D:\Github\DSA_Problems_Cplusplus\project\voting_management
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Github\DSa_Problems_Cplusplus\project\voting_management\build
+CMAKE_BINARY_DIR = D:\github\DSA_Problems_Cplusplus\project\voting_management\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/elections.dir/depend.make
@@ -71,10 +71,26 @@ include CMakeFiles/elections.dir/flags.make
 CMakeFiles/elections.dir/codegen:
 .PHONY : CMakeFiles/elections.dir/codegen
 
+CMakeFiles/elections.dir/run_main.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/run_main.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
+CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/run_main.cpp
+CMakeFiles/elections.dir/run_main.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/elections.dir/run_main.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/run_main.cpp.obj -MF CMakeFiles\elections.dir\run_main.cpp.obj.d -o CMakeFiles\elections.dir\run_main.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp
+
+CMakeFiles/elections.dir/run_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/elections.dir/run_main.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp > CMakeFiles\elections.dir\run_main.cpp.i
+
+CMakeFiles/elections.dir/run_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/elections.dir/run_main.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp -o CMakeFiles\elections.dir\run_main.cpp.s
+
 CMakeFiles/elections.dir/admin_panel.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/admin_panel.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/admin_panel.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/admin_panel.cpp
 CMakeFiles/elections.dir/admin_panel.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/elections.dir/admin_panel.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/elections.dir/admin_panel.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/admin_panel.cpp.obj -MF CMakeFiles\elections.dir\admin_panel.cpp.obj.d -o CMakeFiles\elections.dir\admin_panel.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\admin_panel.cpp
 
 CMakeFiles/elections.dir/admin_panel.cpp.i: cmake_force
@@ -86,9 +102,10 @@ CMakeFiles/elections.dir/admin_panel.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\admin_panel.cpp -o CMakeFiles\elections.dir\admin_panel.cpp.s
 
 CMakeFiles/elections.dir/election.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/election.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/election.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/election.cpp
 CMakeFiles/elections.dir/election.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/elections.dir/election.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/elections.dir/election.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/election.cpp.obj -MF CMakeFiles\elections.dir\election.cpp.obj.d -o CMakeFiles\elections.dir\election.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\election.cpp
 
 CMakeFiles/elections.dir/election.cpp.i: cmake_force
@@ -100,9 +117,10 @@ CMakeFiles/elections.dir/election.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\election.cpp -o CMakeFiles\elections.dir\election.cpp.s
 
 CMakeFiles/elections.dir/ledger.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/ledger.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/ledger.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/ledger.cpp
 CMakeFiles/elections.dir/ledger.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/elections.dir/ledger.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/elections.dir/ledger.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/ledger.cpp.obj -MF CMakeFiles\elections.dir\ledger.cpp.obj.d -o CMakeFiles\elections.dir\ledger.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\ledger.cpp
 
 CMakeFiles/elections.dir/ledger.cpp.i: cmake_force
@@ -113,24 +131,11 @@ CMakeFiles/elections.dir/ledger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/elections.dir/ledger.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\ledger.cpp -o CMakeFiles\elections.dir\ledger.cpp.s
 
-CMakeFiles/elections.dir/run_main.cpp.obj: CMakeFiles/elections.dir/flags.make
-CMakeFiles/elections.dir/run_main.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/run_main.cpp
-CMakeFiles/elections.dir/run_main.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/elections.dir/run_main.cpp.obj"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/run_main.cpp.obj -MF CMakeFiles\elections.dir\run_main.cpp.obj.d -o CMakeFiles\elections.dir\run_main.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp
-
-CMakeFiles/elections.dir/run_main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/elections.dir/run_main.cpp.i"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp > CMakeFiles\elections.dir\run_main.cpp.i
-
-CMakeFiles/elections.dir/run_main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/elections.dir/run_main.cpp.s"
-	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\run_main.cpp -o CMakeFiles\elections.dir\run_main.cpp.s
-
 CMakeFiles/elections.dir/vote_queue.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/vote_queue.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/vote_queue.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/vote_queue.cpp
 CMakeFiles/elections.dir/vote_queue.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/elections.dir/vote_queue.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/elections.dir/vote_queue.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/vote_queue.cpp.obj -MF CMakeFiles\elections.dir\vote_queue.cpp.obj.d -o CMakeFiles\elections.dir\vote_queue.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\vote_queue.cpp
 
 CMakeFiles/elections.dir/vote_queue.cpp.i: cmake_force
@@ -142,9 +147,10 @@ CMakeFiles/elections.dir/vote_queue.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\vote_queue.cpp -o CMakeFiles\elections.dir\vote_queue.cpp.s
 
 CMakeFiles/elections.dir/voter_management.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/voter_management.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/voter_management.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter_management.cpp
 CMakeFiles/elections.dir/voter_management.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/elections.dir/voter_management.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/elections.dir/voter_management.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/voter_management.cpp.obj -MF CMakeFiles\elections.dir\voter_management.cpp.obj.d -o CMakeFiles\elections.dir\voter_management.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter_management.cpp
 
 CMakeFiles/elections.dir/voter_management.cpp.i: cmake_force
@@ -156,9 +162,10 @@ CMakeFiles/elections.dir/voter_management.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter_management.cpp -o CMakeFiles\elections.dir\voter_management.cpp.s
 
 CMakeFiles/elections.dir/voter.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/voter.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/voter.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/voter.cpp
 CMakeFiles/elections.dir/voter.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/elections.dir/voter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/elections.dir/voter.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/voter.cpp.obj -MF CMakeFiles\elections.dir\voter.cpp.obj.d -o CMakeFiles\elections.dir\voter.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter.cpp
 
 CMakeFiles/elections.dir/voter.cpp.i: cmake_force
@@ -170,9 +177,10 @@ CMakeFiles/elections.dir/voter.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\voter.cpp -o CMakeFiles\elections.dir\voter.cpp.s
 
 CMakeFiles/elections.dir/voting_time.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/voting_time.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/voting_time.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/voting_time.cpp
 CMakeFiles/elections.dir/voting_time.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/elections.dir/voting_time.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/elections.dir/voting_time.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/voting_time.cpp.obj -MF CMakeFiles\elections.dir\voting_time.cpp.obj.d -o CMakeFiles\elections.dir\voting_time.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\voting_time.cpp
 
 CMakeFiles/elections.dir/voting_time.cpp.i: cmake_force
@@ -184,9 +192,10 @@ CMakeFiles/elections.dir/voting_time.cpp.s: cmake_force
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Github\DSA_Problems_Cplusplus\project\voting_management\voting_time.cpp -o CMakeFiles\elections.dir\voting_time.cpp.s
 
 CMakeFiles/elections.dir/utilities.cpp.obj: CMakeFiles/elections.dir/flags.make
+CMakeFiles/elections.dir/utilities.cpp.obj: CMakeFiles/elections.dir/includes_CXX.rsp
 CMakeFiles/elections.dir/utilities.cpp.obj: D:/Github/DSA_Problems_Cplusplus/project/voting_management/utilities.cpp
 CMakeFiles/elections.dir/utilities.cpp.obj: CMakeFiles/elections.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/elections.dir/utilities.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/elections.dir/utilities.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/elections.dir/utilities.cpp.obj -MF CMakeFiles\elections.dir\utilities.cpp.obj.d -o CMakeFiles\elections.dir\utilities.cpp.obj -c D:\Github\DSA_Problems_Cplusplus\project\voting_management\utilities.cpp
 
 CMakeFiles/elections.dir/utilities.cpp.i: cmake_force
@@ -199,10 +208,10 @@ CMakeFiles/elections.dir/utilities.cpp.s: cmake_force
 
 # Object files for target elections
 elections_OBJECTS = \
+"CMakeFiles/elections.dir/run_main.cpp.obj" \
 "CMakeFiles/elections.dir/admin_panel.cpp.obj" \
 "CMakeFiles/elections.dir/election.cpp.obj" \
 "CMakeFiles/elections.dir/ledger.cpp.obj" \
-"CMakeFiles/elections.dir/run_main.cpp.obj" \
 "CMakeFiles/elections.dir/vote_queue.cpp.obj" \
 "CMakeFiles/elections.dir/voter_management.cpp.obj" \
 "CMakeFiles/elections.dir/voter.cpp.obj" \
@@ -212,10 +221,10 @@ elections_OBJECTS = \
 # External object files for target elections
 elections_EXTERNAL_OBJECTS =
 
+elections.exe: CMakeFiles/elections.dir/run_main.cpp.obj
 elections.exe: CMakeFiles/elections.dir/admin_panel.cpp.obj
 elections.exe: CMakeFiles/elections.dir/election.cpp.obj
 elections.exe: CMakeFiles/elections.dir/ledger.cpp.obj
-elections.exe: CMakeFiles/elections.dir/run_main.cpp.obj
 elections.exe: CMakeFiles/elections.dir/vote_queue.cpp.obj
 elections.exe: CMakeFiles/elections.dir/voter_management.cpp.obj
 elections.exe: CMakeFiles/elections.dir/voter.cpp.obj
@@ -225,7 +234,7 @@ elections.exe: CMakeFiles/elections.dir/build.make
 elections.exe: CMakeFiles/elections.dir/linkLibs.rsp
 elections.exe: CMakeFiles/elections.dir/objects1.rsp
 elections.exe: CMakeFiles/elections.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable elections.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable elections.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\elections.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -237,6 +246,6 @@ CMakeFiles/elections.dir/clean:
 .PHONY : CMakeFiles/elections.dir/clean
 
 CMakeFiles/elections.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Github\DSA_Problems_Cplusplus\project\voting_management D:\Github\DSA_Problems_Cplusplus\project\voting_management D:\Github\DSa_Problems_Cplusplus\project\voting_management\build D:\Github\DSa_Problems_Cplusplus\project\voting_management\build D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles\elections.dir\DependInfo.cmake "--color=$(COLOR)" elections
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Github\DSA_Problems_Cplusplus\project\voting_management D:\Github\DSA_Problems_Cplusplus\project\voting_management D:\github\DSA_Problems_Cplusplus\project\voting_management\build D:\github\DSA_Problems_Cplusplus\project\voting_management\build D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles\elections.dir\DependInfo.cmake "--color=$(COLOR)" elections
 .PHONY : CMakeFiles/elections.dir/depend
 

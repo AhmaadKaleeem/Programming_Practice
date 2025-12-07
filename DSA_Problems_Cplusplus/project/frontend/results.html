@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results - Pakistan EMS</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="flag-background">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>Pakistan EMS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="results.html" class="nav-link active">Results</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Results Container -->
+    <div class="results-container">
+        <div class="results-header">
+            <h1><i class="fas fa-chart-bar"></i> Election Results 2025</h1>
+            <p>Live vote counting and winner determination</p>
+            <button class="btn btn-primary" onclick="refreshResults()">
+                <i class="fas fa-sync"></i> Refresh Results
+            </button>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="results-tabs">
+            <button class="tab-btn active" onclick="switchResultsTab('all-votes')">
+                <i class="fas fa-list"></i>
+                All Vote Counts
+            </button>
+            <button class="tab-btn" onclick="switchResultsTab('winners')">
+                <i class="fas fa-trophy"></i>
+                Current Winners
+            </button>
+        </div>
+
+        <!-- All Votes Section -->
+        <section id="all-votes-section" class="results-section active">
+            <!-- MNA Results -->
+            <div class="results-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-landmark"></i> National Assembly (MNA) Results</h2>
+                </div>
+                <div id="mna-results-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading MNA results...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MPA Results -->
+            <div class="results-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-building"></i> Provincial Assembly (MPA) Results</h2>
+                </div>
+                <div id="mpa-results-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading MPA results...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Winners Section -->
+        <section id="winners-section" class="results-section">
+            <!-- MNA Winners -->
+            <div class="results-card">
+                <div class="card-header winners-header">
+                    <h2><i class="fas fa-trophy"></i> National Assembly Winners</h2>
+                </div>
+                <div id="mna-winners-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Calculating winners...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MPA Winners -->
+            <div class="results-card">
+                <div class="card-header winners-header">
+                    <h2><i class="fas fa-trophy"></i> Provincial Assembly Winners</h2>
+                </div>
+                <div id="mpa-winners-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Calculating winners...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pakistan Election Management System | Developed by Ahmad Kaleem Bhatti</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

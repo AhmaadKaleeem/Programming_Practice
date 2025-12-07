@@ -64,7 +64,7 @@ bool Admin::authenticate_admin()
     system("cls");
     red();
     cout << "========================================\n";
-    cout << "     Login Failed. Invalid Credentials.\n";
+    cout << "     Login Failed.Invalid Credentials.\n";
     cout << "========================================\n";
     reset();
     cout << "\nPress Enter to return...";

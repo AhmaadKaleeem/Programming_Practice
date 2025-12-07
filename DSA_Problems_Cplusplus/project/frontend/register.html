@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration - Pakistan EMS</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="flag-background">
+        <div class="flag-green"></div>
+        <div class="flag-white"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>Pakistan EMS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="results.html" class="nav-link">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Form Section -->
+    <section class="form-section">
+        <div class="form-container fade-in-up">
+            <div class="form-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Voter Registration</h2>
+                <p>Register to exercise your democratic right</p>
+            </div>
+
+            <form id="registration-form" class="custom-form">
+                <!-- Personal Information -->
+                <div class="form-step active" id="step-1">
+                    <h3 class="step-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h3>
+
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Full Name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                        >
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cnic">
+                            <i class="fas fa-id-card"></i>
+                            CNIC Number
+                        </label>
+                        <input 
+                            type="text" 
+                            id="cnic" 
+                            name="cnic" 
+                            required 
+                            placeholder="3520212345678 (13 digits)"
+                            maxlength="13"
+                            pattern="[0-9]{13}"
+                            autocomplete="off"
+                        >
+                        <small class="form-hint">Enter 13-digit CNIC without dashes</small>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">
+                            <i class="fas fa-calendar"></i>
+                            Age
+                        </label>
+                        <input 
+                            type="number" 
+                            id="age" 
+                            name="age" 
+                            required 
+                            placeholder="Enter your age"
+                            min="18"
+                            max="120"
+                        >
+                        <small class="form-hint">Must be 18 or older to vote</small>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block" onclick="nextStep(2)">
+                        Next Step
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Constituency Selection -->
+                <div class="form-step" id="step-2">
+                    <h3 class="step-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Constituency Information
+                    </h3>
+
+                    <div class="form-group">
+                        <label for="na-seat">
+                            <i class="fas fa-landmark"></i>
+                            National Assembly (NA) Constituency
+                        </label>
+                        <select id="na-seat" name="na-seat" required>
+                            <option value="">Select NA Constituency (1-266)</option>
+                            <!-- Populated by JavaScript -->
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="province">
+                            <i class="fas fa-flag"></i>
+                            Province (Auto-detected)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="province" 
+                            name="province" 
+                            readonly 
+                            placeholder="Will be auto-detected from NA seat"
+                        >
+                    </div>
+
+                    <div class="form-group" id="pa-seat-group">
+                        <label for="pa-seat">
+                            <i class="fas fa-building"></i>
+                            Provincial Assembly (PA) Seat
+                        </label>
+                        <select id="pa-seat" name="pa-seat">
+                            <option value="">First select NA constituency</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                            Next Step
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Password Setup -->
+                <div class="form-step" id="step-3">
+                    <h3 class="step-title">
+                        <i class="fas fa-lock"></i>
+                        Security Setup
+                    </h3>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                placeholder="Create a password"
+                                minlength="1"
+                                autocomplete="new-password"
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small class="form-hint">Password must contain letters and numbers</small>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="confirm-password" 
+                                name="confirm-password" 
+                                required 
+                                placeholder="Re-enter your password"
+                                minlength="1"
+                                autocomplete="new-password"
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirm-password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Register Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-indicator">
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-dot">1</div>
+                        <span>Personal</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-dot">2</div>
+                        <span>Constituency</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-dot">3</div>
+                        <span>Security</span>
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-footer">
+                <p>Already registered? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

@@ -56,17 +56,19 @@ EQUALS = =
 CMAKE_SOURCE_DIR = D:\Github\DSA_Problems_Cplusplus\project\voting_management
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Github\DSa_Problems_Cplusplus\project\voting_management\build
+CMAKE_BINARY_DIR = D:\github\DSA_Problems_Cplusplus\project\voting_management\build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/elections.dir/all
+all: CMakeFiles/elections_api.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/elections.dir/codegen
+codegen: CMakeFiles/elections_api.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,6 +77,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/elections.dir/clean
+clean: CMakeFiles/elections_api.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -84,14 +87,14 @@ clean: CMakeFiles/elections.dir/clean
 CMakeFiles/elections.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target elections"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target elections"
 .PHONY : CMakeFiles/elections.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/elections.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/elections.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
 .PHONY : CMakeFiles/elections.dir/rule
 
 # Convenience name for target.
@@ -101,13 +104,45 @@ elections: CMakeFiles/elections.dir/rule
 # codegen rule for target.
 CMakeFiles/elections.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Github\DSa_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target elections"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target elections"
 .PHONY : CMakeFiles/elections.dir/codegen
 
 # clean rule for target.
 CMakeFiles/elections.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections.dir\build.make CMakeFiles/elections.dir/clean
 .PHONY : CMakeFiles/elections.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/elections_api.dir
+
+# All Build rule for target.
+CMakeFiles/elections_api.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Built target elections_api"
+.PHONY : CMakeFiles/elections_api.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/elections_api.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/elections_api.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles 0
+.PHONY : CMakeFiles/elections_api.dir/rule
+
+# Convenience name for target.
+elections_api: CMakeFiles/elections_api.dir/rule
+.PHONY : elections_api
+
+# codegen rule for target.
+CMakeFiles/elections_api.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\github\DSA_Problems_Cplusplus\project\voting_management\build\CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Finished codegen for target elections_api"
+.PHONY : CMakeFiles/elections_api.dir/codegen
+
+# clean rule for target.
+CMakeFiles/elections_api.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\elections_api.dir\build.make CMakeFiles/elections_api.dir/clean
+.PHONY : CMakeFiles/elections_api.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

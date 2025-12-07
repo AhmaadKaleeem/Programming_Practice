@@ -1,0 +1,875 @@
+/* ==================== VARIABLES ==================== */
+:root {
+    /* Pakistani Flag Colors - Dark Theme */
+    --pakistan-green: #01411C;
+    --pakistan-green-light: #0C6B3D;
+    --pakistan-green-lighter: #14805E;
+    --pakistan-white: #FFFFFF;
+    --pakistan-star: #FFD700;
+    
+    /* Dark Theme Colors */
+    --bg-primary: #0A0E0D;
+    --bg-secondary: #111918;
+    --bg-card: #1A2421;
+    --bg-card-hover: #223330;
+    
+    /* Text Colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8C5C0;
+    --text-muted: #7A8B84;
+    
+    /* Accent Colors */
+    --accent-green: #0C6B3D;
+    --accent-gold: #FFD700;
+    --accent-red: #DC3545;
+    --accent-blue: #2196F3;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #01411C 0%, #0C6B3D 100%);
+    --gradient-secondary: linear-gradient(135deg, #0C6B3D 0%, #14805E 100%);
+    --gradient-card: linear-gradient(145deg, #1A2421 0%, #111918 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(1, 65, 28, 0.15);
+    --shadow-md: 0 4px 16px rgba(1, 65, 28, 0.25);
+    --shadow-lg: 0 8px 32px rgba(1, 65, 28, 0.35);
+    --shadow-glow: 0 0 20px rgba(12, 107, 61, 0.4);
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* Transitions */
+    --transition: 0.3s ease;
+}
+
+/* ==================== RESET & BASE ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--pakistan-green-lighter);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--pakistan-green-light);
+}
+
+/* ==================== PAKISTANI FLAG BACKGROUND ==================== */
+.flag-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.flag-green {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--pakistan-green);
+}
+
+.flag-white {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background: var(--pakistan-white);
+    left: 0;
+}
+
+/* ==================== NAVIGATION ==================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 14, 13, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(12, 107, 61, 0.3);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pakistan-white);
+    text-decoration: none;
+}
+
+.logo i {
+    color: var(--pakistan-green-light);
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--pakistan-green-light);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--pakistan-white);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.btn-nav {
+    background: var(--gradient-primary);
+    color: var(--pakistan-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-nav-logout {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: var(--pakistan-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.btn-nav-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--pakistan-green-light);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    font-family: inherit;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none ! important;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--pakistan-white);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--pakistan-white);
+    border: 2px solid var(--pakistan-green-light);
+}
+
+.btn-secondary:hover {
+    background: var(--pakistan-green-light);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20913a 100%);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-lg {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8rem 4rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(12, 107, 61, 0.2);
+    border: 1px solid var(--pakistan-green-light);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    color: var(--pakistan-green-lighter);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--pakistan-white);
+}
+
+.gradient-text {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+/* ==================== VOTING STATUS CARD ==================== */
+.voting-status-card {
+    flex: 0 0 400px;
+    background: var(--gradient-card);
+    border: 1px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.status-header i {
+    font-size: 2rem;
+    color: var(--pakistan-green-light);
+}
+
+.status-header h3 {
+    font-size: 1.5rem;
+    color: var(--pakistan-white);
+}
+
+.status-content {
+    background: rgba(12, 107, 61, 0.1);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.election-info {
+    color: var(--text-secondary);
+}
+
+.election-info p {
+    margin-bottom: 0.5rem;
+}
+
+.election-info strong {
+    color: var(--text-primary);
+}
+
+.current-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pakistan-green-lighter);
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* ==================== STATS SECTION ==================== */
+.stats-section {
+    padding: 4rem 2rem;
+    background: rgba(12, 107, 61, 0.05);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pakistan-green-light);
+    box-shadow: var(--shadow-glow);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--pakistan-white);
+    flex-shrink: 0;
+}
+
+.stat-content h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--pakistan-green-lighter);
+    margin-bottom: 0.25rem;
+}
+
+.stat-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ==================== SECTIONS ==================== */
+.section {
+    padding: 6rem 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--pakistan-white);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== FEATURES SECTION ==================== */
+.features-section {
+    background: var(--bg-primary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--gradient-card);
+    border: 1px solid rgba(12, 107, 61, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--pakistan-green-light);
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--pakistan-white);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotateY(360deg);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: var(--pakistan-white);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.feature-badge {
+    display: inline-block;
+    background: rgba(12, 107, 61, 0.2);
+    border: 1px solid var(--pakistan-green-light);
+    color: var(--pakistan-green-lighter);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ==================== PROCESS SECTION ==================== */
+.process-section {
+    background: rgba(12, 107, 61, 0.05);
+}
+
+.process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.process-step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--pakistan-white);
+    margin: 0 auto 1rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.step-icon {
+    font-size: 3rem;
+    color: var(--pakistan-green-light);
+    margin-bottom: 1rem;
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    color: var(--pakistan-white);
+    margin-bottom: 0.75rem;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid rgba(12, 107, 61, 0.3);
+    padding: 3rem 2rem 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3, .footer-section h4 {
+    color: var(--pakistan-white);
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    color: var(--pakistan-green-lighter);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pakistan-white);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(12, 107, 61, 0.3);
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease;
+}
+
+/* ==================== UTILITIES ==================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pakistan-green-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pakistan-green-lighter);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+    }
+    
+    .hero-content {
+        align-items: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .voting-status-card {
+        flex: 1;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--bg-secondary);
+        width: 100%;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow-lg);
+        padding: 2rem;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+}
