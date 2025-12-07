@@ -1,6 +1,8 @@
 // ==================== ADMIN.JS - Admin Panel ====================
 
 let currentAdminSection = 'overview';
+let naAreaNames = {};
+let paAreaNames = {};
 
 // ==================== INITIALIZE ADMIN PANEL ====================
 function initializeAdminPanel() {
@@ -14,6 +16,9 @@ function initializeAdminPanel() {
     // Update admin name
     const adminName = AuthService.getCurrentUser()?.username || 'Admin';
     document.getElementById('admin-name').textContent = adminName;
+    
+    // Load constituency names
+    loadConstituencyNames();
     
     // Load overview statistics
     loadOverviewStats();
@@ -44,6 +49,111 @@ function initializeAdminMenu() {
             showAdminSection(section);
         });
     });
+}
+
+// ==================== LOAD CONSTITUENCY NAMES ====================
+async function loadConstituencyNames() {
+    try {
+        console.log('📡 Loading constituency names for admin panel...');
+        
+        // Load NA names
+        const naResponse = await fetch(`${CONFIG.API.BASE_URL}/constituencies/na-names`);
+        if (naResponse.ok) {
+            const naData = await naResponse.json();
+            if (naData.success) {
+                naAreaNames = naData.data;
+                console.log(`✅ Loaded ${Object.keys(naAreaNames).length} NA constituencies`);
+                populateMNAConstituencyDropdown();
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error loading constituency names:', error);
+        naAreaNames = {};
+    }
+}
+
+// ==================== POPULATE MNA CONSTITUENCY DROPDOWN ====================
+function populateMNAConstituencyDropdown() {
+    const mnaConstituencySelect = document.getElementById('mna-constituency');
+    if (!mnaConstituencySelect) return;
+    
+    // Check if already populated
+    if (mnaConstituencySelect.options.length > 1) return;
+    
+    const constituencies = {
+        'KPK': { start: 1, end: 45, label: 'Khyber Pakhtunkhwa (NA 1-45)' },
+        'Islamabad': { start: 46, end: 48, label: 'Islamabad Capital Territory (NA 46-48)' },
+        'Punjab': { start: 49, end: 189, label: 'Punjab (NA 49-189)' },
+        'Sindh': { start: 190, end: 250, label: 'Sindh (NA 190-250)' },
+        'Balochistan': { start: 251, end: 266, label: 'Balochistan (NA 251-266)' }
+    };
+    
+    // Clear existing options except first one
+    mnaConstituencySelect.innerHTML = '<option value="">Select NA Constituency</option>';
+    
+    for (const [province, range] of Object.entries(constituencies)) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = range.label;
+        
+        for (let i = range.start; i <= range.end; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            const areaName = naAreaNames[i] || '';
+            option.textContent = areaName ? `NA-${i} | ${areaName}` : `NA-${i}`;
+            optgroup.appendChild(option);
+        }
+        
+        mnaConstituencySelect.appendChild(optgroup);
+    }
+    
+    console.log('✅ MNA constituency dropdown populated');
+}
+
+// ==================== LOAD PA NAMES FOR PROVINCE ====================
+async function loadPANamesForProvince(province) {
+    try {
+        console.log(`📡 Loading ${province} PA constituency names...`);
+        const response = await fetch(`${CONFIG.API.BASE_URL}/constituencies/pa-names?province=${province}`);
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                paAreaNames = data.data;
+                console.log(`✅ Loaded ${Object.keys(paAreaNames).length} ${province} PA constituencies`);
+                return true;
+            }
+        }
+        return false;
+    } catch (error) {
+        console.error('❌ Error loading PA names:', error);
+        paAreaNames = {};
+        return false;
+    }
+}
+
+// ==================== POPULATE MPA SEAT DROPDOWN ====================
+function populateMPASeatDropdown(province) {
+    const mpaSeatSelect = document.getElementById('mpa-seat');
+    if (!mpaSeatSelect) return;
+    
+    const constituencyInfo = CONFIG.CONSTITUENCIES[province];
+    if (!constituencyInfo) return;
+    
+    // Clear existing options
+    mpaSeatSelect.innerHTML = '<option value="">Select PA Constituency</option>';
+    
+    const provinceCode = constituencyInfo.code;
+    const maxSeats = constituencyInfo.paSeats;
+    
+    for (let i = 1; i <= maxSeats; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        const areaName = paAreaNames[i] || '';
+        option.textContent = areaName ? `${provinceCode}-${i} | ${areaName}` : `${provinceCode}-${i}`;
+        mpaSeatSelect.appendChild(option);
+    }
+    
+    console.log(`✅ MPA seat dropdown populated with ${maxSeats} options`);
 }
 
 // ==================== SHOW ADMIN SECTION ====================
@@ -111,6 +221,24 @@ function setupAdminForms() {
     const mpaForm = document.getElementById('add-mpa-form');
     if (mpaForm) {
         mpaForm.addEventListener('submit', handleAddMPA);
+    }
+    
+    // MPA Province change handler
+    const mpaProvinceSelect = document.getElementById('mpa-province');
+    if (mpaProvinceSelect) {
+        mpaProvinceSelect.addEventListener('change', async (e) => {
+            const province = e.target.value;
+            if (province) {
+                await loadPANamesForProvince(province);
+                populateMPASeatDropdown(province);
+            } else {
+                // Clear MPA seat dropdown
+                const mpaSeatSelect = document.getElementById('mpa-seat');
+                if (mpaSeatSelect) {
+                    mpaSeatSelect.innerHTML = '<option value="">Select Province First</option>';
+                }
+            }
+        });
     }
 }
 
@@ -315,23 +443,49 @@ function displayCandidatesTable(candidates, type, container) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${candidates.map((candidate, index) => `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${candidate.name}</td>
-                            <td>${candidate.symbol}</td>
-                            <td>${maskCNIC(candidate.cnic)}</td>
-                            <td>${type === 'mna' ? `NA-${candidate.naSeat}` : `${candidate.province}-${candidate.paSeat}`}</td>
-                            <td>${candidate.area || 'N/A'}</td>
-                            <td><strong>${candidate.votes || 0}</strong></td>
-                        </tr>
-                    `).join('')}
+                    ${candidates.map((candidate, index) => {
+                        let constituency = '';
+                        let area = candidate.area || 'N/A';
+                        
+                        if (type === 'mna') {
+                            const naSeat = candidate.naSeat || candidate.constituency || 0;
+                            constituency = `NA-${naSeat}`;
+                        } else {
+                            const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                            const provinceCode = getProvinceCode(candidate.province);
+                            constituency = `${provinceCode}-${paSeat}`;
+                        }
+                        
+                        return `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${candidate.name}</td>
+                                <td>${candidate.symbol}</td>
+                                <td>${maskCNIC(candidate.cnic)}</td>
+                                <td>${constituency}</td>
+                                <td>${area}</td>
+                                <td><strong>${candidate.votes || 0}</strong></td>
+                            </tr>
+                        `;
+                    }).join('')}
                 </tbody>
             </table>
         </div>
     `;
     
     container.innerHTML = html;
+}
+
+// ==================== GET PROVINCE CODE ====================
+function getProvinceCode(province) {
+    const codes = {
+        'Punjab': 'PP',
+        'Sindh': 'PS',
+        'KPK': 'PK',
+        'Balochistan': 'PB',
+        'Islamabad': 'I'
+    };
+    return codes[province] || province;
 }
 
 // ==================== LOAD RESULTS ====================
@@ -392,15 +546,18 @@ function displayAdminResults(data, container) {
                             </tr>
                         </thead>
                         <tbody>
-                            ${mnaResults.map((candidate, index) => `
-                                <tr ${index === 0 ? 'class="winner"' : ''}>
-                                    <td>${index + 1}${index === 0 ? ' 🏆' : ''}</td>
-                                    <td>${candidate.name}</td>
-                                    <td>${candidate.symbol}</td>
-                                    <td>NA-${candidate.naSeat}</td>
-                                    <td><strong>${candidate.votes || 0}</strong></td>
-                                </tr>
-                            `).join('')}
+                            ${mnaResults.map((candidate, index) => {
+                                const naSeat = candidate.naSeat || candidate.constituency || 0;
+                                return `
+                                    <tr ${index === 0 ? 'class="winner"' : ''}>
+                                        <td>${index + 1}${index === 0 ? ' 🏆' : ''}</td>
+                                        <td>${candidate.name}</td>
+                                        <td>${candidate.symbol}</td>
+                                        <td>NA-${naSeat}</td>
+                                        <td><strong>${candidate.votes || 0}</strong></td>
+                                    </tr>
+                                `;
+                            }).join('')}
                         </tbody>
                     </table>
                 </div>
@@ -425,16 +582,20 @@ function displayAdminResults(data, container) {
                             </tr>
                         </thead>
                         <tbody>
-                            ${mpaResults.map((candidate, index) => `
-                                <tr ${index === 0 ? 'class="winner"' : ''}>
-                                    <td>${index + 1}${index === 0 ? ' 🏆' : ''}</td>
-                                    <td>${candidate.name}</td>
-                                    <td>${candidate.symbol}</td>
-                                    <td>${candidate.province}</td>
-                                    <td>${candidate.province}-${candidate.paSeat}</td>
-                                    <td><strong>${candidate.votes || 0}</strong></td>
-                                </tr>
-                            `).join('')}
+                            ${mpaResults.map((candidate, index) => {
+                                const paSeat = candidate.paSeat || candidate.provisionalPP || candidate.provisional_pp || 0;
+                                const provinceCode = getProvinceCode(candidate.province);
+                                return `
+                                    <tr ${index === 0 ? 'class="winner"' : ''}>
+                                        <td>${index + 1}${index === 0 ? ' 🏆' : ''}</td>
+                                        <td>${candidate.name}</td>
+                                        <td>${candidate.symbol}</td>
+                                        <td>${candidate.province}</td>
+                                        <td>${provinceCode}-${paSeat}</td>
+                                        <td><strong>${candidate.votes || 0}</strong></td>
+                                    </tr>
+                                `;
+                            }).join('')}
                         </tbody>
                     </table>
                 </div>
