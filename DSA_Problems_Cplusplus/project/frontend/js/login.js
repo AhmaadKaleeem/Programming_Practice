@@ -177,7 +177,7 @@ async function handleVoterLogin(e) {
                 localStorage.removeItem('rememberedCNIC');
             }
             
-            showAlert('✅ Login successful!  Redirecting...', 'success');
+            showAlert('Login successful!  Redirecting...', 'success');
             
             setTimeout(() => {
                 window.location.href = 'voter-dashboard.html';
@@ -219,7 +219,7 @@ async function handleAdminLogin(e) {
         
         hideLoader();
         
-        console.log('📡 Admin login response:', response);
+        console.log('Admin login response:', response);
         
         if (response.success) {
             // Store admin auth data
@@ -230,7 +230,7 @@ async function handleAdminLogin(e) {
                 ...response.data
             });
             
-            showAlert('✅ Admin login successful!  Redirecting...', 'success');
+            showAlert('Admin login successful!  Redirecting...', 'success');
             
             setTimeout(() => {
                 window.location.href = 'admin-panel.html';

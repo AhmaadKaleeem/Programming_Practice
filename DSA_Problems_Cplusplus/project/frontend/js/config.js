@@ -31,7 +31,7 @@ const CONFIG = {
             
             // Public endpoints
             GET_RESULTS: '/results',
-            GET_VOTING_STATUS: '/voting/status',
+            GET_VOTING_STATUS: '/voting/status',  // ✅ Already exists in server.cpp!
             GET_ALL_VOTES: '/votes/all',
             GET_WINNERS: '/winners',
             
@@ -43,14 +43,14 @@ const CONFIG = {
         USE_MOCK: false
     },
     
-    // Election Configuration
+    // Election Configuration (Will be loaded from backend)
     ELECTION: {
-        year: 2025,
+        year: 2025,          // Default fallback values
         month: 12,
         day: 7,
         votingHours: {
             startHour: 5,
-            endHour: 17
+            endHour: 20
         }
     },
     
@@ -77,6 +77,36 @@ const CONFIG = {
         TIME_FORMAT: { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }
     }
 };
+
+// ==================== LOAD VOTING TIME FROM BACKEND ====================
+async function loadVotingTimeConfig() {
+    try {
+        const response = await fetch(`${CONFIG.API.BASE_URL}/voting/status`);
+        const data = await response.json();
+        
+        if (data.success) {
+            // Update CONFIG with backend values from voting_time.h
+            CONFIG.ELECTION.year = data.data.year;
+            CONFIG.ELECTION.month = data.data.month;
+            CONFIG.ELECTION.day = data.data.day;
+            CONFIG.ELECTION.votingHours.startHour = data.data.startHour;
+            CONFIG.ELECTION.votingHours.endHour = data.data.endHour;
+            
+            console.log('✅ Voting time configuration loaded from backend:');
+            console.log(`   Date: ${data.data.monthName} ${data.data.day}, ${data.data.year}`);
+            console.log(`   Hours: ${data.data.startHour}:00 - ${data.data.endHour}:00`);
+            console.log(`   Status: ${data.data.isVotingOpen ? 'OPEN' : 'CLOSED'}`);
+        } else {
+            console.warn('⚠️ Failed to load voting time, using defaults');
+        }
+    } catch (error) {
+        console.error('❌ Error loading voting time config:', error);
+        console.warn('⚠️ Using default voting time configuration');
+    }
+}
+
+// Load voting time when config is loaded
+loadVotingTimeConfig();
 
 // ==================== CONSTITUENCY MAPPING ====================
 function generateConstituencyMapping() {
@@ -153,19 +183,31 @@ function isElectionDay() {
 }
 
 function isVotingOpen() {
-    if (! isElectionDay()) return { open: false, reason: 'not_election_day' };
+    if (!isElectionDay()) return { open: false, reason: 'not_election_day' };
+    
     const now = new Date();
     const currentHour = now.getHours();
+    
     if (currentHour < CONFIG.ELECTION.votingHours.startHour) return { open: false, reason: 'too_early' };
     if (currentHour >= CONFIG.ELECTION.votingHours.endHour) return { open: false, reason: 'too_late' };
+    
     return { open: true, reason: 'open' };
 }
 
 function getTimeUntilElection() {
     const now = new Date();
-    const electionDate = new Date(CONFIG.ELECTION.year, CONFIG.ELECTION.month - 1, CONFIG.ELECTION.day, CONFIG.ELECTION.votingHours.startHour, 0, 0);
+    const electionDate = new Date(
+        CONFIG.ELECTION.year, 
+        CONFIG.ELECTION.month - 1, 
+        CONFIG.ELECTION.day, 
+        CONFIG.ELECTION.votingHours.startHour, 
+        0, 
+        0
+    );
     const diff = electionDate - now;
+    
     if (diff < 0) return { isPast: true };
+    
     return {
         isPast: false,
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -179,8 +221,10 @@ function getTimeRemainingInVoting() {
     const now = new Date();
     const endTime = new Date();
     endTime.setHours(CONFIG.ELECTION.votingHours.endHour, 0, 0, 0);
+    
     const diff = endTime - now;
     if (diff < 0) return null;
+    
     return {
         hours: Math.floor(diff / (1000 * 60 * 60)),
         minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
@@ -246,5 +290,4 @@ function formatTime(hour, minute = 0) {
 
 console.log('🗺️ Pakistan EMS Configuration Loaded');
 console.log('📡 API Base URL:', CONFIG.API.BASE_URL);
-console.log('🗳️ Election Date:', `${CONFIG.ELECTION.year}-${CONFIG.ELECTION.month}-${CONFIG.ELECTION.day}`);
-console.log('⏰ Voting Hours:', `${CONFIG.ELECTION.votingHours.startHour}:00 - ${CONFIG.ELECTION.votingHours.endHour}:00`);
+console.log('⏳ Loading voting configuration from backend...');

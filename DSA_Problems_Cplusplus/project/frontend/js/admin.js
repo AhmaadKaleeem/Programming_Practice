@@ -4,7 +4,7 @@ let currentAdminSection = 'overview';
 
 // ==================== INITIALIZE ADMIN PANEL ====================
 function initializeAdminPanel() {
-    console.log('🛡️ Admin Panel Initialized');
+    console.log('Admin Panel Initialized');
     
     // Protect page - only admins can access
     if (!AuthService.protectPage('admin')) {
@@ -152,10 +152,10 @@ async function handleAddMNA(e) {
         
         hideLoader();
         
-        console.log('📥 MNA Response:', response);
+        console.log('MNA Response:', response);
         
         if (response.success) {
-            showAlert('✅ MNA Candidate added successfully!', 'success');
+            showAlert('MNA Candidate added successfully!', 'success');
             e.target.reset();
             loadOverviewStats();
         } else {
@@ -211,7 +211,7 @@ async function handleAddMPA(e) {
         console.log('📥 MPA Response:', response);
         
         if (response.success) {
-            showAlert('✅ MPA Candidate added successfully!', 'success');
+            showAlert('MPA Candidate added successfully!', 'success');
             e.target.reset();
             loadOverviewStats();
         } else {

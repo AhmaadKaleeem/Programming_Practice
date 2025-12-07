@@ -479,7 +479,7 @@ function setupFormSubmission() {
             if (response.success) {
                 const voterId = response.data.voterId || response.data.voter_id;
                 showAlert(
-                    `✅ Registration Successful!\n\nYour Voter ID: ${voterId}\n\nPlease save this ID for login.`,
+                    `Registration Successful!\n\nYour Voter ID: ${voterId}\n\nPlease save this ID for login.`,
                     'success'
                 );
                 setTimeout(() => {
