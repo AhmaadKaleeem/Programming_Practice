@@ -923,6 +923,86 @@ svr.Get("/api/admin/candidates/mpa", [](const Request& req, Response& res) {
         res.set_content(response.dump(), "application/json");
     }
 });
+// ==============================================
+// Get Ledger (Admin) - NEW ENDPOINT
+// ==============================================
+svr.Get("/api/admin/ledger/view", [](const Request& req, Response& res) {
+    enableCORS(res);
+    
+    try {
+        cout << "[ADMIN] Fetching blockchain ledger..." << endl;
+        
+        json ledgerJson = json::array();
+        
+        LedgerBlock* current = election->ledger.head;
+        
+        while (current != nullptr) {
+            json block;
+            block["index"] = current->index;
+            block["voterCnic"] = current->voter_cnic;
+            block["candidateCnic"] = current->candidate_cnic;
+            block["voteType"] = current->vote_type;
+            block["timestamp"] = current->timestamp;
+            block["currentHash"] = current->current_hash;
+            block["prevHash"] = current->prev_hash;
+            
+            ledgerJson.push_back(block);
+            current = current->next;
+        }
+        
+        json response;
+        response["success"] = true;
+        response["data"]["ledger"] = ledgerJson;
+        response["data"]["blockCount"] = (int)ledgerJson.size();
+        
+        cout << "[SUCCESS] Returned " << ledgerJson.size() << " ledger blocks" << endl;
+        
+        res.set_content(response.dump(), "application/json");
+        
+    } catch (exception& e) {
+        cout << "[ERROR] Get ledger: " << e.what() << endl;
+        json response;
+        response["success"] = false;
+        response["message"] = string("Error: ") + e.what();
+        res.status = 500;
+        res.set_content(response.dump(), "application/json");
+    }
+});
+
+// ==============================================
+// Verify Ledger (Admin) - NEW ENDPOINT
+// ==============================================
+svr.Get("/api/admin/ledger/verify", [](const Request& req, Response& res) {
+    enableCORS(res);
+    
+    try {
+        cout << "[ADMIN] Verifying blockchain ledger..." << endl;
+        
+        bool isValid = election->ledger.verify_ledger();
+        
+        json response;
+        response["success"] = true;
+        response["data"]["isValid"] = isValid;
+        
+        if (isValid) {
+            response["data"]["message"] = "BLOCKCHAIN VERIFIED SUCCESSFULLY";
+        } else {
+            response["data"]["message"] = "Blockchain integrity compromised! ";
+        }
+        
+        cout << "[SUCCESS] Ledger verification: " << (isValid ?  "VALID" : "INVALID") << endl;
+        
+        res.set_content(response.dump(), "application/json");
+        
+    } catch (exception& e) {
+        cout << "[ERROR] Verify ledger: " << e. what() << endl;
+        json response;
+        response["success"] = false;
+        response["message"] = string("Error: ") + e.what();
+        res.status = 500;
+        res.set_content(response. dump(), "application/json");
+    }
+});
 
         // ==============================================
         // Get Results

@@ -1,23 +1,18 @@
-// ==================== RESULTS.JS - Election Results Display ====================
-
 let currentResultsTab = 'all-votes';
 let resultsData = null;
 
 console.log('🎬 Results.js loaded');
 
-// ==================== INITIALIZE RESULTS PAGE ====================
 function initializeResultsPage() {
     console.log('📊 Results Page Initialized');
     
     try {
-        // Check if API is available
         if (typeof API === 'undefined') {
             console.error('❌ API not loaded');
             showNoResults();
             return;
         }
         
-        // Check if CONFIG is available
         if (typeof CONFIG === 'undefined') {
             console.error('❌ CONFIG not loaded');
             showNoResults();
@@ -26,13 +21,8 @@ function initializeResultsPage() {
         
         console.log('✅ Dependencies loaded');
         
-        // Setup tab switching
         setupTabSwitching();
-        
-        // Load results immediately
         loadResultsData();
-        
-        // Auto-refresh every 10 seconds
         setInterval(loadResultsData, 10000);
         
     } catch (error) {
@@ -41,7 +31,6 @@ function initializeResultsPage() {
     }
 }
 
-// ==================== SETUP TAB SWITCHING ====================
 function setupTabSwitching() {
     const tabBtns = document.querySelectorAll('.results-tabs .tab-btn');
     
@@ -60,19 +49,16 @@ function setupTabSwitching() {
     console.log('✅ Tab switching setup complete');
 }
 
-// ==================== REFRESH RESULTS ====================
 window.refreshResults = function() {
     console.log('🔄 Refreshing results...');
     showLoader('Refreshing results...');
     loadResultsData();
 };
 
-// ==================== SWITCH RESULTS TAB ====================
 window.switchResultsTab = function(tab) {
     console.log('📑 Switching to tab:', tab);
     currentResultsTab = tab;
     
-    // Update tab buttons
     const tabBtns = document.querySelectorAll('.results-tabs .tab-btn');
     tabBtns.forEach(btn => btn.classList.remove('active'));
     
@@ -82,7 +68,6 @@ window.switchResultsTab = function(tab) {
         tabBtns[1]?.classList.add('active');
     }
     
-    // Show/hide sections
     document.querySelectorAll('.results-section').forEach(section => {
         section.classList.remove('active');
     });
@@ -92,7 +77,6 @@ window.switchResultsTab = function(tab) {
         targetSection.classList.add('active');
     }
     
-    // Load appropriate data
     if (tab === 'all-votes') {
         displayAllVotes();
     } else if (tab === 'winners') {
@@ -100,7 +84,6 @@ window.switchResultsTab = function(tab) {
     }
 };
 
-// ==================== LOAD RESULTS DATA ====================
 async function loadResultsData() {
     console.log('📥 Loading results data...');
     
@@ -119,7 +102,6 @@ async function loadResultsData() {
                 mpa: resultsData.mpa?.length || 0
             });
             
-            // Display based on current tab
             if (currentResultsTab === 'all-votes') {
                 displayAllVotes();
             } else {
@@ -136,7 +118,6 @@ async function loadResultsData() {
     }
 }
 
-// ==================== DISPLAY ALL VOTES ====================
 function displayAllVotes() {
     console.log('📊 Displaying all votes...');
     
@@ -154,7 +135,6 @@ function displayAllVotes() {
         return;
     }
     
-    // Get candidates
     const mnaCandidates = resultsData.mna || [];
     const mpaCandidates = resultsData.mpa || [];
     
@@ -163,14 +143,14 @@ function displayAllVotes() {
         mpa: mpaCandidates.length
     });
     
-    // Display MNA results
     if (mnaCandidates.length > 0) {
-        // Sort by constituency
         const mnaSorted = [...mnaCandidates].sort((a, b) => {
-            if (a.constituency === b.constituency) {
+            const aConst = a.constituency_na || a.naSeat || 0;
+            const bConst = b.constituency_na || b.naSeat || 0;
+            if (aConst === bConst) {
                 return (b.votes || 0) - (a.votes || 0);
             }
-            return a.constituency - b.constituency;
+            return aConst - bConst;
         });
         
         mnaContainer.innerHTML = displayResultsGrid(mnaSorted, 'mna');
@@ -185,17 +165,20 @@ function displayAllVotes() {
         `;
     }
     
-    // Display MPA results
     if (mpaCandidates.length > 0) {
-        // Sort by province and seat
         const mpaSorted = [...mpaCandidates].sort((a, b) => {
-            if (a.province === b.province && a.provisionalPP === b.provisionalPP) {
+            const aProv = a.province || '';
+            const bProv = b.province || '';
+            const aSeat = a.provisional_pp || a.paSeat || 0;
+            const bSeat = b.provisional_pp || b.paSeat || 0;
+            
+            if (aProv === bProv && aSeat === bSeat) {
                 return (b.votes || 0) - (a.votes || 0);
             }
-            if (a.province === b.province) {
-                return a.provisionalPP - b.provisionalPP;
+            if (aProv === bProv) {
+                return aSeat - bSeat;
             }
-            return a.province.localeCompare(b.province);
+            return aProv.localeCompare(bProv);
         });
         
         mpaContainer.innerHTML = displayResultsGrid(mpaSorted, 'mpa');
@@ -205,7 +188,7 @@ function displayAllVotes() {
                 <i class="fas fa-inbox"></i>
                 <h3>No MPA Candidates</h3>
                 <p>No MPA candidates have been registered yet</p>
-                <p style="margin-top: 1rem;"><a href="login.html? admin=true" class="btn btn-primary">Add Candidates (Admin)</a></p>
+                <p style="margin-top: 1rem;"><a href="login.html?admin=true" class="btn btn-primary">Add Candidates (Admin)</a></p>
             </div>
         `;
     }
@@ -213,7 +196,6 @@ function displayAllVotes() {
     console.log('✅ All votes displayed');
 }
 
-// ==================== DISPLAY RESULTS GRID ====================
 function displayResultsGrid(candidates, type) {
     if (!candidates || candidates.length === 0) {
         return `
@@ -229,12 +211,16 @@ function displayResultsGrid(candidates, type) {
         <div class="results-grid">
             ${candidates.map(candidate => {
                 let constituencyDisplay = '';
+                let areaName = candidate.area || candidate.na_area || candidate.p_area || '';
                 
                 if (type === 'mna') {
-                    constituencyDisplay = `NA-${candidate.constituency}`;
+                    const naSeat = candidate.constituency_na || candidate.naSeat || 'N/A';
+                    constituencyDisplay = `NA-${naSeat}`;
                 } else {
-                    const paCode = candidate.provinceName || 'PA';
-                    constituencyDisplay = `${paCode}-${candidate.provisionalPP}`;
+                    const paSeat = candidate.provisional_pp || candidate.paSeat || 'N/A';
+                    const province = candidate.province || '';
+                    const provinceCode = province ?  province.charAt(0) : 'P';
+                    constituencyDisplay = `${provinceCode}${province.substring(1, 2) || ''}-${paSeat}`;
                 }
                 
                 return `
@@ -250,7 +236,13 @@ function displayResultsGrid(candidates, type) {
                                     <i class="fas fa-map-marker-alt"></i>
                                     ${constituencyDisplay}
                                 </span>
-                                ${type === 'mpa' ? `
+                                ${areaName ? `
+                                <span class="result-detail">
+                                    <i class="fas fa-location-dot"></i>
+                                    ${areaName}
+                                </span>
+                                ` : ''}
+                                ${type === 'mpa' && candidate.province ? `
                                 <span class="result-detail">
                                     <i class="fas fa-map"></i>
                                     ${candidate.province}
@@ -269,7 +261,6 @@ function displayResultsGrid(candidates, type) {
     `;
 }
 
-// ==================== DISPLAY WINNERS ====================
 function displayWinners() {
     console.log('🏆 Displaying winners...');
     
@@ -281,14 +272,13 @@ function displayWinners() {
         return;
     }
     
-    if (! resultsData) {
+    if (!resultsData) {
         console.warn('⚠️ No results data for winners');
         showNoResults();
         return;
     }
     
-    // Calculate winners
-    const mnaWinners = calculateWinners(resultsData.mna || [], 'constituency');
+    const mnaWinners = calculateWinners(resultsData.mna || [], 'mna');
     const mpaWinners = calculateWinnersByProvinceAndSeat(resultsData.mpa || []);
     
     console.log('🏆 Winners:', {
@@ -296,7 +286,6 @@ function displayWinners() {
         mpa: mpaWinners.length
     });
     
-    // Display MNA winners
     if (mnaWinners.length > 0) {
         mnaContainer.innerHTML = displayWinnersGrid(mnaWinners, 'mna');
     } else {
@@ -309,7 +298,6 @@ function displayWinners() {
         `;
     }
     
-    // Display MPA winners
     if (mpaWinners.length > 0) {
         mpaContainer.innerHTML = displayWinnersGrid(mpaWinners, 'mpa');
     } else {
@@ -325,14 +313,16 @@ function displayWinners() {
     console.log('✅ Winners displayed');
 }
 
-// ==================== CALCULATE WINNERS ====================
-function calculateWinners(candidates, groupBy) {
+function calculateWinners(candidates, type) {
     if (!candidates || candidates.length === 0) return [];
     
     const grouped = {};
     
     candidates.forEach(candidate => {
-        const key = candidate[groupBy];
+        const key = type === 'mna' 
+            ? (candidate.constituency_na || candidate.naSeat || 0)
+            : `${candidate.province || ''}-${candidate.provisional_pp || candidate.paSeat || 0}`;
+        
         if (!grouped[key]) {
             grouped[key] = [];
         }
@@ -350,14 +340,14 @@ function calculateWinners(candidates, groupBy) {
     return winners.sort((a, b) => (b.votes || 0) - (a.votes || 0));
 }
 
-// ==================== CALCULATE MPA WINNERS ====================
 function calculateWinnersByProvinceAndSeat(candidates) {
     if (!candidates || candidates.length === 0) return [];
     
     const grouped = {};
     
     candidates.forEach(candidate => {
-        const key = `${candidate.province}-${candidate.provisionalPP}`;
+        const paSeat = candidate.provisional_pp || candidate.paSeat || 0;
+        const key = `${candidate.province || ''}-${paSeat}`;
         if (!grouped[key]) {
             grouped[key] = [];
         }
@@ -375,7 +365,6 @@ function calculateWinnersByProvinceAndSeat(candidates) {
     return winners.sort((a, b) => (b.votes || 0) - (a.votes || 0));
 }
 
-// ==================== DISPLAY WINNERS GRID ====================
 function displayWinnersGrid(winners, type) {
     if (!winners || winners.length === 0) {
         return `
@@ -391,12 +380,16 @@ function displayWinnersGrid(winners, type) {
         <div class="results-grid">
             ${winners.map((candidate, index) => {
                 let constituencyDisplay = '';
+                let areaName = candidate.area || candidate.na_area || candidate.p_area || '';
                 
                 if (type === 'mna') {
-                    constituencyDisplay = `NA-${candidate.constituency}`;
+                    const naSeat = candidate.constituency_na || candidate.naSeat || 'N/A';
+                    constituencyDisplay = `NA-${naSeat}`;
                 } else {
-                    const paCode = candidate.provinceName || 'PA';
-                    constituencyDisplay = `${paCode}-${candidate.provisionalPP}`;
+                    const paSeat = candidate.provisional_pp || candidate.paSeat || 'N/A';
+                    const province = candidate.province || '';
+                    const provinceCode = province ? province.charAt(0) : 'P';
+                    constituencyDisplay = `${provinceCode}${province.substring(1, 2) || ''}-${paSeat}`;
                 }
                 
                 return `
@@ -419,7 +412,13 @@ function displayWinnersGrid(winners, type) {
                                     <i class="fas fa-map-marker-alt"></i>
                                     ${constituencyDisplay}
                                 </span>
-                                ${type === 'mpa' ? `
+                                ${areaName ? `
+                                <span class="result-detail">
+                                    <i class="fas fa-location-dot"></i>
+                                    ${areaName}
+                                </span>
+                                ` : ''}
+                                ${type === 'mpa' && candidate.province ? `
                                 <span class="result-detail">
                                     <i class="fas fa-map"></i>
                                     ${candidate.province}
@@ -438,7 +437,6 @@ function displayWinnersGrid(winners, type) {
     `;
 }
 
-// ==================== SHOW NO RESULTS ====================
 function showNoResults() {
     console.log('📭 Showing no results message');
     
@@ -470,7 +468,6 @@ function showNoResults() {
     });
 }
 
-// ==================== DOM READY ====================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeResultsPage);
 } else {

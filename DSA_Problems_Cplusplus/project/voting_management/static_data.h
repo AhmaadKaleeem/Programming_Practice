@@ -286,7 +286,7 @@ static unordered_map<int, string> na_area_names = {
     {264, "Quetta-III"},
     {265, "Pishin"},
     {266, "Killa Abdullah-cum-Chaman"}};
-
+// punjab assembly 
 static unordered_map<int, string> pp_area_names = {
     {1, "Attock-I"},
     {2, "Attock-II"},
@@ -889,7 +889,7 @@ static unordered_map<int, string> pb_area_names = {
     {49, "Pishin-III"},
     {50, "Killa Abdullah"},
     {51, "Chaman"}};
-
+// maping each na to respective provisonal seats 
 static unordered_map<int, vector<int>> na_to_provincial = {
     {1, {1, 2}},
     {2, {3, 4, 5}},

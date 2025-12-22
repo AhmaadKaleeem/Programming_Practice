@@ -1,25 +1,51 @@
-// /* Write a Dart program that:
-// Asks the user to input the length and width of a rectangle.
-// Calculates and prints the:
-// Area = length × width
-// Perimeter = 2 × (length + width)
-// 📌 Sample Output:
+class Student {
+  String _name;
+  int _marks;
+  int _rollno;
 
-// Enter length: 5
-// Enter width: 3
-// Area: 15
-// Perimeter: 16
-// */
+  Student({required u_name, int u_marks = 0, required int u_rollno})
+    : _name = u_name,
+      _marks = u_marks,
+      _rollno = u_rollno;
+  String get name => _name;
+  int get marks => _marks;
+  int get rollno => _rollno;
 
-import 'dart:io';
+  set rollno(int value) {
+    if (value > 0) {
+      _rollno = value;
+    } else {
+      print("Roll No cant be less than one\n");
+    }
+  }
 
-void main() {
-  stdout.write('Enter the lenght: ');
-  double lenght = double.parse(stdin.readLineSync()!);
-  stdout.write('Enter the width: ');
-  double width = double.parse(stdin.readLineSync()!);
-  double area = lenght * width;
-  double perimeter = 2 * (lenght + width);
-  print('Area: $area');
-  print('Perimeter: $perimeter');
+  set marks(int value) {
+    if (value >= 0) {
+      _marks = value;
+    } else {
+      print("Marks cant be less than Zero\n");
+    }
+  }
+
+  set name(String un) {
+    _name = un;
+  }
+}
+
+class StudentManager {
+  List<Student> students = [];
+  void add_student(Student student) {
+    students.add(student);
+  }
+
+  double average_calc() {
+    double total_marks = 0.0;
+    int total_std = 0;
+    for (var i in students) {
+      total_marks += i.marks;
+      total_std += 1;
+    }
+    double avg = total_marks / total_std;
+    return avg;
+  }
 }

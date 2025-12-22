@@ -1,28 +1,124 @@
 // ==================== ADMIN.JS - Admin Panel ====================
 
 let currentAdminSection = 'overview';
+let NA_NAMES = {};
+let PA_NAMES = {};
 
+async function loadNANames() {
+    try {
+        const response = await fetch(`${CONFIG.API.BASE_URL}/constituencies/na-names`);
+        const data = await response.json();
+        if (data.success) {
+            NA_NAMES = data.data;
+            console.log('✅ Loaded', Object.keys(NA_NAMES).length, 'NA names');
+            return true;
+        }
+    } catch (error) {
+        console.error('❌ Error loading NA names:', error);
+    }
+    return false;
+}
+
+async function loadPANames(province) {
+    try {
+        const response = await fetch(`${CONFIG.API.BASE_URL}/constituencies/pa-names? province=${province}`);
+        const data = await response.json();
+        if (data.success) {
+            PA_NAMES = data.data;
+            console.log('✅ Loaded', Object.keys(PA_NAMES).length, `${province} PA names`);
+            return true;
+        }
+    } catch (error) {
+        console.error('❌ Error loading PA names:', error);
+    }
+    return false;
+}
+
+async function populateMNADropdown() {
+    const select = document.getElementById('mna-constituency');
+    if (!select) return;
+    
+    await loadNANames();
+    
+    select.innerHTML = '<option value="">Select NA Constituency</option>';
+    
+    const groups = {
+        'KPK': { start: 1, end: 45, label: 'Khyber Pakhtunkhwa' },
+        'Islamabad': { start: 46, end: 48, label: 'Islamabad Capital Territory' },
+        'Punjab': { start: 49, end: 189, label: 'Punjab' },
+        'Sindh': { start: 190, end: 250, label: 'Sindh' },
+        'Balochistan': { start: 251, end: 266, label: 'Balochistan' }
+    };
+    
+    for (const [key, group] of Object.entries(groups)) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = group.label;
+        
+        for (let i = group.start; i <= group.end; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            const areaName = NA_NAMES[i] || '';
+            option.textContent = areaName ?  `NA-${i} | ${areaName}` : `NA-${i}`;
+            optgroup.appendChild(option);
+        }
+        
+        select.appendChild(optgroup);
+    }
+}
+
+async function populateMPADropdown() {
+    const provinceSelect = document.getElementById('mpa-province');
+    const seatSelect = document.getElementById('mpa-seat');
+    
+    if (!provinceSelect || !seatSelect) return;
+    
+    provinceSelect.addEventListener('change', async (e) => {
+        const province = e.target.value;
+        if (! province) {
+            seatSelect.innerHTML = '<option value="">Select Province First</option>';
+            return;
+        }
+        
+        await loadPANames(province);
+        
+        seatSelect.innerHTML = '<option value="">Select PA Constituency</option>';
+        
+        const maxSeats = {
+            'Punjab': 297,
+            'Sindh': 130,
+            'KPK': 115,
+            'Balochistan': 51
+        };
+        
+        const max = maxSeats[province] || 0;
+        const code = CONFIG.CONSTITUENCIES[province]?.code || 'P';
+        
+        for (let i = 1; i <= max; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            const areaName = PA_NAMES[i] || '';
+            option.textContent = areaName ?  `${code}-${i} | ${areaName}` : `${code}-${i}`;
+            seatSelect.appendChild(option);
+        }
+    });
+}
 // ==================== INITIALIZE ADMIN PANEL ====================
 function initializeAdminPanel() {
     console.log('Admin Panel Initialized');
     
-    // Protect page - only admins can access
     if (!AuthService.protectPage('admin')) {
         return;
     }
     
-    // Update admin name
     const adminName = AuthService.getCurrentUser()?.username || 'Admin';
     document.getElementById('admin-name').textContent = adminName;
     
-    // Load overview statistics
     loadOverviewStats();
-    
-    // Initialize sidebar menu
     initializeAdminMenu();
-    
-    // Setup form submissions
     setupAdminForms();
+    
+    populateMNADropdown();
+    populateMPADropdown();
 }
 
 // ==================== INITIALIZE ADMIN MENU ====================
@@ -164,7 +260,7 @@ async function handleAddMNA(e) {
     } catch (error) {
         hideLoader();
         console.error('❌ Add MNA error:', error);
-        showAlert(error.message || 'Failed to add candidate. Check console for details.', 'error');
+        showAlert(error.message || 'Failed to add candidate.Check console for details.', 'error');
     }
 }
 
@@ -220,7 +316,7 @@ async function handleAddMPA(e) {
     } catch (error) {
         hideLoader();
         console.error('❌ Add MPA error:', error);
-        showAlert(error.message || 'Failed to add candidate. Check console for details.', 'error');
+        showAlert(error.message || 'Failed to add candidate.Check console for details.', 'error');
     }
 }
 
@@ -297,6 +393,145 @@ window.loadAllMPA = async function() {
         `;
     }
 };
+window.viewLedger = async function() {
+    console.log('🔗 Loading blockchain ledger...');
+    
+    try {
+        showLoader('Loading blockchain ledger...');
+        
+        const response = await API.call(CONFIG.API.ENDPOINTS.VIEW_LEDGER);
+        
+        hideLoader();
+        
+        console.log('📦 Ledger Response:', response);
+        
+        if (response.success && response.data. ledger) {
+            displayLedger(response.data.ledger);
+        } else {
+            showAlert('No ledger data available', 'info');
+        }
+    } catch (error) {
+        hideLoader();
+        console.error('❌ Error loading ledger:', error);
+        showAlert('Error loading ledger: ' + error.message, 'error');
+    }
+};
+
+// ==================== VERIFY LEDGER ====================
+window.verifyLedger = async function() {
+    console.log('✅ Verifying blockchain ledger...');
+    
+    try {
+        showLoader('Verifying blockchain integrity...');
+        
+        const response = await API.call(CONFIG. API.ENDPOINTS.VERIFY_LEDGER);
+        
+        hideLoader();
+        
+        console.log('📦 Verification Response:', response);
+        
+        if (response.success) {
+            if (response.data.isValid) {
+                showAlert('✅ ' + response.data.message, 'success');
+            } else {
+                showAlert('⚠️ ' + response.data. message, 'error');
+            }
+        } else {
+            showAlert('Error verifying ledger', 'error');
+        }
+    } catch (error) {
+        hideLoader();
+        console.error('❌ Error verifying ledger:', error);
+        showAlert('Error verifying ledger: ' + error. message, 'error');
+    }
+};
+
+// ==================== DISPLAY LEDGER ====================
+function displayLedger(ledgerBlocks) {
+    if (! ledgerBlocks || ledgerBlocks.length === 0) {
+        showAlert('Ledger is empty', 'info');
+        return;
+    }
+    
+    const html = `
+        <div class="modal-overlay" id="ledger-modal" onclick="closeLedgerModal(event)">
+            <div class="modal-content ledger-modal" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h2>🔗 Blockchain Ledger</h2>
+                    <button class="modal-close" onclick="closeLedgerModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="ledger-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-cubes"></i>
+                            <div>
+                                <span class="stat-label">Total Blocks</span>
+                                <span class="stat-value">${ledgerBlocks.length}</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <span class="stat-label">Status</span>
+                                <span class="stat-value" style="color: #28a745;">Secure</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ledger-blocks">
+                        ${ledgerBlocks.map(block => `
+                            <div class="ledger-block">
+                                <div class="block-header">
+                                    <h3>Block #${block.index}</h3>
+                                    <span class="block-type ${block.voteType. toLowerCase()}">${block.voteType}</span>
+                                </div>
+                                <div class="block-details">
+                                    <div class="block-detail">
+                                        <i class="fas fa-clock"></i>
+                                        <span><strong>Timestamp:</strong> ${block.timestamp}</span>
+                                    </div>
+                                    <div class="block-detail">
+                                        <i class="fas fa-user"></i>
+                                        <span><strong>Voter CNIC:</strong> ${maskCNIC(block.voterCnic)}</span>
+                                    </div>
+                                    <div class="block-detail">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span><strong>Candidate CNIC:</strong> ${maskCNIC(block.candidateCnic)}</span>
+                                    </div>
+                                    <div class="block-detail hash-detail">
+                                        <i class="fas fa-link"></i>
+                                        <span><strong>Previous Hash:</strong> <code>${block.prevHash}</code></span>
+                                    </div>
+                                    <div class="block-detail hash-detail">
+                                        <i class="fas fa-fingerprint"></i>
+                                        <span><strong>Current Hash:</strong> <code>${block.currentHash}</code></span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document. body.insertAdjacentHTML('beforeend', html);
+    
+    setTimeout(() => {
+        document.getElementById('ledger-modal').classList.add('show');
+    }, 10);
+}
+
+// ==================== CLOSE LEDGER MODAL ====================
+window.closeLedgerModal = function(event) {
+    if (! event || event.target. classList.contains('modal-overlay') || event.target.classList.contains('modal-close')) {
+        const modal = document.getElementById('ledger-modal');
+        if (modal) {
+            modal.classList. remove('show');
+            setTimeout(() => modal.remove(), 300);
+        }
+    }
+};
 
 // ==================== DISPLAY CANDIDATES TABLE ====================
 function displayCandidatesTable(candidates, type, container) {
@@ -315,17 +550,24 @@ function displayCandidatesTable(candidates, type, container) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${candidates.map((candidate, index) => `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${candidate.name}</td>
-                            <td>${candidate.symbol}</td>
-                            <td>${maskCNIC(candidate.cnic)}</td>
-                            <td>${type === 'mna' ? `NA-${candidate.naSeat}` : `${candidate.province}-${candidate.paSeat}`}</td>
-                            <td>${candidate.area || 'N/A'}</td>
-                            <td><strong>${candidate.votes || 0}</strong></td>
-                        </tr>
-                    `).join('')}
+                    ${candidates.map((candidate, index) => {
+                        const naSeat = candidate.naSeat || candidate.constituency_na || 'N/A';
+                        const paSeat = candidate.paSeat || candidate.provisional_pp || 'N/A';
+                        const province = candidate.province || '';
+                        const areaName = candidate.area || candidate.na_area || candidate.p_area || 'N/A';
+                        
+                        return `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${candidate.name}</td>
+                                <td>${candidate.symbol}</td>
+                                <td>${maskCNIC(candidate.cnic)}</td>
+                                <td>${type === 'mna' ? `NA-${naSeat}` : `${province}-${paSeat}`}</td>
+                                <td>${areaName}</td>
+                                <td><strong>${candidate.votes || 0}</strong></td>
+                            </tr>
+                        `;
+                    }).join('')}
                 </tbody>
             </table>
         </div>
@@ -333,7 +575,6 @@ function displayCandidatesTable(candidates, type, container) {
     
     container.innerHTML = html;
 }
-
 // ==================== LOAD RESULTS ====================
 window.loadResults = async function() {
     const container = document.getElementById('results-container');

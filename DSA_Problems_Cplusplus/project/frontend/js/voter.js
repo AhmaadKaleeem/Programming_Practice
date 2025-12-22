@@ -3,27 +3,19 @@
 let voterData = null;
 let currentSection = 'profile';
 
-// ==================== INITIALIZE VOTER DASHBOARD ====================
 function initializeVoterDashboard() {
     console.log('👤 Voter Dashboard Initialized');
     
-    // Protect page - only voters can access
-    if (!AuthService.protectPage('voter')) {
+    if (! AuthService.protectPage('voter')) {
         return;
     }
     
-    // Load voter data
     loadVoterProfile();
-    
-    // Initialize menu
     initializeSidebarMenu();
-    
-    // Load voting status
     updateVotingStatusMini();
     setInterval(updateVotingStatusMini, 1000);
 }
 
-// ==================== LOAD VOTER PROFILE ====================
 async function loadVoterProfile() {
     try {
         showLoader('Loading profile...');
@@ -35,7 +27,6 @@ async function loadVoterProfile() {
         
         voterData = voterInfo;
         
-        // Update all UI elements
         updateProfileDisplay();
         updateConstituencyDisplay();
         updateVotingBadges();
@@ -47,45 +38,35 @@ async function loadVoterProfile() {
     }
 }
 
-// ==================== UPDATE PROFILE DISPLAY ====================
 function updateProfileDisplay() {
     if (!voterData) return;
     
-    // Sidebar
     document.getElementById('voter-name').textContent = voterData.name;
     document.getElementById('voter-id').textContent = voterData.voterId || 'N/A';
-    
-    // Welcome banner
     document.getElementById('welcome-name').textContent = voterData.name;
-    
-    // Profile section
     document.getElementById('profile-name').textContent = voterData.name;
     document.getElementById('profile-cnic').textContent = formatCNIC(voterData.cnic);
     document.getElementById('profile-age').textContent = voterData.age + ' years';
     document.getElementById('profile-voter-id').textContent = voterData.voterId || 'N/A';
     document.getElementById('profile-province').textContent = voterData.province || 'N/A';
     
-    // Vote status
     const statusHtml = `
         <span class="status-badge ${voterData.hasVotedMNA ? 'voted' : 'not-voted'}">
             MNA: ${voterData.hasVotedMNA ? '✓ Voted' : '✗ Not Voted'}
         </span>
         <span class="status-badge ${voterData.hasVotedMPA ? 'voted' : 'not-voted'}">
-            MPA: ${voterData.hasVotedMPA ?  '✓ Voted' : '✗ Not Voted'}
+            MPA: ${voterData.hasVotedMPA ? '✓ Voted' : '✗ Not Voted'}
         </span>
     `;
     document.getElementById('profile-vote-status').innerHTML = statusHtml;
 }
 
-// ==================== UPDATE CONSTITUENCY DISPLAY ====================
 function updateConstituencyDisplay() {
-    if (!voterData) return;
+    if (! voterData) return;
     
-    // NA Constituency
     document.getElementById('na-number').textContent = `NA-${voterData.naSeat}`;
     document.getElementById('na-area').textContent = 'National Assembly Constituency';
     
-    // PA Constituency
     if (voterData.province === 'Islamabad') {
         document.getElementById('pa-number').textContent = 'N/A';
         document.getElementById('pa-area').textContent = 'Not Applicable (Islamabad)';
@@ -96,7 +77,6 @@ function updateConstituencyDisplay() {
     }
 }
 
-// ==================== UPDATE VOTING BADGES ====================
 function updateVotingBadges() {
     if (!voterData) return;
     
@@ -124,7 +104,6 @@ function updateVotingBadges() {
     }
 }
 
-// ==================== UPDATE VOTING STATUS MINI ====================
 function updateVotingStatusMini() {
     const statusEl = document.getElementById('voting-status-mini');
     if (!statusEl) return;
@@ -144,42 +123,32 @@ function updateVotingStatusMini() {
     }
 }
 
-// ==================== SIDEBAR MENU ====================
 function initializeSidebarMenu() {
     const menuItems = document.querySelectorAll('.menu-item');
     
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Update active state
             menuItems.forEach(mi => mi.classList.remove('active'));
             item.classList.add('active');
-            
-            // Get section
             const href = item.getAttribute('href');
             const section = href.replace('#', '');
-            
             showSection(section);
         });
     });
 }
 
-// ==================== SHOW SECTION ====================
 window.showSection = function(sectionName) {
     currentSection = sectionName;
     
-    // Hide all sections
     document.querySelectorAll('.dashboard-section').forEach(section => {
         section.classList.remove('active');
     });
     
-    // Show selected section
     const targetSection = document.getElementById(`${sectionName}-section`);
     if (targetSection) {
         targetSection.classList.add('active');
         
-        // Load section data
         if (sectionName === 'vote-mna') {
             loadMNACandidates();
         } else if (sectionName === 'vote-mpa') {
@@ -188,14 +157,12 @@ window.showSection = function(sectionName) {
     }
 };
 
-// ==================== LOAD MNA CANDIDATES ====================
 async function loadMNACandidates() {
     const container = document.getElementById('mna-candidates-container');
     const statusAlert = document.getElementById('mna-voting-status');
     
     if (!container) return;
     
-    // Check if already voted
     if (voterData.hasVotedMNA) {
         statusAlert.className = 'voting-status-alert already-voted';
         statusAlert.innerHTML = `
@@ -207,9 +174,8 @@ async function loadMNACandidates() {
         return;
     }
     
-    // Check voting time
     const votingStatus = isVotingOpen();
-    if (!votingStatus.open) {
+    if (! votingStatus.open) {
         statusAlert.className = 'voting-status-alert closed';
         statusAlert.innerHTML = `
             <i class="fas fa-times-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
@@ -230,10 +196,16 @@ async function loadMNACandidates() {
     try {
         container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Loading candidates...</p></div>';
         
-        const response = await API.call(`${CONFIG.API.ENDPOINTS.GET_MNA_CANDIDATES}? naSeat=${voterData.naSeat}`);
+        // ✅ FIX: Use voterData.cnic as query parameter
+        const url = `${CONFIG.API.ENDPOINTS.GET_MNA_CANDIDATES}?cnic=${voterData.cnic}`;
+        console.log('🔍 Fetching MNA candidates:', url);
         
-        if (response.success && response.data.length > 0) {
-            displayCandidates(response.data, 'mna', container);
+        const response = await API.call(url);
+        
+        console.log('📦 MNA Response:', response);
+        
+        if (response.success && response.data && response.data.candidates && response.data.candidates.length > 0) {
+            displayCandidates(response.data.candidates, 'mna', container);
         } else {
             container.innerHTML = `
                 <div class="no-candidates">
@@ -244,6 +216,7 @@ async function loadMNACandidates() {
             `;
         }
     } catch (error) {
+        console.error('❌ Error loading MNA candidates:', error);
         container.innerHTML = `
             <div class="error-message">
                 <i class="fas fa-exclamation-circle"></i>
@@ -253,14 +226,12 @@ async function loadMNACandidates() {
     }
 }
 
-// ==================== LOAD MPA CANDIDATES ====================
 async function loadMPACandidates() {
     const container = document.getElementById('mpa-candidates-container');
     const statusAlert = document.getElementById('mpa-voting-status');
     
-    if (!container) return;
+    if (! container) return;
     
-    // Check if Islamabad
     if (voterData.province === 'Islamabad') {
         statusAlert.className = 'voting-status-alert closed';
         statusAlert.innerHTML = `
@@ -272,7 +243,6 @@ async function loadMPACandidates() {
         return;
     }
     
-    // Check if already voted
     if (voterData.hasVotedMPA) {
         statusAlert.className = 'voting-status-alert already-voted';
         statusAlert.innerHTML = `
@@ -284,9 +254,8 @@ async function loadMPACandidates() {
         return;
     }
     
-    // Check voting time
     const votingStatus = isVotingOpen();
-    if (!votingStatus.open) {
+    if (! votingStatus.open) {
         statusAlert.className = 'voting-status-alert closed';
         statusAlert.innerHTML = `
             <i class="fas fa-times-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
@@ -307,10 +276,16 @@ async function loadMPACandidates() {
     try {
         container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Loading candidates...</p></div>';
         
-        const response = await API.call(`${CONFIG.API.ENDPOINTS.GET_MPA_CANDIDATES}?province=${voterData.province}&paSeat=${voterData.paSeat}`);
+        // ✅ FIX: Use voterData.cnic as query parameter
+        const url = `${CONFIG.API.ENDPOINTS.GET_MPA_CANDIDATES}?cnic=${voterData.cnic}`;
+        console.log('🔍 Fetching MPA candidates:', url);
         
-        if (response.success && response.data.length > 0) {
-            displayCandidates(response.data, 'mpa', container);
+        const response = await API.call(url);
+        
+        console.log('📦 MPA Response:', response);
+        
+        if (response.success && response.data && response.data.candidates && response.data.candidates.length > 0) {
+            displayCandidates(response.data.candidates, 'mpa', container);
         } else {
             container.innerHTML = `
                 <div class="no-candidates">
@@ -321,6 +296,7 @@ async function loadMPACandidates() {
             `;
         }
     } catch (error) {
+        console.error('❌ Error loading MPA candidates:', error);
         container.innerHTML = `
             <div class="error-message">
                 <i class="fas fa-exclamation-circle"></i>
@@ -330,32 +306,37 @@ async function loadMPACandidates() {
     }
 }
 
-// ==================== DISPLAY CANDIDATES ====================
 function displayCandidates(candidates, type, container) {
     const html = `
         <div class="candidates-grid">
-            ${candidates.map((candidate, index) => `
-                <div class="candidate-card" onclick="selectCandidate('${type}', '${candidate.cnic}')">
-                    <input type="radio" name="${type}-candidate" value="${candidate.cnic}" class="candidate-radio" id="${type}-${index}">
-                    <div class="candidate-info">
-                        <h3 class="candidate-name">${candidate.name}</h3>
-                        <div class="candidate-details">
-                            <span class="candidate-detail">
-                                <i class="fas fa-flag"></i>
-                                ${candidate.symbol}
-                            </span>
-                            <span class="candidate-detail">
-                                <i class="fas fa-id-card"></i>
-                                ${maskCNIC(candidate.cnic)}
-                            </span>
-                            <span class="candidate-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                ${type === 'mna' ? `NA-${candidate.constituency}` : `${candidate.provinceName || 'P'}-${candidate.provisionalPP}`}
-                            </span>
+            ${candidates.map((candidate, index) => {
+                const naSeat = candidate.naSeat || candidate.constituency_na || 'N/A';
+                const paSeat = candidate.paSeat || candidate.provisional_pp || 'N/A';
+                const constituency = type === 'mna' ? `NA-${naSeat}` : `${candidate.province || 'P'}-${paSeat}`;
+                
+                return `
+                    <div class="candidate-card" onclick="selectCandidate('${type}', '${candidate.cnic}')">
+                        <input type="radio" name="${type}-candidate" value="${candidate.cnic}" class="candidate-radio" id="${type}-${index}">
+                        <div class="candidate-info">
+                            <h3 class="candidate-name">${candidate.name}</h3>
+                            <div class="candidate-details">
+                                <span class="candidate-detail">
+                                    <i class="fas fa-flag"></i>
+                                    ${candidate.symbol}
+                                </span>
+                                <span class="candidate-detail">
+                                    <i class="fas fa-id-card"></i>
+                                    ${maskCNIC(candidate.cnic)}
+                                </span>
+                                <span class="candidate-detail">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${constituency}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('')}
+                `;
+            }).join('')}
         </div>
         <div class="vote-button-container">
             <button id="cast-${type}-vote-btn" class="btn btn-primary btn-lg" onclick="castVote('${type}')" disabled>
@@ -368,26 +349,20 @@ function displayCandidates(candidates, type, container) {
     container.innerHTML = html;
 }
 
-// ==================== SELECT CANDIDATE ====================
 window.selectCandidate = function(type, cnic) {
-    // Unselect all
-    document.querySelectorAll(`.candidate-card`).forEach(card => {
+    document.querySelectorAll('.candidate-card').forEach(card => {
         card.classList.remove('selected');
     });
     
-    // Select clicked
     event.currentTarget.classList.add('selected');
     
-    // Check radio
     const radio = document.getElementById(`${type}-${Array.from(document.querySelectorAll(`input[name="${type}-candidate"]`)).findIndex(r => r.value === cnic)}`);
     if (radio) radio.checked = true;
     
-    // Enable vote button
     const voteBtn = document.getElementById(`cast-${type}-vote-btn`);
     if (voteBtn) voteBtn.disabled = false;
 };
 
-// ==================== CAST VOTE ====================
 window.castVote = async function(type) {
     const selectedRadio = document.querySelector(`input[name="${type}-candidate"]:checked`);
     
@@ -399,21 +374,21 @@ window.castVote = async function(type) {
     const candidateCnic = selectedRadio.value;
     const endpoint = type === 'mna' ? CONFIG.API.ENDPOINTS.CAST_VOTE_MNA : CONFIG.API.ENDPOINTS.CAST_VOTE_MPA;
     
-    // Confirm vote
     showConfirmDialog(
-        `Are you sure you want to vote for this candidate? This action cannot be undone.`,
+        `Are you sure you want to vote for this candidate?  This action cannot be undone.`,
         async () => {
             try {
                 showLoader('Casting your vote...');
                 
+                // ✅ FIX: Send both voterCnic and candidateCnic
                 const response = await API.call(endpoint, 'POST', {
+                    voterCnic: voterData.cnic,
                     candidateCnic: candidateCnic
                 });
                 
                 hideLoader();
                 
                 if (response.success) {
-                    // Update voter data
                     if (type === 'mna') {
                         voterData.hasVotedMNA = true;
                     } else {
@@ -424,7 +399,6 @@ window.castVote = async function(type) {
                     
                     showAlert('Vote cast successfully!  Your vote has been recorded in the blockchain.', 'success');
                     
-                    // Reload section
                     setTimeout(() => {
                         if (type === 'mna') {
                             loadMNACandidates();
@@ -446,7 +420,6 @@ window.castVote = async function(type) {
     );
 };
 
-// ==================== DOM READY ====================
 document.addEventListener('DOMContentLoaded', () => {
     initializeVoterDashboard();
 });
